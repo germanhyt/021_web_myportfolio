@@ -37,7 +37,7 @@ const AppBanner = () => {
     <motion.section
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="container mx-auto min-h-[90vh] flex flex-col md:flex-row items-center justify-between px-4 sm:px-8 py-20"
+      className="container mx-auto min-h-[90vh] flex flex-col md:flex-row items-center justify-between px-4 sm:px-8 py-20 hero-bg"
     >
       <div className="w-full md:w-3/5 text-left z-10 space-y-10">
         {/* <motion.div
@@ -89,20 +89,20 @@ const AppBanner = () => {
       </div>
 
       <motion.div
-        initial={{ opacity: 0, scale: 0.9, rotate: 5 }}
-        animate={{ opacity: 1, scale: 1, rotate: 0 }}
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
         transition={{ ease: "easeOut", duration: 1.2, delay: 0.2 }}
-        className="w-full md:w-2/5 relative mt-20 md:mt-0 flex justify-center md:justify-end"
+        className="w-full md:w-2/5 cyber-circle-container mt-20 md:mt-0"
       >
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-premium-secondary/10 dark:bg-premium-secondary/5 blur-[120px] rounded-full z-0 animate-pulse-glow" />
-
-        <div className="absolute -top-12 -right-12 w-40 h-40 border-2 border-premium-secondary/10 rounded-full animate-float" />
-        <div className="absolute -bottom-12 -left-12 w-32 h-32 border border-premium-primary/10 rounded-full animate-float" style={{ animationDelay: '2s' }} />
+        {/* Capas de diseño profesional */}
+        <div className="halo-glow" />
+        <div className="cyber-circle spin-slow" />
+        <div className="tech-dots" />
 
         <img
           src={theme === "dark" ? developerDark : developerLight}
           alt="Germán Huaytalla"
-          className="relative z-10 w-full max-w-[450px] drop-shadow-[0_30px_60px_rgba(0,0,0,0.3)] dark:drop-shadow-[0_30px_80px_rgba(34,211,238,0.15)]"
+          className="relative z-10 w-full max-w-[460px] premium-image-shadow animate-float"
         />
       </motion.div>
     </motion.section>

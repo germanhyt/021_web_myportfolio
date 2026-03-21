@@ -18,7 +18,7 @@ const ProjectsFilter = ({ setSelectProject }: IProps) => {
     control: (base, state) => ({
       ...base,
       backgroundColor: "var(--premium-surface)",
-      borderColor: state.isFocused ? "var(--premium-primary)" : "rgba(var(--premium-text-rgb), 0.05)",
+      borderColor: state.isFocused ? "var(--premium-primary)" : "transparent",
       borderRadius: "1.25rem",
       padding: "0.5rem 1rem",
       fontFamily: "'Manrope', sans-serif",

@@ -10,10 +10,13 @@
   --premium-surface-rgb: 255, 255, 255;
   --premium-surface-high: #f1f5f9;
   --premium-primary: #2563eb;
+  --premium-primary-rgb: 37, 99, 235;
   --premium-secondary: #7c3aed;
+  --premium-secondary-rgb: 124, 58, 237;
   --premium-accent: #0ea5e9;
   --premium-text: #0f172a;
   --premium-text-muted: #64748b;
+  --premium-border: rgba(15, 23, 42, 0.08);
 }
 
 .dark {
@@ -24,10 +27,28 @@
   --premium-surface-rgb: 15, 23, 42;
   --premium-surface-high: #1e293b;
   --premium-primary: #818cf8;
+  --premium-primary-rgb: 129, 140, 248;
   --premium-secondary: #c084fc;
+  --premium-secondary-rgb: 192, 132, 252;
   --premium-accent: #38bdf8;
   --premium-text: #f8fafc;
   --premium-text-muted: #94a3b8;
+  --premium-border: transparent;
+}
+
+/* Global Border Override for Dark Mode */
+.dark .border-white\/10,
+.dark .border-white\/5,
+.dark .border-premium-text\/5,
+.dark .border-premium-text\/10,
+.dark .border-zinc-800,
+.dark .border-gray-800,
+.dark .border-b,
+.dark .border-t,
+.dark .border {
+  border-color: transparent !important;
+  border-bottom-color: transparent !important;
+  border-top-color: transparent !important;
 }
 
 body {
@@ -45,8 +66,14 @@ html {
 
 /* Custom Utilities for Premium Look */
 .glass-effect {
-  background-color: rgb(var(--premium-surface-rgb) / 0.7);
-  @apply backdrop-blur-md border border-white/10;
+  background-color: rgba(var(--premium-surface-rgb), 0.7);
+  border: 1px solid var(--premium-border);
+  @apply backdrop-blur-xl transition-all duration-500;
+}
+
+.hero-bg {
+  background: radial-gradient(circle at 70% 30%, rgba(var(--premium-primary-rgb), 0.05), transparent 50%),
+    radial-gradient(circle at 20% 70%, rgba(var(--premium-secondary-rgb), 0.03), transparent 50%);
 }
 
 .text-gradient {
@@ -74,4 +101,59 @@ html {
 
 .animate-float {
   animation: float 6s ease-in-out infinite;
+}
+
+/* Professional Hero UI/UX - Cyber Circle Version */
+.cyber-circle-container {
+  @apply relative flex items-center justify-center;
+}
+
+.halo-glow {
+  position: absolute;
+  width: 140%;
+  height: 140%;
+  background: radial-gradient(circle, rgba(var(--premium-primary-rgb), 0.12) 0%, transparent 70%);
+  filter: blur(80px);
+  z-index: 0;
+}
+
+.cyber-circle {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border: 1px solid rgba(var(--premium-text-rgb), 0.05);
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgba(var(--premium-surface-rgb), 0.3), transparent 80%);
+  backdrop-filter: blur(40px);
+  z-index: 1;
+}
+
+.tech-dots {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(rgba(var(--premium-primary-rgb), 0.2) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: radial-gradient(circle, black 40%, transparent 70%);
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.premium-image-shadow {
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.2));
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark .premium-image-shadow {
+  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.6))
+          drop-shadow(0 0 20px rgba(var(--premium-primary-rgb), 0.1));
+}
+
+@keyframes slow-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.spin-slow {
+  animation: slow-spin 40s linear infinite;
 }

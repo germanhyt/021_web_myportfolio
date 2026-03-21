@@ -39,7 +39,7 @@ const AppHeader = () => {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         className={`w-full transition-all duration-500 h-[80px] flex items-center ${isScrolled
-          ? "bg-premium-bg/80 backdrop-blur-xl shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)] dark:shadow-[0_10px_40px_-15px_rgba(37,99,235,0.1)]"
+          ? "bg-premium-bg/80 backdrop-blur-xl"
           : "bg-transparent"
           }`}
       >
@@ -51,7 +51,7 @@ const AppHeader = () => {
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center bg-premium-surface/30 border border-premium-text/5 rounded-full px-2 py-1 backdrop-blur-md">
+          <div className="hidden md:flex items-center glass-effect p-1.5 rounded-full">
             {[
               { label: "Proyectos", href: "#projects" },
               { label: "Tecnologías", href: "#techs" },
@@ -70,7 +70,7 @@ const AppHeader = () => {
           <div className="flex items-center gap-4">
             <button
               onClick={toggleTheme}
-              className="p-2.5 rounded-xl bg-premium-surface border border-premium-text/5 text-premium-text-muted hover:text-premium-primary hover:bg-premium-surface-high transition-all duration-300 shadow-sm"
+              className="w-11 h-11 flex items-center justify-center rounded-xl glass-effect text-premium-text-muted hover:text-premium-primary hover:bg-premium-surface-high transition-all duration-300"
               aria-label="Toggle Theme"
             >
               {theme === "dark" ? <FiSun size={20} /> : <FiMoon size={20} />}
