@@ -42,7 +42,10 @@ function SectionTechs() {
               <motion.div
                 key={category.name}
                 layout
-                className={`bg-premium-surface rounded-[2.5rem] border border-premium-text/5 overflow-hidden transition-all duration-500 hover:border-premium-primary/30 group ${isOpen ? "ring-4 ring-premium-primary/5 shadow-2xl" : "shadow-sm"
+                className={`
+                  bg-premium-surface rounded-[2.5rem]  border-premium-text/5 overflow-hidden transition-all duration-500 hover:border-premium-primary/30 
+                  hover:shadow-lg
+                  group ${isOpen ? "border-2 border-premium-primary/4 shadow-2xl" : "shadow-sm"
                   }`}
               >
                 <button
