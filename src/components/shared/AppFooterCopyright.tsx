@@ -5,7 +5,7 @@ function AppFooterCopyright() {
         &copy; {new Date().getFullYear()} Germán Huaytalla
         <span className="mx-2 text-premium-text/20">|</span>
         <span className="text-premium-primary">
-          High-End Engineering
+          Systems Enginner
         </span>
       </div>
     </div>
