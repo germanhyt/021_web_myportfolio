@@ -17,13 +17,13 @@ export default {
     },
     extend: {
       colors: {
-        "primary-light": "#F7F8FC",
-        "secondary-light": "#FFFFFF",
-        "ternary-light": "#f6f7f8",
+        "primary-light": "#F4F5F0",
+        "secondary-light": "#FAFAF8",
+        "ternary-light": "#EBEDE3",
 
-        "primary-dark": "#0D2438",
-        "secondary-dark": "#102D44",
-        "ternary-dark": "#1E3851",
+        "primary-dark": "#0C0F0A",
+        "secondary-dark": "#151911",
+        "ternary-dark": "#20261A",
 
         // Premium Theme (Editorial Engineering)
         premium: {

@@ -1,6 +1,8 @@
 import ContactDetails from "../contact/ContactDetails";
 import { motion } from "framer-motion";
 
+import profile from "@/assets/images/profile.jpg";
+
 function SectionAboutMe() {
   return (
     <section id="aboutme" className="py-24 px-4 sm:px-8">
@@ -69,7 +71,7 @@ function SectionAboutMe() {
                   <div className="overflow-hidden rounded-[2.5rem] bg-premium-bg aspect-[4/5] w-[280px] sm:w-[320px] lg:w-[350px]">
                     <img
                       className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 scale-105 hover:scale-100"
-                      src="https://res.cloudinary.com/dz0ajaf3i/image/upload/v1711399091/Imagenes_Portafolio/profile_2_ghyt_kdsref.png"
+                      src={profile}
                       alt="Germán Huaytalla Profile"
                     />
                   </div>

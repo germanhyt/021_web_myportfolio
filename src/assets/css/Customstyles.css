@@ -3,36 +3,36 @@
 @tailwind utilities;
 
 :root {
-  /* Light Theme - Clean Professional Slate */
-  --premium-bg: #f8fafc;
-  --premium-bg-rgb: 248, 250, 252;
-  --premium-surface: #ffffff;
-  --premium-surface-rgb: 255, 255, 255;
-  --premium-surface-high: #f1f5f9;
-  --premium-primary: #2563eb;
-  --premium-primary-rgb: 37, 99, 235;
-  --premium-secondary: #7c3aed;
-  --premium-secondary-rgb: 124, 58, 237;
-  --premium-accent: #0ea5e9;
-  --premium-text: #0f172a;
-  --premium-text-muted: #64748b;
-  --premium-border: rgba(15, 23, 42, 0.08);
+  /* Light Theme - Tactical Olive */
+  --premium-bg: #f4f5f0;
+  --premium-bg-rgb: 244, 245, 240;
+  --premium-surface: #fafaf8;
+  --premium-surface-rgb: 250, 250, 248;
+  --premium-surface-high: #ebede3;
+  --premium-primary: #4b5320;
+  --premium-primary-rgb: 75, 83, 32;
+  --premium-secondary: #6e7552;
+  --premium-secondary-rgb: 110, 117, 82;
+  --premium-accent: #8b995e;
+  --premium-text: #1a1c14;
+  --premium-text-muted: #5a6050;
+  --premium-border: rgba(26, 28, 20, 0.08);
 }
 
 .dark {
-  /* Dark Theme - Deep Sophisticated Navy */
-  --premium-bg: #030712;
-  --premium-bg-rgb: 3, 7, 18;
-  --premium-surface: #0f172a;
-  --premium-surface-rgb: 15, 23, 42;
-  --premium-surface-high: #1e293b;
-  --premium-primary: #818cf8;
-  --premium-primary-rgb: 129, 140, 248;
-  --premium-secondary: #c084fc;
-  --premium-secondary-rgb: 192, 132, 252;
-  --premium-accent: #38bdf8;
-  --premium-text: #f8fafc;
-  --premium-text-muted: #94a3b8;
+  /* Dark Theme - Night Ops */
+  --premium-bg: #0c0f0a;
+  --premium-bg-rgb: 12, 15, 10;
+  --premium-surface: #151911;
+  --premium-surface-rgb: 21, 25, 17;
+  --premium-surface-high: #20261a;
+  --premium-primary: #8a9a65;
+  --premium-primary-rgb: 138, 154, 101;
+  --premium-secondary: #b0bb94;
+  --premium-secondary-rgb: 176, 187, 148;
+  --premium-accent: #a3b876;
+  --premium-text: #f0f2eb;
+  --premium-text-muted: #8e9581;
   --premium-border: transparent;
 }
 

@@ -46,7 +46,7 @@ const AppHeader = () => {
         <div className="container mx-auto flex justify-between items-center px-4 sm:px-6 lg:px-8">
           <Link to="/" className="flex items-center gap-3 group">
             <span className="font-space-grotesk font-black text-2xl text-premium-text tracking-tighter">
-              german<span className="text-premium-primary">.hyt</span>
+              germ4n<span className="text-premium-primary">.hyt</span>
             </span>
           </Link>
 
