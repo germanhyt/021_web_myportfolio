@@ -1,110 +1,110 @@
 import { useState } from "react";
 import { BiChevronDown } from "react-icons/bi";
-import { BiChevronUp } from "react-icons/bi";
 import { techData } from "@/core/data/techs";
+import { motion, AnimatePresence } from "framer-motion";
 
 function SectionTechs() {
-  const [showImages, setShowImages] = useState(true);
-  const [showImages2, setShowImages2] = useState(false);
-  const [showImages3, setShowImages3] = useState(false);
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
-  const toggleImages = () => {
-    setShowImages(!showImages);
-  };
-  const toggleImages2 = () => {
-    setShowImages2(!showImages2);
-  };
-  const toggleImages3 = () => {
-    setShowImages3(!showImages3);
+  const toggle = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
   };
 
   return (
-    <section id="techs" className="container mx-auto">
-      <div className="px-10 pt-12 pb-20 mt-24 sm:mt-32 dark:bg-primary-dark shadow-md rounded-lg">
-        <div className="w-full flex justify-center items-center py-4 sm:py-8">
-          <h3 className="font-semibold text-base sm:text-xl dark:text-primary-light">
-            Tecnologías que uso
-          </h3>
+    <section id="techs" className="py-24 px-4 sm:px-8 bg-premium-bg/50">
+      <div className="container mx-auto">
+        <div className="text-center mb-20 space-y-4">
+          {/* <motion.span
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="text-premium-accent font-space-grotesk font-black uppercase text-xs tracking-[0.4em]"
+          >
+            Capabilities
+          </motion.span> */}
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-4xl sm:text-6xl font-space-grotesk font-extrabold text-premium-text tracking-tighter"
+          >
+            Stack & <span className="text-gradient">Ecosistema.</span>
+          </motion.h2>
+          <p className="max-w-2xl mx-auto text-premium-text-muted font-manrope text-lg">
+            Dominio de herramientas líderes en la industria para garantizar escalabilidad,
+            rendimiento y mantenibilidad en cada desarrollo.
+          </p>
         </div>
-        <div className="grid grid-cols-1 gap-4 sm:gap-8">
-          <div className="">
-            <div
-              onClick={toggleImages}
-              className="relative w-fit flex gap-4 text-primary-light group cursor-pointer"
-            >
-              <p className="font-semibold text-black dark:text-primary-light ">
-                {techData[0].name}
-                <span className="absolute inset-x-2 bottom-0 h-1 bg-blue-500 transform -translate-x-fit group-hover:translate-x-5 transition-transform duration-300"></span>
-              </p>
-              <i className="text-2xl text-gray-500 dark:text-gray-400">
-                {showImages ? <BiChevronUp /> : <BiChevronDown />}
-              </i>
-            </div>
-            {showImages && (
-              <div className="w-full px-4 py-6 flex flex-wrap gap-8 transition-transform duration-300 ease-in-out">
-                {techData[0].images.map((item) => (
-                  <div key={item.id}>
-                    <img className="w-30 h-20" src={item.link} alt="img" />
-                    <h3 className="text-center text-black dark:text-white">
-                      {item.name}
-                    </h3>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+          {techData.map((category, idx) => {
+            const isOpen = openIndex === idx;
+
+            return (
+              <motion.div
+                key={category.name}
+                layout
+                className={`bg-premium-surface rounded-[2.5rem] border border-premium-text/5 overflow-hidden transition-all duration-500 hover:border-premium-primary/30 group ${isOpen ? "ring-4 ring-premium-primary/5 shadow-2xl" : "shadow-sm"
+                  }`}
+              >
+                <button
+                  onClick={() => toggle(idx)}
+                  className="w-full flex items-center justify-between p-10 text-left hover:bg-premium-text/5 transition-colors"
+                >
+                  <div className="flex items-center gap-6">
+                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center font-space-grotesk font-black text-xl transition-all duration-500 ${isOpen ? "bg-premium-primary text-white rotate-12 scale-110 shadow-lg shadow-premium-primary/30" : "bg-premium-bg text-premium-primary border border-premium-text/5"
+                      }`}>
+                      {String(idx + 1).padStart(2, '0')}
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-space-grotesk font-bold text-premium-text group-hover:text-premium-primary transition-colors">
+                        {category.name}
+                      </h3>
+                      <p className="text-xs font-manrope font-bold text-premium-text-muted uppercase tracking-widest mt-1">
+                        {category.images.length} herramientas
+                      </p>
+                    </div>
                   </div>
-                ))}
-              </div>
-            )}
-          </div>
-          <div className="">
-            <div
-              onClick={toggleImages2}
-              className="relative w-fit flex gap-8 text-primary-light  group cursor-pointer"
-            >
-              <p className="font-semibold text-black dark:text-white ">
-                {techData[1].name}
-                <span className="absolute inset-x-2 bottom-0 h-1 bg-blue-500 transform -translate-x-fit group-hover:translate-x-5 transition-transform duration-300"></span>
-              </p>
-              <i className="text-2xl text-gray-500 dark:text-gray-400">
-                {showImages2 ? <BiChevronUp /> : <BiChevronDown />}
-              </i>
-            </div>
-            {showImages2 && (
-              <div className="w-full px-4 py-6 flex flex-wrap gap-8 transition-transform duration-300 ease-in-out">
-                {techData[1].images.map((item) => (
-                  <div>
-                    <img className="w-30 h-20" src={item.link} alt="img" />
-                    <h3 className="text-center text-black dark:text-white">
-                      {item.name}
-                    </h3>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-          <div className="">
-            <div
-              onClick={toggleImages3}
-              className="relative w-fit flex gap-8 text-primary-light  group cursor-pointer"
-            >
-              <p className="font-semibold text-black dark:text-white ">
-                {techData[2].name}
-                <span className="absolute inset-x-2 bottom-0 h-1 bg-blue-500 transform -translate-x-fit group-hover:translate-x-5 transition-transform duration-300"></span>
-              </p>
-              <i className="text-2xl text-gray-500 dark:text-gray-400">
-                {showImages2 ? <BiChevronUp /> : <BiChevronDown />}
-              </i>
-            </div>
-            {showImages3 && (
-              <div className="w-full px-4 py-6 flex flex-wrap gap-8 transition-transform duration-300 ease-in-out">
-                {techData[2].images.map((item) => (
-                  <div>
-                    <img className="w-30 h-20" src={item.link} alt="img" />
-                    <h3 className="text-center text-black dark:text-white">
-                      {item.name}
-                    </h3>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
+                  <motion.div
+                    animate={{ rotate: isOpen ? 180 : 0 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  >
+                    <BiChevronDown size={32} className={isOpen ? "text-premium-primary" : "text-premium-text-muted"} />
+                  </motion.div>
+                </button>
+
+                <AnimatePresence>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.5, ease: "circOut" }}
+                    >
+                      <div className="p-10 pt-0 grid grid-cols-3 gap-6">
+                        {category.images.map((tech) => (
+                          <motion.div
+                            key={tech.id}
+                            whileHover={{ y: -5, scale: 1.05 }}
+                            className="flex flex-col items-center gap-3 p-4 rounded-3xl bg-premium-bg/50 border border-premium-text/5 hover:bg-premium-surface-high hover:border-premium-primary/20 transition-all duration-300"
+                          >
+                            <div className="w-14 h-14 p-2 bg-white dark:bg-slate-800 rounded-2xl flex items-center justify-center shadow-inner">
+                              <img
+                                src={tech.link}
+                                alt={tech.name}
+                                className="w-full h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500"
+                              />
+                            </div>
+                            <span className="text-[10px] font-space-grotesk font-black text-premium-text-muted uppercase tracking-widest text-center">
+                              {tech.name}
+                            </span>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

@@ -4,40 +4,41 @@ import { FiClock, FiTag, FiExternalLink } from "react-icons/fi";
 
 const ProjectHeader = () => {
   const { projects, idProject } = useContext(ProjectsContext);
+  const p = projects.find((project) => project.id === idProject);
 
-  return projects
-    .filter((project) => project.id === idProject)
-    .map((p) => (
-      <div key={p.id}>
-        <p className="font-general-medium text-left text-3xl sm:text-4xl font-bold text-primary-dark dark:text-primary-light  mb-7">
-          {p.ProjectHeader.title}
-        </p>
-        <div className="flex flex-wrap">
-          <div className="flex items-center mr-10">
-            <FiClock className="text-lg text-ternary-dark dark:text-ternary-light" />
-            <span className="font-general-regular ml-2 leading-none text-primary-dark dark:text-primary-light">
-              {p.ProjectHeader.publishDate}
-            </span>
-          </div>
-          <div className="flex items-center mr-10">
-            <FiTag className="text-lg text-ternary-dark dark:text-ternary-light" />
-            <span className="font-general-regular ml-2 leading-none text-primary-dark dark:text-primary-light">
-              {p.ProjectHeader.tags}
-            </span>
-          </div>
-          <div className="flex items-center">
-            <FiExternalLink className="text-lg text-ternary-dark dark:text-ternary-light" />
-            <a
-              href={p.ProjectHeader.link}
-              target="__blank"
-              className="font-general-regular hover:underline hover:text-[#0123e7] break-all ml-2 leading-none text-primary-dark dark:text-primary-light"
-            >
-              Link de Proyecto
-            </a>
-          </div>
+  if (!p) return null;
+
+  return (
+    <div className="mb-12">
+      <h1 className="font-space-grotesk text-left text-4xl sm:text-6xl font-bold text-premium-text mb-8 leading-tight">
+        {p.ProjectHeader.title}
+      </h1>
+      <div className="flex flex-wrap gap-8 items-center text-premium-text-muted">
+        <div className="flex items-center group">
+          <FiClock className="text-xl group-hover:text-premium-primary transition-colors" />
+          <span className="font-manrope ml-3 text-sm font-semibold tracking-wide">
+            {p.ProjectHeader.publishDate}
+          </span>
+        </div>
+        <div className="flex items-center group">
+          <FiTag className="text-xl group-hover:text-premium-accent transition-colors" />
+          <span className="font-manrope ml-3 text-sm font-semibold tracking-wide">
+            {p.ProjectHeader.tags}
+          </span>
+        </div>
+        <div className="flex items-center group">
+          <FiExternalLink className="text-xl group-hover:text-premium-primary transition-colors" />
+          <a
+            href={p.ProjectHeader.link}
+            target="__blank"
+            className="font-manrope ml-3 text-sm font-bold text-premium-primary hover:text-white transition-all break-all"
+          >
+            Visitar Sitio Web
+          </a>
         </div>
       </div>
-    ));
+    </div>
+  );
 };
 
 export default ProjectHeader;

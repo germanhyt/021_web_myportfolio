@@ -7,33 +7,32 @@ import "@/assets/css/App.css";
 import "@/assets/css/Customstyles.css";
 import { lazy, Suspense } from "react";
 import AppFooter from "./components/shared/AppFooter";
+import { ThemeProvider } from "@/core/hooks/context/ThemeContext";
 
 import { projectsData } from "./core/data/projects";
 
 const Home = lazy(() => import("./pages/Home"));
-// const AboutMe = lazy(() => import("./pages/AboutMe"));
-// const Projects = lazy(() => import("./pages/Projects"));
-// const Contact = lazy(() => import("./pages/Contact"));
 const ProjectSingle = lazy(() => import("./pages/ProjectSingle"));
 
 function App() {
   return (
-    <>
+    <ThemeProvider>
       <AnimatePresence>
-        <div className="m-0 p-0 border-none box-border transition duration-300 bg-secondary-light dark:bg-primary-dark">
+        <div className="m-0 p-0 border-none box-border transition-colors duration-500">
           <ButtonWhatsapp />
 
           <Router>
             <AppHeader />
             <ScrollToTop />
             <Suspense
-              fallback={<span className="text-center">cargando...</span>}
+              fallback={
+                <div className="h-screen flex items-center justify-center bg-premium-bg">
+                  <span className="text-premium-primary font-space-grotesk animate-pulse">Cargando...</span>
+                </div>
+              }
             >
               <Routes>
                 <Route path="/" element={<Home />} />
-                {/* <Route path="/about" element={<AboutMe />} /> */}
-                {/* <Route path="/projects" element={<Projects />} /> */}
-                {/* <Route path="/contact" element={<Contact />} /> */}
                 {projectsData.map((project) => (
                   <Route
                     key={project.id}
@@ -47,7 +46,7 @@ function App() {
           </Router>
         </div>
       </AnimatePresence>
-    </>
+    </ThemeProvider>
   );
 }
 

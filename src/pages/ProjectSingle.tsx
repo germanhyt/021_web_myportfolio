@@ -10,7 +10,7 @@ interface IProps {
 
 const ProjectSingle = ({ number }: IProps) => {
   return (
-    <section className="min-h-[100vh] pt-10 mt-28 bg-primary-light dark:bg-secondary-dark">
+    <section className="min-h-screen pt-32 bg-premium-bg">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

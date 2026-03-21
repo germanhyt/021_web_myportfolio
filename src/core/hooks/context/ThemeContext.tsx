@@ -1,8 +1,16 @@
-import { useEffect, useState } from "react";
+import { useState, createContext, useEffect } from "react";
 
 type Theme = "light" | "dark";
 
-const useThemeSwitcher = (): [Theme, () => void] => {
+export const ThemeContext = createContext<{
+  theme: Theme;
+  toggleTheme: () => void;
+}>({
+  theme: "dark",
+  toggleTheme: () => { },
+});
+
+export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const [theme, setTheme] = useState<Theme>(
     (localStorage.getItem("theme") as Theme) || "dark"
   );
@@ -20,6 +28,7 @@ const useThemeSwitcher = (): [Theme, () => void] => {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
+  // Handle system preference changes
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
     const handleChange = (e: MediaQueryListEvent) => {
@@ -32,7 +41,9 @@ const useThemeSwitcher = (): [Theme, () => void] => {
     return () => mediaQuery.removeEventListener("change", handleChange);
   }, []);
 
-  return [theme, toggleTheme];
+  return (
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
 };
-
-export default useThemeSwitcher;

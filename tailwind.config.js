@@ -12,6 +12,8 @@ export default {
   theme: {
     fontFamily: {
       barlow: ["Barlow", "sans-serif"],
+      "space-grotesk": ["Space Grotesk", "sans-serif"],
+      manrope: ["Manrope", "sans-serif"],
     },
     extend: {
       colors: {
@@ -22,6 +24,18 @@ export default {
         "primary-dark": "#0D2438",
         "secondary-dark": "#102D44",
         "ternary-dark": "#1E3851",
+
+        // Premium Theme (Editorial Engineering)
+        premium: {
+          bg: "var(--premium-bg)",
+          surface: "var(--premium-surface)",
+          "surface-high": "var(--premium-surface-high)",
+          primary: "var(--premium-primary)",
+          secondary: "var(--premium-secondary)",
+          accent: "var(--premium-accent)",
+          text: "var(--premium-text)",
+          "text-muted": "var(--premium-text-muted)",
+        },
       },
       container: {
         padding: {

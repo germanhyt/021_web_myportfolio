@@ -4,102 +4,94 @@ import { useContext } from "react";
 const ProjectInfo = () => {
   const { projects, idProject } = useContext(ProjectsContext);
 
-  return projects
-    .filter((project) => project.id === idProject)
-    .map((p) => (
-      <div key={p.id} className="block sm:flex gap-0 sm:gap-10 mt-14">
-        <div className="w-full sm:w-1/3 text-left">
-          {/* Single project client details */}
-          <div className="mb-7">
-            <p className="font-general-regular text-2xl font-semibold text-secondary-dark dark:text-secondary-light mb-2">
-              {p.ProjectInfo.ClientHeading}
-            </p>
-            <ul className="leading-loose">
-              {p.ProjectInfo.CompanyInfo.map((info: any) => {
-                return (
-                  <li
-                    key={info.id}
-                    className="font-general-regular text-ternary-dark dark:text-ternary-light"
-                  >
-                    <span>{info.title}: </span>
-                    <a
-                      href="https://portfolio-web-ghyt.netlify.app/"
-                      className={
-                        info.title === "Website" || info.title === "Phone"
-                          ? "hover:underline hover:text-indigo-500 dark:hover:text-indigo-400 cursor-pointer duration-300"
-                          : ""
-                      }
-                      aria-label="Project Website and Phone"
-                    >
-                      {info.details}
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
+  const currentProject = projects.find((project) => project.id === idProject);
 
-          {/* Single project objectives */}
-          <div className="mb-7">
-            <p className="font-general-regular text-2xl font-semibold text-ternary-dark dark:text-ternary-light mb-2">
-              {p.ProjectInfo.ObjectivesHeading}
-            </p>
-            <p className="font-general-regular text-primary-dark dark:text-ternary-light">
-              {p.ProjectInfo.ObjectivesDetails}
-            </p>
-          </div>
+  if (!currentProject) return null;
 
-          {/* Single project technologies */}
-          <div className="mb-7">
-            <p className="font-general-regular text-2xl font-semibold text-ternary-dark dark:text-ternary-light mb-2">
-              {p.ProjectInfo.Technologies[0].title}
-            </p>
-            <p className="font-general-regular text-primary-dark dark:text-ternary-light">
-              {p.ProjectInfo.Technologies[0].techs.join(", ")}
-            </p>
-          </div>
-
-          {/* Single project social sharing */}
-          <div>
-            <p className="font-general-regular text-2xl font-semibold text-ternary-dark dark:text-ternary-light mb-2">
-              {p.ProjectInfo.SocialSharingHeading}
-            </p>
-            <div className="flex items-center gap-3 mt-5">
-              {p.ProjectInfo.SocialSharing.map((social: any) => {
-                return (
-                  <a
-                    key={social.id}
-                    href={social.url}
-                    target="__blank"
-                    aria-label="Share Project"
-                    className="bg-ternary-light dark:bg-ternary-dark text-gray-400 hover:text-primary-dark dark:hover:text-primary-light p-2 rounded-lg shadow-sm duration-500"
-                  >
-                    <span className="text-lg lg:text-2xl">{social.icon}</span>
-                  </a>
-                );
-              })}
-            </div>
-          </div>
+  return (
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mt-20">
+      <div className="lg:col-span-1 space-y-10">
+        {/* Client Details */}
+        <div className="bg-premium-surface/30 p-8 rounded-3xl border border-white/5">
+          <h3 className="font-space-grotesk text-xl font-bold text-premium-text mb-6">
+            {currentProject.ProjectInfo.ClientHeading}
+          </h3>
+          <ul className="space-y-4">
+            {currentProject.ProjectInfo.CompanyInfo.map((info) => (
+              <li key={info.id} className="flex flex-col">
+                <span className="text-xs font-space-grotesk uppercase tracking-widest text-premium-accent font-bold">
+                  {info.title}
+                </span>
+                <span className="text-premium-text-muted font-manrope">
+                  {info.details}
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
 
-        {/*  Single project right section */}
-        <div className="w-full sm:w-2/3 text-left mt-10 sm:mt-0">
-          <p className="font-general-regular text-primary-dark dark:text-primary-light text-2xl font-bold mb-7">
-            {p.ProjectInfo.ProjectDetailsHeading}
+        {/* Objectives */}
+        <div className="bg-premium-surface/30 p-8 rounded-3xl border border-white/5">
+          <h3 className="font-space-grotesk text-xl font-bold text-premium-text mb-4">
+            {currentProject.ProjectInfo.ObjectivesHeading}
+          </h3>
+          <p className="text-premium-text-muted font-manrope leading-relaxed">
+            {currentProject.ProjectInfo.ObjectivesDetails}
           </p>
-          {p.ProjectInfo.ProjectDetails.map((details: any) => {
-            return (
-              <p
-                key={details.id}
-                className="font-general-regular mb-5 text-lg text-ternary-dark dark:text-ternary-light"
-              >
-                {details.details}
-              </p>
-            );
-          })}
+        </div>
+
+        {/* Technologies */}
+        <div className="bg-premium-surface/30 p-8 rounded-3xl border border-white/5">
+          <h3 className="font-space-grotesk text-xl font-bold text-premium-text mb-4">
+            {currentProject.ProjectInfo.Technologies[0]?.title || "Tecnologías"}
+          </h3>
+          <div className="flex flex-wrap gap-2">
+            {currentProject.ProjectInfo.Technologies[0]?.techs.map((tech) => (
+              <span key={tech} className="px-3 py-1 rounded-full bg-premium-bg border border-white/5 text-xs font-bold text-premium-primary">
+                {tech}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
-    ));
+
+      {/* Project Details */}
+      <div className="lg:col-span-2">
+        <h2 className="font-space-grotesk text-2xl font-bold text-premium-text mb-8">
+          {currentProject.ProjectInfo.ProjectDetailsHeading}
+        </h2>
+        <div className="space-y-6">
+          {currentProject.ProjectInfo.ProjectDetails.map((details) => (
+            <p
+              key={details.id}
+              className="font-manrope text-lg leading-relaxed text-premium-text-muted"
+            >
+              {details.details}
+            </p>
+          ))}
+        </div>
+        
+        {/* Social Sharing */}
+        <div className="mt-12 pt-12 border-t border-white/5">
+          <h4 className="font-space-grotesk text-sm font-bold text-premium-text-muted uppercase tracking-widest mb-6">
+            {currentProject.ProjectInfo.SocialSharingHeading}
+          </h4>
+          <div className="flex items-center gap-4">
+            {currentProject.ProjectInfo.SocialSharing.map((social) => (
+              <a
+                key={social.id}
+                href={social.url}
+                target="__blank"
+                className="w-12 h-12 flex items-center justify-center rounded-xl bg-premium-surface border border-white/5 text-premium-text-muted hover:text-premium-primary hover:border-premium-primary/50 transition-all duration-300"
+              >
+                <span className="text-xl">{social.icon}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default ProjectInfo;

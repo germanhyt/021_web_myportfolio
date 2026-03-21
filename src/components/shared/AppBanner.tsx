@@ -1,132 +1,109 @@
-import { useEffect, useRef, useState } from "react";
-import useThemeSwitcher from "@/core/hooks/useThemeSwitcher";
+import { useContext, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { sociallinks } from "@/core/data/sociallinks";
 import Typed from "typed.js";
+import { ThemeContext } from "@/core/hooks/context/ThemeContext";
 
 const AppBanner = () => {
-  const developerLight =
-    "https://res.cloudinary.com/dz0ajaf3i/image/upload/v1697233575/006_Portfolio_Freelance/developer_rboiiq.svg";
-  const developerDark =
-    "https://res.cloudinary.com/dz0ajaf3i/image/upload/v1697233575/006_Portfolio_Freelance/developer-dark_pxjdqw.svg";
+  const developerLight = "https://res.cloudinary.com/dz0ajaf3i/image/upload/v1697233575/006_Portfolio_Freelance/developer_rboiiq.svg";
+  const developerDark = "https://res.cloudinary.com/dz0ajaf3i/image/upload/v1697233575/006_Portfolio_Freelance/developer-dark_pxjdqw.svg";
 
-  // Hooks
-  const [activeTheme, setTheme] = useThemeSwitcher();
-  const [themeCurrent, setThemeCurrent] = useState("dark");
-  const imageRef = useRef<HTMLImageElement | null>(null);
+  const { theme } = useContext(ThemeContext);
 
-  // Methods
-  setInterval(() => {
-    setTheme(localStorage.getItem("theme") || "");
-    setThemeCurrent(localStorage.getItem("theme") || "");
-  }, 500);
-
-  useEffect(() => {
-    if (imageRef.current) {
-      if (themeCurrent === "dark") {
-        imageRef.current.src = developerDark;
-      } else {
-        imageRef.current.src = developerLight;
-      }
-    }
-  }, [themeCurrent]);
-
-  // Create reference to store the DOM element containing the animation
   const el = useRef(null);
+  const typed = useRef<Typed | null>(null);
 
   useEffect(() => {
-    const typed = new Typed(el.current, {
+    typed.current = new Typed(el.current, {
       strings: [
-        "Hola, Soy Germán Huaytalla",
-        "Egresado de Ingeniería de Sistemas",
-        "Enfocado en las ramas de...",
-        "Desarrollo Web",
-        "Análisis de Datos",
-        "Cloud Computing",
+        "Soy Germán Huaytalla",
+        "Bachiller en Sistemas",
+        "Desarrollo Full Stack",
+        "Ingeniería de Datos",
+        "Arquitectura de soluciones",
       ],
-      typeSpeed: 90,
+      typeSpeed: 60,
+      backSpeed: 40,
       loop: true,
+      cursorChar: "_",
     });
 
     return () => {
-      // Destroy Typed instance during cleanup to stop animation
-      typed.destroy();
+      typed.current?.destroy();
     };
-  }, [activeTheme]);
+  }, []);
 
   return (
     <motion.section
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ ease: "easeInOut", duration: 0.9, delay: 0.2 }}
-      className="container mx-auto  flex flex-col sm:justify-between items-center sm:flex-row  mt-28 md:mt-24"
+      className="container mx-auto min-h-[90vh] flex flex-col md:flex-row items-center justify-between px-4 sm:px-8 py-20"
     >
-      <div className="w-full md:w-1/3 text-left">
-        <motion.h1
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{
-            ease: "easeInOut",
-            duration: 0.9,
-            delay: 0.1,
-          }}
-          className="font-general-semibold font-semibold text-2xl lg:text-3xl xl:text-4xl text-center sm:text-left text-ternary-dark dark:text-primary-light "
+      <div className="w-full md:w-3/5 text-left z-10 space-y-10">
+        {/* <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          className="inline-block"
         >
-          <span ref={el} />
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{
-            ease: "easeInOut",
-            duration: 0.9,
-            delay: 0.2,
-          }}
-          className="font-general-medium mt-4 mb-4 text-lg md:text-sm lg:text-md xl:text-xl text-center sm:text-left leading-normal text-gray-500 dark:text-gray-200"
-        >
-          Te presento mi portfolio personal...
-        </motion.p>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{
-            ease: "easeInOut",
-            duration: 0.9,
-            delay: 0.3,
-          }}
-          className="font-general-regular flex flex-col justify-center items-center sm:block mt-2 mb-2"
-        >
-          <ul className="flex flex-wrap gap-2 sm:gap-4 ">
+          <span className="px-5 py-2 rounded-full bg-premium-secondary/10 border border-premium-secondary/20 text-premium-secondary font-space-grotesk font-black text-xs uppercase tracking-[0.3em]">
+            Soluciones Digitales
+          </span>
+        </motion.div> */}
+
+        <h1 className="font-space-grotesk font-extrabold text-5xl sm:text-7xl lg:text-8xl text-premium-text leading-tight md:leading-[1.1] tracking-tighter">
+          Hola, <br />
+          <span className="text-gradient">
+            <span ref={el} />
+          </span>
+        </h1>
+
+        <p className="max-w-2xl font-manrope text-xl lg:text-2xl text-premium-text-muted leading-relaxed">
+          Diseño arquitecturas escalables que se adaptan a tu negocio.
+          Convierto desafíos en soluciones eficientes.
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-8 items-center pt-4">
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="flex gap-5 p-2.5 bg-premium-surface rounded-2xl border border-premium-text/5 shadow-2xl shadow-black/5"
+          >
             {sociallinks.map((link) => (
               <a
                 href={link.url}
                 target="__blank"
                 key={link.id}
-                // className="text-gray-400 hover:text-indigo-500 dark:hover:text-indigo-400 cursor-pointer rounded-lg bg-gray-50 dark:bg-ternary-dark hover:bg-gray-100 shadow-sm p-4 duration-300"
-                className="hover:scale-[0.9] text-gray-400 hover:text-indigo-500 dark:hover:text-indigo-400 cursor-pointer bg-gray-50 dark:bg-ternary-dark hover:bg-gray-100 shadow-sm p-4 rounded-lg duration-300"
+                className="w-14 h-14 flex items-center justify-center rounded-xl text-premium-text-muted hover:text-premium-primary hover:bg-premium-primary/10 transition-all duration-300"
+                title={String(link.id)}
               >
-                <i className="text-sm sm:text-lg md:text-xl ">{link.icon}</i>
+                <i className="text-2xl">{link.icon}</i>
               </a>
             ))}
-          </ul>
-        </motion.div>
-      </div>
-      <motion.div
-        initial={{ opacity: 0, y: -180 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ ease: "easeInOut", duration: 0.9, delay: 0.2 }}
-        className="w-full sm:w-2/3 text-right float-right mt-8 sm:mt-0"
-      >
-        {/* <img
-          src={
-            activeTheme === "dark"
-              ? "https://res.cloudinary.com/dz0ajaf3i/image/upload/v1697233575/006_Portfolio_Freelance/developer_rboiiq.svg"
-              : "https://res.cloudinary.com/dz0ajaf3i/image/upload/v1697233575/006_Portfolio_Freelance/developer-dark_pxjdqw.svg"
-          }
-          alt="Developer"
-        /> */}
+          </motion.div>
 
-        <img ref={imageRef} alt="Developer" />
+          <button className="px-10 py-5 bg-premium-text text-premium-bg font-space-grotesk font-black uppercase text-sm tracking-widest rounded-2xl hover:scale-105 active:scale-95 transition-all duration-300 shadow-2xl shadow-premium-text/20">
+            Explorar Portafolio
+          </button>
+        </div>
+      </div>
+
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9, rotate: 5 }}
+        animate={{ opacity: 1, scale: 1, rotate: 0 }}
+        transition={{ ease: "easeOut", duration: 1.2, delay: 0.2 }}
+        className="w-full md:w-2/5 relative mt-20 md:mt-0 flex justify-center md:justify-end"
+      >
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-premium-secondary/10 dark:bg-premium-secondary/5 blur-[120px] rounded-full z-0 animate-pulse-glow" />
+
+        <div className="absolute -top-12 -right-12 w-40 h-40 border-2 border-premium-secondary/10 rounded-full animate-float" />
+        <div className="absolute -bottom-12 -left-12 w-32 h-32 border border-premium-primary/10 rounded-full animate-float" style={{ animationDelay: '2s' }} />
+
+        <img
+          src={theme === "dark" ? developerDark : developerLight}
+          alt="Germán Huaytalla"
+          className="relative z-10 w-full max-w-[450px] drop-shadow-[0_30px_60px_rgba(0,0,0,0.3)] dark:drop-shadow-[0_30px_80px_rgba(34,211,238,0.15)]"
+        />
       </motion.div>
     </motion.section>
   );

@@ -1,10 +1,11 @@
 function AppFooterCopyright() {
   return (
-    <div className="py-10 font-general-regular flex justify-center items-center text-center bg-secondary-light dark:bg-primary-dark">
-      <div className="text-lg text-ternary-dark dark:text-ternary-light">
-        &copy; {new Date().getFullYear()}
-        <span className="hover:underline hover:text-indigo-600 dark:hover:text-indigo-300 ml-1 duration-500">
-          React & Tailwind CSS Project by ShermanSystems
+    <div className="py-12 border-t border-premium-text/5 flex justify-center items-center text-center">
+      <div className="text-xs sm:text-sm font-space-grotesk font-black uppercase tracking-[0.3em] text-premium-text-muted">
+        &copy; {new Date().getFullYear()} Germán Huaytalla
+        <span className="mx-2 text-premium-text/20">|</span>
+        <span className="text-premium-primary">
+          High-End Engineering
         </span>
       </div>
     </div>

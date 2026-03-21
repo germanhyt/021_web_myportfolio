@@ -3,31 +3,40 @@ import { sociallinks } from "@/core/data/sociallinks";
 
 const AppFooter = () => {
   return (
-    <section className="bg-primary-light dark:bg-secondary-dark">
-      <div className="container mx-auto ">
-        <div className="pt-40 sm:pt-30  order-t-2  border-primary-light dark:border-secondary-dark">
-          {/* Footer social links */}
-          <div className="font-general-regular flex flex-col justify-center items-center pb-12 sm:pb-28">
-            <p className="text-3xl sm:text-4xl text-primary-dark dark:text-primary-light mb-5">
-              Mis redes sociales
+    <footer className="relative bg-premium-bg border-t border-premium-text/5 pt-32 overflow-hidden">
+      {/* Decorative gradient beam */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-px bg-gradient-to-r from-transparent via-premium-primary to-transparent opacity-20" />
+
+      <div className="container mx-auto px-4 relative z-10 antialiased">
+        <div className="flex flex-col items-center">
+          <div className="mb-12 text-center space-y-4">
+            <h2 className="text-4xl sm:text-6xl font-space-grotesk font-black text-premium-text tracking-tighter">
+              ¿Creamos algo <span className="text-gradient">increíble?</span>
+            </h2>
+            <p className="text-premium-text-muted font-manrope text-lg max-w-md mx-auto">
+              Conversemos sobre la propuesta que tienes en mente.
             </p>
-            <ul className="flex flex-wrap gap-4 sm:gap-8">
-              {sociallinks.map((link) => (
-                <a
-                  href={link.url}
-                  target="__blank"
-                  key={link.id}
-                  className="hover:scale-[0.9] text-gray-400 hover:text-indigo-500 dark:hover:text-indigo-400 cursor-pointer rounded-lg bg-gray-50 dark:bg-ternary-dark hover:bg-gray-100 shadow-sm p-4 duration-300"
-                >
-                  <i className="text-xl sm:text-2xl md:text-3xl">{link.icon}</i>
-                </a>
-              ))}
-            </ul>
           </div>
+
+          <ul className="flex flex-wrap justify-center gap-6 mb-24">
+            {sociallinks.map((link) => (
+              <a
+                href={link.url}
+                target="__blank"
+                key={link.id}
+                className="group relative flex items-center justify-center w-16 h-16 rounded-3xl bg-premium-surface border border-premium-text/5 hover:border-premium-primary transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl hover:shadow-premium-primary/20"
+              >
+                <i className="text-2xl text-premium-text-muted group-hover:text-premium-primary transition-colors">
+                  {link.icon}
+                </i>
+              </a>
+            ))}
+          </ul>
         </div>
+
+        <AppFooterCopyright />
       </div>
-      <AppFooterCopyright />
-    </section>
+    </footer>
   );
 };
 
