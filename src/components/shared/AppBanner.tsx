@@ -56,8 +56,7 @@ const AppBanner = () => {
         </h1>
 
         <p className="max-w-2xl font-manrope text-xl lg:text-2xl text-premium-text-muted leading-relaxed">
-          Diseño arquitecturas escalables que se adaptan a tu negocio.
-          Convierto desafíos en soluciones eficientes.
+          Diseño arquitecturas escalables que se adaptan a las necesidades de la organización.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-8 items-center pt-4">

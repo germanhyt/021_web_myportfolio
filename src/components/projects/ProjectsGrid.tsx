@@ -106,7 +106,9 @@ const ProjectsGrid = ({ page }: IProps) => {
         {/* Empty State */}
         {filteredProjects.length === 0 && (
           <div className="py-20 text-center">
-            <p className="text-xl text-premium-text-muted font-manrope font-bold">Sin resultados para esta búsqueda. ¡Prueba otro término!</p>
+            <p className="text-xl text-premium-text-muted font-manrope font-bold italic ">
+              En proceso de definirse
+            </p>
           </div>
         )}
 
