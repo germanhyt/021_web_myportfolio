@@ -1,8 +1,8 @@
-import { useContext, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { sociallinks } from "@/core/data/sociallinks";
 import Typed from "typed.js";
-import { ThemeContext } from "@/core/hooks/context/ThemeContext";
+// import { ThemeContext } from "@/core/hooks/context/ThemeContext";
 import { FiDatabase, FiCode, FiLayers, FiCpu } from "react-icons/fi";
 
 const AppBanner = () => {
