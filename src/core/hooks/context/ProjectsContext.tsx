@@ -40,9 +40,18 @@ export const ProjectsProvider = (props: IProps) => {
 
   // Search projects by project title
   const searchProjectsByTitle = projects.filter((item) => {
-    return searchProject === "" 
-      ? item 
-      : item.title.toLowerCase().includes(searchProject.toLowerCase());
+    const searchableContent = [
+      item.title,
+      item.category,
+      item.ProjectHeader.tags,
+      item.ProjectInfo.Technologies.flatMap((technology) => technology.techs).join(" "),
+    ]
+      .join(" ")
+      .toLowerCase();
+
+    return searchProject === ""
+      ? item
+      : searchableContent.includes(searchProject.toLowerCase());
   });
 
   // Select projects by project category

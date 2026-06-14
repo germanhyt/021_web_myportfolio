@@ -23,8 +23,8 @@ const ProjectSingle = ({ number }: IProps) => {
       >
         <ProjectsProvider idProject={number}>
           <ProjectHeader />
-          <ProjectGallery />
           <ProjectInfo />
+          <ProjectGallery />
         </ProjectsProvider>
       </motion.div>
     </section>

@@ -8,6 +8,8 @@ const ProjectHeader = () => {
 
   if (!p) return null;
 
+  const isRepositoryLink = p.ProjectHeader.link.includes("github.com");
+
   return (
     <div className="mb-12">
       <h1 className="font-space-grotesk text-left text-4xl sm:text-6xl font-bold text-premium-text mb-8 leading-tight">
@@ -33,7 +35,7 @@ const ProjectHeader = () => {
             target="__blank"
             className="font-manrope ml-3 text-sm font-bold text-premium-primary hover:text-white transition-all break-all"
           >
-            Visitar Sitio Web
+            {isRepositoryLink ? "Ver repositorio" : "Visitar Sitio Web"}
           </a>
         </div>
       </div>

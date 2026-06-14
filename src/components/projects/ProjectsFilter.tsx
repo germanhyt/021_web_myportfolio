@@ -3,7 +3,11 @@ import Select, { StylesConfig } from "react-select";
 const selectOptions = [
   { value: "", label: "Todas las Categorías" },
   { value: "Web", label: "Web Application" },
+  { value: "Backend", label: "Backend" },
+  { value: "Automation", label: "Automation" },
+  { value: "Data Engineering", label: "Data Engineering" },
   { value: "Data Analytics", label: "Data Analytics" },
+  { value: "DevOps", label: "DevOps" },
   { value: "Mobile", label: "Mobile Development" },
   { value: "IOT", label: "Internet of Things" },
   { value: "Certification", label: "Certifications" },
