@@ -59,18 +59,26 @@ const ProjectInfo = () => {
           </p>
         </div>
 
-        <div className="bg-premium-surface/30 p-7 rounded-3xl border border-white/5">
-          <h3 className="font-space-grotesk text-xl font-bold text-premium-text mb-4">
-            {currentProject.ProjectInfo.Technologies[0]?.title || "Tecnologías"}
-          </h3>
-          <div className="flex flex-wrap gap-3">
-            {currentProject.ProjectInfo.Technologies[0]?.techs.map((tech) => (
-              <span key={tech} className="px-4 py-2 rounded-full bg-premium-bg border border-white/5 text-xs font-bold text-premium-primary tracking-wide uppercase">
-                {tech}
-              </span>
-            ))}
+        {currentProject.ProjectInfo.Technologies.map((technologyGroup) => (
+          <div
+            key={technologyGroup.title}
+            className="bg-premium-surface/30 p-7 rounded-3xl border border-white/5"
+          >
+            <h3 className="font-space-grotesk text-xl font-bold text-premium-text mb-4">
+              {technologyGroup.title}
+            </h3>
+            <div className="flex flex-wrap gap-3">
+              {technologyGroup.techs.map((tech) => (
+                <span
+                  key={`${technologyGroup.title}-${tech}`}
+                  className="px-4 py-2 rounded-full bg-premium-bg border border-white/5 text-xs font-bold text-premium-primary tracking-wide uppercase"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
+        ))}
 
         <div className="bg-premium-surface/20 p-7 rounded-3xl border border-white/5">
           <h2 className="font-space-grotesk text-2xl font-bold text-premium-text mb-6">

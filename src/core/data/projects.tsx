@@ -1,6 +1,11 @@
 import { IProject } from "@/core/types/project";
 import { FiExternalLink, FiGithub } from "react-icons/fi";
 
+interface PortfolioGalleryImage {
+  title: string;
+  img: string;
+}
+
 interface PortfolioProjectMeta {
   id: number;
   title: string;
@@ -11,8 +16,11 @@ interface PortfolioProjectMeta {
   summary: string;
   description: string[];
   techs: string[];
+  highlights?: string[];
   cover: string;
   logo?: string;
+  gallery?: PortfolioGalleryImage[];
+  localSource?: string;
   repositoryLabel: string;
   repositoryUrl: string;
   productionUrl?: string;
@@ -33,31 +41,45 @@ const buildProject = (meta: PortfolioProjectMeta): IProject => {
       tags: `${meta.category} | ${meta.visibility}`,
       link: primaryLink,
     },
-    ProjectImages: [
-      { id: 1, title: "Vista principal", img: meta.cover },
-      { id: 2, title: "Identidad visual", img: meta.logo || meta.cover },
-      { id: 3, title: "Referencia del proyecto", img: meta.cover },
-    ],
+    ProjectImages: meta.gallery?.length
+      ? meta.gallery.map((image, index) => ({
+          id: index + 1,
+          title: image.title,
+          img: image.img,
+        }))
+      : [
+          { id: 1, title: "Vista principal", img: meta.cover },
+          { id: 2, title: "Identidad visual", img: meta.logo || meta.cover },
+          { id: 3, title: "Referencia del proyecto", img: meta.cover },
+        ],
     ProjectInfo: {
-      ClientHeading: "Resumen Ejecutivo",
+      ClientHeading: "Resumen ejecutivo",
       CompanyInfo: [
         { id: 1, title: "Repositorio", details: meta.repositoryLabel },
         {
           id: 2,
           title: "Produccion",
-          details: meta.productionUrl || "No registrada para este proyecto",
+          details: meta.productionUrl || "No disponible",
         },
         {
           id: 3,
-          title: "Pruebas",
-          details: meta.testingUrl || "No registrada para este proyecto",
+          title: "Entorno de pruebas",
+          details: meta.testingUrl || "No disponible",
         },
         { id: 4, title: "Visibilidad", details: meta.visibility },
+        ...(meta.localSource
+          ? [{ id: 5, title: "Fuente documental", details: meta.localSource }]
+          : []),
       ],
-      ObjectivesHeading: "Objetivo del Proyecto",
+      ObjectivesHeading: "Objetivo",
       ObjectivesDetails: meta.objective,
-      Technologies: [{ title: "Tecnologias usadas", techs: meta.techs }],
-      ProjectDetailsHeading: "Descripcion Profesional",
+      Technologies: [
+        { title: "Stack tecnologico", techs: meta.techs },
+        ...(meta.highlights?.length
+          ? [{ title: "Funcionalidades destacadas", techs: meta.highlights }]
+          : []),
+      ],
+      ProjectDetailsHeading: "Alcance del proyecto",
       ProjectDetails: [
         { id: 1, details: meta.summary },
         ...meta.description.map((item, index) => ({
@@ -94,19 +116,26 @@ const curatedProjects: PortfolioProjectMeta[] = [
     publishDate: "Abril 2026",
     visibility: "Publico",
     objective:
-      "Presentar los servicios de Diverty con una web comercial de lectura clara y experiencia premium.",
+      "Posicionar a Diverty como referente en su sector con una web corporativa clara, moderna y orientada a generar contactos comerciales.",
     summary:
-      "Website corporativo implementado en stack moderno con foco en conversion, secciones de valor y contacto.",
+      "Sitio institucional desarrollado con Astro y React, disenado para comunicar servicios, credibilidad y puntos de contacto en una experiencia fluida de principio a fin.",
     description: [
-      "Se usa composicion de componentes para acelerar mantenimiento y nuevas iteraciones.",
-      "La URL desplegada sirve como referencia de produccion actual.",
+      "Arquitectura modular que facilita actualizar contenidos y lanzar nuevas secciones sin rehacer la base del sitio.",
+      "Diseno responsive con jerarquia visual pensada para conversion y lectura rapida en movil.",
+      "Despliegue productivo en diverty.pe como referencia visible para clientes y aliados comerciales.",
     ],
     techs: ["Astro", "React", "TypeScript", "TailwindCSS"],
-    cover:
-      "https://raw.githubusercontent.com/germanhyt/softwebsite-diverty-prod-001/master/src/assets/hero.png",
+    cover: "/images/projects/prod-captures/diverty-home.png",
+    gallery: [
+      { title: "Vista en produccion — Diverty", img: "/images/projects/prod-captures/diverty-home.png" },
+      {
+        title: "Hero — propuesta de servicios",
+        img: "https://raw.githubusercontent.com/germanhyt/softwebsite-diverty-prod-001/master/src/assets/hero.png",
+      },
+    ],
     repositoryLabel: "softwebsite-diverty-prod-001",
     repositoryUrl: "https://github.com/germanhyt/softwebsite-diverty-prod-001",
-    productionUrl: "https://softwebsite-diverty-prod-001.vercel.app",
+    productionUrl: "https://www.diverty.pe/",
   },
   {
     id: 11,
@@ -115,16 +144,23 @@ const curatedProjects: PortfolioProjectMeta[] = [
     publishDate: "Enero 2026",
     visibility: "Publico",
     objective:
-      "Impulsar conversion comercial en una landing de una sola pagina con propuesta de valor y secciones informativas.",
+      "Convertir trafico organico y referido en consultas calificadas mediante una landing comercial de una sola pagina.",
     summary:
-      "El README define una landing estatica con metodologia, servicios, testimonios, FAQ y contacto como ejes de contenido.",
+      "Landing estatica con narrativa de servicios, metodologia, testimonios, FAQ y formulario de contacto, optimizada para captar leads de familias que buscan apoyo academico.",
     description: [
-      "La arquitectura de secciones facilita edicion de contenido sin afectar flujo principal de conversion.",
-      "El proyecto se encuentra activo en entorno publico y estable.",
+      "Estructura por secciones que permite iterar mensajes comerciales sin comprometer el flujo de conversion.",
+      "Contenido orientado a confianza: metodologia, casos y respuestas frecuentes antes del CTA final.",
+      "Entorno publico estable en Vercel para campanas y validacion continua del mensaje comercial.",
     ],
     techs: ["Astro", "React", "TypeScript", "TailwindCSS"],
     cover:
       "https://raw.githubusercontent.com/germanhyt/softlanding-hazlatarea-prod001/master/public/images/hero-banner-desktop.png",
+    gallery: [
+      {
+        title: "Hero — landing comercial",
+        img: "https://raw.githubusercontent.com/germanhyt/softlanding-hazlatarea-prod001/master/public/images/hero-banner-desktop.png",
+      },
+    ],
     repositoryLabel: "softlanding-hazlatarea-prod001",
     repositoryUrl: "https://github.com/germanhyt/softlanding-hazlatarea-prod001",
     productionUrl: "https://softlanding-hazlatarea-prod001.vercel.app",
@@ -136,18 +172,26 @@ const curatedProjects: PortfolioProjectMeta[] = [
     publishDate: "Octubre 2025",
     visibility: "Publico",
     objective:
-      "Desarrollar una presencia digital para BioTraining con enfoque comercial y estructura adaptable a crecimiento.",
+      "Fortalecer la presencia digital de BioTraining y facilitar la comunicacion de su propuesta formativa en linea.",
     summary:
-      "Website frontend basado en Astro para mostrar servicios, identidad y puntos de contacto.",
+      "Website comercial en Astro que presenta la academia, sus programas y canales de contacto con una interfaz limpia y facil de mantener.",
     description: [
-      "Se prioriza velocidad de entrega, modularidad visual y flujo de navegacion limpio.",
-      "La version publicada funciona como ambiente de referencia para stakeholders.",
+      "Prioridad en rendimiento, claridad de mensaje y navegacion simple entre secciones de valor.",
+      "Base preparada para escalar paginas de cursos o contenido institucional sin reestructurar el sitio.",
+      "Produccion en biotraining.pe con preview en Vercel para revisiones previas al lanzamiento.",
     ],
     techs: ["Astro", "TypeScript", "Frontend", "Marketing Site"],
-    cover:
-      "https://raw.githubusercontent.com/germanhyt/softwebsite-biotraining-frontend-prod002/Master/src/assets/img/hero-banner_1.webp",
+    cover: "/images/projects/prod-captures/biotraining-home.png",
+    gallery: [
+      { title: "Vista en produccion — BioTraining", img: "/images/projects/prod-captures/biotraining-home.png" },
+      {
+        title: "Hero — academia y programas",
+        img: "https://raw.githubusercontent.com/germanhyt/softwebsite-biotraining-frontend-prod002/Master/src/assets/img/hero-banner_1.webp",
+      },
+    ],
     repositoryLabel: "softwebsite-biotraining-frontend-prod002",
     repositoryUrl: "https://github.com/germanhyt/softwebsite-biotraining-frontend-prod002",
+    productionUrl: "https://www.biotraining.pe/",
     testingUrl: "https://softwebsite-biotraining-frontend-pr.vercel.app",
   },
   {
@@ -157,18 +201,28 @@ const curatedProjects: PortfolioProjectMeta[] = [
     publishDate: "Mayo 2025",
     visibility: "Publico",
     objective:
-      "Consolidar el website principal de Ktalweb con una estructura profesional para venta y comunicacion de servicios.",
+      "Impulsar la captacion comercial de Ktalweb como agencia digital, mostrando soluciones, casos de exito y rutas claras hacia la cotizacion.",
     summary:
-      "Proyecto web de posicionamiento de marca, construido con stack frontend moderno y enfoque comercial.",
+      "Website corporativo en Astro + React para la marca Ktalweb: propuesta de valor, portafolio de soluciones (landing, tienda y catalogo), proceso de trabajo, testimonios y descarga de brochure.",
     description: [
-      "Se trabajo una base flexible para evolucionar paginas de servicio y contenido institucional.",
-      "Incluye despliegue publico y versionado continuo.",
+      "Hero orientado a conversion con CTA hacia soluciones y contacto directo desde cualquier seccion.",
+      "Bloque de servicios enfocado en rendimiento, escalabilidad y diseno adaptable a cualquier dispositivo.",
+      "Casos de exito y resenas en Google que refuerzan credibilidad comercial ante nuevos prospectos.",
+      "Despliegue productivo en ktalweb.com.pe con identidad visual consistente en todo el recorrido.",
     ],
     techs: ["Astro", "React", "TypeScript", "TailwindCSS"],
-    cover: "/images/projects/covers/web.svg",
+    cover: "/images/projects/prod-captures/ktalweb-home-prod.png",
+    logo: "/images/projects/ktalweb/logo.webp",
+    gallery: [
+      { title: "Vista en produccion — home", img: "/images/projects/prod-captures/ktalweb-home-prod.png" },
+      { title: "Vista en produccion — soluciones", img: "/images/projects/prod-captures/ktalweb-soluciones-prod.png" },
+      { title: "Hero y propuesta de valor", img: "/images/projects/ktalweb/hero.webp" },
+      { title: "Logo Ktalweb", img: "/images/projects/ktalweb/logo.webp" },
+    ],
+    localSource: "softwebsite-ktalweb-frontend-prod001 + ktalweb.com.pe",
     repositoryLabel: "softwebsite-ktalweb-frontend-prod001",
     repositoryUrl: "https://github.com/germanhyt/softwebsite-ktalweb-frontend-prod001",
-    productionUrl: "https://softwebsite-ktalweb-frontend-prod00.vercel.app",
+    productionUrl: "https://ktalweb.com.pe/",
   },
   {
     id: 14,
@@ -177,37 +231,100 @@ const curatedProjects: PortfolioProjectMeta[] = [
     publishDate: "Diciembre 2024",
     visibility: "Privado",
     objective:
-      "Publicar una landing corporativa para Laboratoria con narrativa de impacto y captura efectiva de leads.",
+      "Comunicar el impacto del informe sobre brecha de genero y captar leads institucionales con una landing de alto nivel narrativo.",
     summary:
-      "README del proyecto describe una landing corporativa con backend integrado para gestion de leads y panel administrativo.",
+      "Landing corporativa para Laboratoria con frontend Next.js y backend integrado para gestion de leads y panel administrativo privado.",
     description: [
-      "Se prioriza una comunicacion de impacto social y claridad de propuesta en el mensaje principal.",
-      "El entorno publico actual corresponde a la salida frontend del proyecto.",
+      "Narrativa centrada en impacto social y datos del caso BCP, con diseno editorial que prioriza claridad del mensaje.",
+      "Formularios y flujos de captacion conectados a capa backend para seguimiento comercial del equipo.",
+      "Frontend publico en laboratoria-brechadegenero.la como vitrina del proyecto ante stakeholders.",
     ],
     techs: ["Next.js", "React", "TypeScript", "TailwindCSS", "PostgreSQL"],
-    cover: "/images/projects/covers/web.svg",
+    cover: "/images/projects/prod-captures/laboratoria-home.png",
+    logo: "/images/projects/laboratoria/logo.webp",
+    gallery: [
+      { title: "Vista en produccion — informe", img: "/images/projects/prod-captures/laboratoria-home.png" },
+      { title: "Landing — caso BCP", img: "/images/projects/laboratoria/portfolio-1.webp" },
+      { title: "Landing — variante visual", img: "/images/projects/laboratoria/portfolio-2.webp" },
+      { title: "Logo Laboratoria", img: "/images/projects/laboratoria/logo.webp" },
+    ],
+    localSource: "laboratoria-brechadegenero.la + referencias Ktalweb",
     repositoryLabel: "softlanding-laboratoria-frontend-prod002",
     repositoryUrl: "https://github.com/germanhyt",
-    productionUrl: "https://softlanding-laboratoria-frontend-prod002.vercel.app",
+    productionUrl: "https://laboratoria-brechadegenero.la/",
   },
   {
     id: 1,
-    title: "Proyecto GCB Bosque Magico (Panel)",
+    title: "CRM Bosque Magico — Panel Comercial",
     category: "Web",
     publishDate: "Junio 2026",
     visibility: "Publico",
     objective:
-      "Centralizar la operacion comercial en un panel CRM conectado a una landing publica y API, con una arquitectura lista para escalar.",
+      "Digitalizar el pipeline comercial de fiestas infantiles: desde la solicitud hasta la cotizacion, agenda y auditoria operativa.",
     summary:
-      "Proyecto monorepo para operacion digital de Bosque Magico. El README describe una solucion compuesta por landing, panel CRM y servicios backend.",
+      "Panel CRM del ecosistema Bosque Magico, integrado con API NestJS y PostgreSQL, para que el equipo comercial gestione leads, cotizaciones y eventos en un solo lugar.",
     description: [
-      "Se priorizo una estructura por aplicaciones para mantener separadas las responsabilidades de panel, marketing y servicios.",
-      "El enfoque funcional es de uso interno (panel) con salida comercial (landing), manteniendo trazabilidad entre gestion y captacion.",
+      "Dashboard con indicadores por etapa, tabla de solicitudes con filtros y seguimiento detallado por oportunidad.",
+      "Modulo de cotizaciones con calculo centralizado en backend, envio por enlace publico y trazabilidad completa del proceso.",
+      "Agenda de eventos con validacion de disponibilidad por fecha y turno, evitando doble reserva.",
+      "Bitacora de auditoria y permisos por rol (view, manage, admin) para una operacion segura y trazable.",
     ],
-    techs: ["TypeScript", "React", "Node.js", "PostgreSQL", "Docker"],
-    cover: "/images/projects/covers/web.svg",
+    techs: [
+      "NestJS",
+      "Prisma",
+      "PostgreSQL",
+      "React 19",
+      "Vite",
+      "TanStack Query",
+      "Formik",
+      "Docker",
+    ],
+    highlights: [
+      "Solicitudes y leads",
+      "Cotizaciones",
+      "Agenda de eventos",
+      "Configuracion y catalogo",
+      "Auditoria",
+      "Cotizacion publica",
+    ],
+    cover: "/images/projects/prod-captures/bosque-panel-prod.png",
+    logo: "/images/projects/bosque-magico/logo-bm.png",
+    gallery: [
+      { title: "Vista en produccion — panel CRM", img: "/images/projects/prod-captures/bosque-panel-prod.png" },
+      {
+        title: "Dashboard CRM — KPIs por etapa",
+        img: "/images/projects/bosque-magico/crm-dashboard.png",
+      },
+      {
+        title: "Solicitudes — tabla, filtros y seguimiento",
+        img: "/images/projects/bosque-magico/crm-solicitudes.png",
+      },
+      {
+        title: "Cotizaciones — totales explicables y envio",
+        img: "/images/projects/bosque-magico/crm-cotizaciones.png",
+      },
+      {
+        title: "Agenda — eventos por fecha y turno",
+        img: "/images/projects/bosque-magico/crm-agenda.png",
+      },
+      {
+        title: "Landing publica — vista desktop",
+        img: "/images/projects/bosque-magico/landing-desktop.png",
+      },
+      {
+        title: "Landing publica — vista mobile",
+        img: "/images/projects/bosque-magico/landing-mobile.png",
+      },
+      {
+        title: "Identidad Bosque Magico",
+        img: "/images/projects/bosque-magico/logo-bm.png",
+      },
+    ],
+    localSource:
+      "proyecto-bosque-magio (README.md, MODULOS_ESTADO.md, mockups CRM y landing)",
     repositoryLabel: "soft-project-gcb-bosque-magico-prod-001",
     repositoryUrl: "https://github.com/germanhyt/soft-project-gcb-bosque-magico-prod-001",
+    productionUrl: "https://sandbox-panel-bosque.gcbprojects.site/",
   },
   {
     id: 2,
@@ -216,18 +333,47 @@ const curatedProjects: PortfolioProjectMeta[] = [
     publishDate: "Mayo 2026",
     visibility: "Publico",
     objective:
-      "Presentar la propuesta de valor de Bosque Magico en una landing enfocada en conversion, claridad de mensaje y rendimiento.",
+      "Transformar visitas web en solicitudes comerciales para el negocio de fiestas infantiles Bosque Magico.",
     summary:
-      "Landing publica orientada a marketing. Segun README, se construye sobre Astro con stack moderno para despliegue rapido.",
+      "Landing comercial con cotizador interactivo conectado a la API del ecosistema, cotizacion compartible por enlace y optimizacion SEO para captacion local.",
     description: [
-      "La estructura esta pensada para navegacion simple y lectura guiada de beneficios, servicios y contacto.",
-      "Se toma la version publicada como entorno productivo principal.",
+      "Secciones de propuesta de valor — paquetes, shows, catering y FAQ — para reducir friccion previa al contacto.",
+      "Cotizador con estimacion referencial desde tarifas en tiempo real y envio de solicitud validado en backend.",
+      "Pagina publica de cotizacion por token para aceptacion directa del cliente desde WhatsApp o email.",
+      "Metadatos SEO (JSON-LD, Open Graph, sitemap) y diseno responsive mobile-first alineado a la identidad de marca.",
     ],
-    techs: ["Astro", "React", "TypeScript", "TailwindCSS"],
-    cover: "/images/projects/covers/web.svg",
+    techs: ["React", "Vite", "TypeScript", "TailwindCSS", "Formik", "SEO"],
+    highlights: [
+      "Cotizador interactivo",
+      "Cotizacion publica",
+      "JSON-LD y Open Graph",
+      "Responsive mobile-first",
+    ],
+    cover: "/images/projects/prod-captures/bosque-landing-prod.png",
+    logo: "/images/projects/bosque-magico/logo-bm.png",
+    gallery: [
+      { title: "Vista en produccion — landing", img: "/images/projects/prod-captures/bosque-landing-prod.png" },
+      {
+        title: "Hero — propuesta comercial",
+        img: "/images/projects/bosque-magico/hero.jpg",
+      },
+      {
+        title: "Landing — vista desktop",
+        img: "/images/projects/bosque-magico/landing-desktop.png",
+      },
+      {
+        title: "Landing — vista mobile",
+        img: "/images/projects/bosque-magico/landing-mobile.png",
+      },
+      {
+        title: "Logo Bosque Magico",
+        img: "/images/projects/bosque-magico/logo-bm.png",
+      },
+    ],
+    localSource: "proyecto-bosque-magio/apps/landing y mockups landing v2",
     repositoryLabel: "softlanding-bosquemagico-frontend-prod001",
     repositoryUrl: "https://github.com/germanhyt/softlanding-bosquemagico-frontend-prod001",
-    productionUrl: "https://softlanding-bosquemagico-frontend-p.vercel.app",
+    productionUrl: "https://sandbox-landing-bosque.gcbprojects.site/",
   },
   {
     id: 3,
@@ -236,120 +382,232 @@ const curatedProjects: PortfolioProjectMeta[] = [
     publishDate: "Mayo 2026",
     visibility: "Publico",
     objective:
-      "Publicar y organizar eventos deportivos en una landing clara, responsiva y facil de actualizar.",
+      "Exhibir la programacion deportiva semanal en formato cartelera digital, usable en kiosk o movil, con contenido siempre actualizado.",
     summary:
-      "Sitio de difusion de eventos con enfoque informativo. La implementacion favorece velocidad de carga y mantenimiento sencillo.",
+      "Aplicacion web tipo cartelera construida con Astro 6, carrusel Swiper y sincronizacion en tiempo casi real via API y WebSocket.",
     description: [
-      "Se usa un stack estatico moderno para entregar performance y buena experiencia en movil.",
-      "El deploy actual funciona como referencia productiva del proyecto.",
+      "Slides por disciplina — agenda general, futbol internacional y peruano, voley, UFC y mas — con filtro por categoria.",
+      "Modo kiosk y modo movil con preferencias persistentes y navegacion por gestos o controles.",
+      "Actualizacion de programacion sin recargar la pagina completa, ideal para pantallas en local comercial.",
+      "Build hibrido que mantiene compatibilidad con despliegues existentes y evolucion del producto.",
     ],
-    techs: ["Astro", "TypeScript", "Frontend", "Vercel"],
-    cover: "https://raw.githubusercontent.com/germanhyt/softlanding-calendario-deportivo-gcb-prod001/master/assets/1.png",
+    techs: ["Astro 6", "TypeScript", "Swiper", "WebSocket", "Vercel"],
+    highlights: [
+      "Carrusel deportivo",
+      "Modo kiosk",
+      "Actualizacion en vivo",
+      "Reproductor musical",
+    ],
+    cover: "/images/projects/calendario-deportivo/slide-01.png",
+    gallery: [
+      { title: "Agenda deportiva semanal", img: "/images/projects/calendario-deportivo/slide-01.png" },
+      { title: "Pasion por el deporte", img: "/images/projects/calendario-deportivo/slide-02.png" },
+      { title: "Futbol internacional", img: "/images/projects/calendario-deportivo/slide-03.png" },
+      { title: "Futbol peruano", img: "/images/projects/calendario-deportivo/slide-04.png" },
+    ],
+    localSource: "catelera-deportiva (assets/, SportsCarousel.astro, agendaClient)",
     repositoryLabel: "softlanding-calendario-deportivo-gcb-prod001",
     repositoryUrl: "https://github.com/germanhyt/softlanding-calendario-deportivo-gcb-prod001",
     productionUrl: "https://softlanding-calendario-deportivo-gc.vercel.app",
   },
   {
     id: 4,
-    title: "Proyecto Sistema de Estacionamiento GCB",
+    title: "Sistema de Estacionamiento GCB",
     category: "Backend",
     publishDate: "Junio 2026",
     visibility: "Privado",
     objective:
-      "Orquestar el flujo completo de estacionamiento: operacion en frontend, logica backend y servicio de impresion de tickets.",
+      "Automatizar la operacion diaria de un estacionamiento urbano: ingreso, cobro, tarifas, abonados e impresion de tickets en punto de venta.",
     summary:
-      "Solucion compuesta por frontend privado, backend privado y microservicio de ticketera. README del servicio documenta impresion termica desde apps web.",
+      "Plataforma multicapa para Explanada Olguin: panel React de caja, backend Laravel, totem de autoservicio y microservicio local de impresion termica ESC/POS.",
     description: [
-      "La arquitectura separa responsabilidades por capas para facilitar despliegues independientes y soporte operativo.",
-      "Se considera tanto el flujo de caja/ingreso como la trazabilidad de tickets en campo.",
+      "Frontend operativo con modulos de caja, tarifas, abonados, movimientos, tickets y gestion de usuarios con permisos.",
+      "Backend que centraliza reglas de negocio y trazabilidad de cada ticket emitido en campo.",
+      "Servicio ticketera en Node para impresion desde navegador en impresoras termicas 3nStar.",
+      "Totem Next.js para autoservicio y PWA con soporte offline en el acceso operativo del personal.",
     ],
-    techs: ["TypeScript", "React", "PHP", "Laravel", "Node.js", "Express"],
-    cover: "/images/projects/covers/backend.svg",
+    techs: ["Laravel", "React", "Next.js", "Node.js", "Express", "ESC/POS"],
+    highlights: [
+      "Caja y cobros",
+      "Tarifas y abonados",
+      "Impresion termica",
+      "Totem autoservicio",
+      "PWA offline",
+    ],
+    cover: "/images/projects/prod-captures/parking-login-prod.png",
+    logo: "/images/projects/parking-gcb/logo-icon.webp",
+    gallery: [
+      { title: "Vista en produccion — acceso operativo", img: "/images/projects/prod-captures/parking-login-prod.png" },
+      { title: "Panel de caja — entorno local", img: "/images/projects/parking-gcb/panel-login.png" },
+      { title: "Portada de acceso", img: "/images/projects/parking-gcb/login.webp" },
+      { title: "Ticket de entrada impreso", img: "/images/projects/parking-gcb/ticket-entrada.jpg" },
+      { title: "Logo sistema GCB", img: "/images/projects/parking-gcb/logo.webp" },
+      { title: "Identidad visual", img: "/images/projects/parking-gcb/logo-var.webp" },
+    ],
+    localSource:
+      "SISTEMA ESTACIONAMIENTO/V2/parking-system-gcb-fontend-prod-002 + WEB_TICKETERA_SERVICE + WEB_TOTTEM",
     repositoryLabel:
       "parking-system-gcb-frontend-prod002 + parking-system-gcb-backend-prod-002 + parking-system-gcb-ticketera-service-prod001",
     repositoryUrl: "https://github.com/germanhyt",
+    productionUrl: "https://estacionamiento.gcbprojects.site/",
     testingUrl: "https://github.com/germanhyt/parking-system-gcb-ticketera-service-prod001",
   },
   {
     id: 5,
-    title: "Proyecto Arquitectura de Solucion en GCP",
+    title: "Arquitectura de Datos en GCP — Refugio Data",
     category: "Data Analytics",
     publishDate: "Marzo 2026",
     visibility: "Publico",
     objective:
-      "Definir una arquitectura de datos y servicios en Google Cloud para soportar procesos de analitica y operacion.",
+      "Disenar una arquitectura de datos escalable en Google Cloud para unificar ingesta, analitica y consumo seguro de informacion comercial.",
     summary:
-      "Repositorio enfocado en arquitectura de datos. El README evidencia orientacion a Google Cloud como base de la solucion.",
+      "Plataforma Refugio Data: pipeline hacia BigQuery, panel web con RBAC, informes Power BI embebidos y extension operativa con apps moviles de delivery.",
     description: [
-      "Se aborda la propuesta desde componentes de plataforma, flujo de datos y lineamientos de implementacion.",
-      "Esta documentacion sirve como referencia tecnica para evolucion de ambientes de datos en GCP.",
+      "Flujos de ingesta dual: procesamiento de archivos historicos y fuentes estructuradas por periodo y locatario.",
+      "Capa API con autenticacion JWT, permisos granulares e integracion con Google Drive.",
+      "Visualizacion embebida de Power BI y modulo Delivery desacoplado con apps Expo para kiosk y reparto.",
+      "Infraestructura reproducible con Docker Compose y Nginx, documentada para despliegue y mantenimiento.",
     ],
-    techs: ["GCP", "Data Engineering", "Arquitectura", "Python"],
-    cover: "/images/projects/covers/data.svg",
+    techs: [
+      "FastAPI",
+      "BigQuery",
+      "PostgreSQL",
+      "React 19",
+      "Power BI",
+      "Expo",
+      "Docker",
+    ],
+    highlights: [
+      "Pipeline BigQuery",
+      "RBAC y permisos",
+      "Power BI embed",
+      "Apps Delivery",
+      "Fuentes de datos",
+    ],
+    cover: "/images/projects/refugio-data/bg.png",
+    logo: "/images/projects/refugio-data/logo.png",
+    gallery: [
+      { title: "Identidad Refugio Data", img: "/images/projects/refugio-data/logo.png" },
+      { title: "Plataforma analitica", img: "/images/projects/refugio-data/bg.png" },
+      { title: "Informes embebidos", img: "/images/projects/refugio-data/informe.png" },
+    ],
+    localSource: "001_procesamiento_refugio (README.md, backend/, frontend/, mobile/)",
     repositoryLabel: "DataEngineering_ArquitecturaDatos_Refugio_001",
     repositoryUrl:
       "https://github.com/germanhyt/DataEngineering_ArquitecturaDatos_Refugio_001",
   },
   {
     id: 6,
-    title: "Proyecto Reservas Sisa",
+    title: "Sistema de Reservas SISA Coffee",
     category: "Web",
     publishDate: "Mayo 2026",
     visibility: "Privado",
     objective:
-      "Digitalizar la gestion de reservas con una experiencia simple para usuario final y control operativo.",
+      "Modernizar la gestion de reservas de SISA Coffee con un flujo digital alineado a la operacion real del restaurante.",
     summary:
-      "Proyecto privado orientado a reservas, con foco en flujo de disponibilidad, registro y confirmacion.",
+      "Sistema fullstack para reservas en linea y panel operativo: formulario publico, libro de reservas, waitlist, inventario de mesas y notificaciones en tiempo real.",
     description: [
-      "Se plantea una solucion lista para evolucionar por etapas, manteniendo trazabilidad de reservas y estados.",
-      "Por politica de privacidad, se publica ficha funcional y no el repositorio tecnico completo.",
+      "Reglas de negocio alineadas a operacion gastronomica: anticipacion minima, bloques horarios, tolerancias no-show y liberacion automatica de mesas.",
+      "Formulario publico con busqueda por telefono o email, lista de espera integrada y confirmacion por email con calendario ICS.",
+      "Panel con calendario, CRM de clientes, configuracion centralizada y alertas SSE con sonido hasta cambio de estado.",
+      "Mensajeria email y WhatsApp Cloud; control de acceso por roles aplicado de forma consistente en API e interfaz.",
     ],
-    techs: ["TypeScript", "Web", "Reservas", "Operaciones"],
-    cover: "/images/projects/covers/web.svg",
+    techs: [
+      "NestJS",
+      "TypeORM",
+      "PostgreSQL",
+      "React 19",
+      "TanStack Query",
+      "TanStack Table",
+      "PWA",
+    ],
+    highlights: [
+      "Formulario publico",
+      "Libro de reservas",
+      "Lista de espera",
+      "Inventario mesas",
+      "Notificaciones SSE",
+      "WhatsApp Cloud",
+      "RBAC",
+    ],
+    cover: "/images/projects/prod-captures/sisa-registro-prod.png",
+    logo: "/images/projects/sisa-reservas/logo.svg",
+    gallery: [
+      { title: "Vista en produccion — registro", img: "/images/projects/prod-captures/sisa-registro-prod.png" },
+      { title: "Formulario publico — buscar disponibilidad", img: "/images/projects/sisa-reservas/registro-form.png" },
+      { title: "Panel operativo — login", img: "/images/projects/sisa-reservas/panel-login.png" },
+      { title: "Fachada SISA en formulario", img: "/images/projects/sisa-reservas/frontis.png" },
+      { title: "Decoracion visual — planta 1", img: "/images/projects/sisa-reservas/planta-1.png" },
+      { title: "Decoracion visual — planta 2", img: "/images/projects/sisa-reservas/planta-2.png" },
+      { title: "Logo SISA", img: "/images/projects/sisa-reservas/logo.svg" },
+      { title: "Icono PWA", img: "/images/projects/sisa-reservas/pwa-icon.png" },
+    ],
+    localSource:
+      "proyecto-sisa-reservas (.docs/auditoria-modulos.md, proyecto-reservas-iterations.md)",
     repositoryLabel: "soft-project-gcb-reservas-sisa-prod-001",
     repositoryUrl: "https://github.com/germanhyt",
+    productionUrl: "https://sisa.reservaspe.com/",
   },
   {
     id: 7,
-    title: "Proyecto OffRoad (Frontend + Backend)",
+    title: "E-commerce Off Road Peru",
     category: "Web",
     publishDate: "Mayo 2026",
     visibility: "Publico",
     objective:
-      "Entregar una plataforma web integral para OffRoad, conectando una experiencia frontend moderna con un backend administrable.",
+      "Lanzar una tienda online completa para accesorios 4x4, overland y racing, con gestion de catalogo y operacion comercial en backend.",
     summary:
-      "Proyecto dividido en dos repositorios: frontend Next.js y backend Laravel. Permite evolucion independiente por capa.",
+      "E-commerce Next.js con catalogo por categorias, carrito, marcas, taller y registro de clientes, respaldado por backend Laravel administrable.",
     description: [
-      "El frontend prioriza experiencia, navegacion y tiempos de respuesta para usuario final.",
-      "El backend se centra en gestion de contenido y soporte operativo para la web en produccion.",
+      "Experiencia de compra con hero de marcas, navegacion por categorias 4x4, auto, overland y racing, y flujo de carrito integrado.",
+      "Backend separado para administracion de productos, contenido promocional y operacion comercial del negocio.",
+      "Produccion en offroadperu.com.pe con entorno de preview en Vercel para validacion previa de cambios.",
     ],
-    techs: ["Next.js", "React", "TypeScript", "PHP", "Laravel"],
-    cover: "/images/projects/covers/web.svg",
+    techs: ["Next.js", "React", "TypeScript", "PHP", "Laravel", "E-commerce"],
+    highlights: ["Tienda online", "Carrito", "Catalogo 4x4", "Taller", "Marcas"],
+    cover: "/images/projects/prod-captures/offroad-home.png",
+    logo: "/images/projects/offroad/logo.png",
+    gallery: [
+      { title: "Vista en produccion — tienda", img: "/images/projects/prod-captures/offroad-home.png" },
+      { title: "Home — marcas y categorias", img: "/images/projects/offroad/home.png" },
+      { title: "Logo Off Road Peru", img: "/images/projects/offroad/logo.png" },
+    ],
+    localSource: "Captura offroadperu.com.pe + assets GitHub",
     repositoryLabel:
       "softwebsite-offroadperu-frontend-prod004 + softwebsite-offroadperu-backend-prod004",
     repositoryUrl: "https://github.com/germanhyt/softwebsite-offroadperu-frontend-prod004",
+    productionUrl: "https://offroadperu.com.pe/",
     testingUrl: "https://softwebsite-offroadperu-frontend-pr.vercel.app",
   },
   {
     id: 8,
-    title: "Proyecto Zukarzen",
+    title: "E-commerce Zukarzen",
     category: "Web",
     publishDate: "Septiembre 2024",
     visibility: "Privado",
     objective:
-      "Construir un website comercial completo para Zukarzen con frontend orientado a conversion y backend de soporte.",
+      "Llevar la marca Zukarzen al canal digital con una tienda de postres saludables orientada a pedidos en Lima.",
     summary:
-      "Solucion fullstack privada para marca comercial. Incluye separacion por repositorio frontend y backend.",
+      "E-commerce Next.js para Zukarzen — pasteleria saludable con catalogo de productos, busqueda, carrito y checkout, respaldado por backend Laravel privado.",
     description: [
-      "Se utiliza una estrategia de versionado por ambientes para controlar releases y cambios funcionales.",
-      "La demo publica corresponde al frontend, mientras la capa backend opera en entorno restringido.",
+      "Home con propuesta de marca \"el dulce sano\", hero de productos destacados y CTA hacia el catalogo completo.",
+      "Catalogo con busqueda integrada, ficha de producto y carrito de compras listo para conversion.",
+      "Contacto via WhatsApp y diseno premium en tonos organicos acorde a la identidad de la pasteleria.",
+      "Produccion en zukarzen.com con capa administrativa y backend en entorno restringido del cliente.",
     ],
-    techs: ["Next.js", "React", "TypeScript", "PHP", "Laravel"],
-    cover: "/images/projects/covers/web.svg",
+    techs: ["Next.js", "React", "TypeScript", "PHP", "Laravel", "E-commerce"],
+    cover: "/images/projects/prod-captures/zukarzen-home-prod.png",
+    logo: "/images/projects/zukarzen/logo.webp",
+    gallery: [
+      { title: "Vista en produccion — home", img: "/images/projects/prod-captures/zukarzen-home-prod.png" },
+      { title: "Vista en produccion — catalogo", img: "/images/projects/prod-captures/zukarzen-productos-prod.png" },
+      { title: "Identidad de marca", img: "/images/projects/zukarzen/logo.webp" },
+    ],
+    localSource: "softwebsite-zukarzen-frontend-prod001 + zukarzen.com",
     repositoryLabel:
       "softwebsite-zukarzen-frontend-prod001 + softwebsite-zukarzen-backend-prod001",
     repositoryUrl: "https://github.com/germanhyt",
-    productionUrl: "https://softwebsite-zukarzen-frontend-prod001.vercel.app",
+    productionUrl: "https://zukarzen.com/",
   },
   {
     id: 9,
@@ -358,17 +616,28 @@ const curatedProjects: PortfolioProjectMeta[] = [
     publishDate: "Junio 2026",
     visibility: "Publico",
     objective:
-      "Posicionar una marca profesional con una landing de alto impacto visual y mensajes orientados a conversion.",
+      "Presentar la marca personal de Stephanie con una landing elegante que transmita profesionalismo y facilite el contacto directo.",
     summary:
-      "Landing enfocada en branding y captacion. Se prioriza narrativa comercial, jerarquia visual y contacto directo.",
+      "Landing de una pagina con narrativa de marca, animaciones sutiles y puntos de contacto claros, desplegada en entorno publico estable.",
     description: [
-      "Se emplea un stack moderno para mantener performance y facilidad de iteracion en contenidos.",
-      "La version desplegada representa el entorno oficial de presentacion del servicio.",
+      "Stack Astro + React con TailwindCSS y Framer Motion para una experiencia visual refinada sin sacrificar rendimiento.",
+      "Jerarquia tipografica y banner principal alineados a la identidad visual de la marca.",
+      "Estructura preparada para iterar contenidos de servicios y testimonios segun evolucione la propuesta comercial.",
     ],
     techs: ["Astro", "React", "TypeScript", "TailwindCSS", "Framer Motion"],
     cover:
       "https://raw.githubusercontent.com/germanhyt/softlanding-marca-stephanie-prod001/master/info/img/Imagen%20banner%20-%20web%20Stephanie/Imagen%20banner%20-%20web%20stephanie.webp",
     logo: "https://raw.githubusercontent.com/germanhyt/softlanding-marca-stephanie-prod001/master/public/favicon.svg",
+    gallery: [
+      {
+        title: "Banner principal",
+        img: "https://raw.githubusercontent.com/germanhyt/softlanding-marca-stephanie-prod001/master/info/img/Imagen%20banner%20-%20web%20Stephanie/Imagen%20banner%20-%20web%20stephanie.webp",
+      },
+      {
+        title: "Favicon / identidad",
+        img: "https://raw.githubusercontent.com/germanhyt/softlanding-marca-stephanie-prod001/master/public/favicon.svg",
+      },
+    ],
     repositoryLabel: "softlanding-marca-stephanie-prod001",
     repositoryUrl: "https://github.com/germanhyt/softlanding-marca-stephanie-prod001",
     productionUrl: "https://softlanding-marca-stephanie-prod001.vercel.app",
@@ -376,24 +645,45 @@ const curatedProjects: PortfolioProjectMeta[] = [
 
   {
     id: 15,
-    title: "Sistema Textil Puntozip",
+    title: "ERP Textil Puntozip",
     category: "Backend",
     publishDate: "Agosto 2024",
     visibility: "Privado",
     objective:
-      "Implementar un sistema ERP/MRP para industria textil de exportacion, integrando procesos operativos y administrativos.",
+      "Digitalizar la operacion textil de exportacion con un ERP modular que conecte produccion, inventario y control de calidad.",
     summary:
-      "Segun README, la solucion se orienta a un contexto ERP/MRP textil y se divide en frontend y backend por repositorios.",
+      "Sistema ERP/MRP para Puntozip: frontend React + Vite por modulos operativos y backend Laravel con arquitectura hexagonal por dominio de negocio.",
     description: [
-      "Se plantea una arquitectura empresarial para control de procesos, datos y trazabilidad del negocio.",
-      "El frontend cuenta con URL de despliegue, mientras la capa backend opera de forma restringida.",
+      "Modulos de tejidos e hilados, flujos productivos, ordenes de cliente y produccion, stock, avios, guias, estilos y control de calidad.",
+      "Interfaces con tablas filtrables, modales de gestion y permisos por rol segun area operativa del usuario.",
+      "Frontend en produccion en sistemapuntozip.online; backend en infraestructura privada del cliente.",
+      "Flujos y pantallas documentados a partir del codigo fuente del sistema en operacion.",
     ],
-    techs: ["TypeScript", "React", "PHP", "Laravel", "MySQL", "Docker"],
-    cover: "/images/projects/covers/backend.svg",
+    techs: ["React", "TypeScript", "Vite", "PHP", "Laravel", "MySQL", "Docker"],
+    highlights: [
+      "Tejidos e hilados",
+      "Flujos de produccion",
+      "Ordenes de produccion",
+      "Stock y avios",
+      "Control de calidad",
+      "RBAC por rol",
+    ],
+    cover: "/images/projects/prod-captures/puntozip-home-prod.png",
+    logo: "/images/projects/puntozip/logo.png",
+    gallery: [
+      { title: "Vista en produccion — acceso ERP", img: "/images/projects/prod-captures/puntozip-home-prod.png" },
+      { title: "Mapa de flujos ERP", img: "/images/projects/puntozip/flows.png" },
+      { title: "Proceso productivo", img: "/images/projects/puntozip/flow-process.png" },
+      { title: "Modulo tejidos", img: "/images/projects/puntozip/tejidos.png" },
+      { title: "Orden de produccion", img: "/images/projects/puntozip/orden-produccion.png" },
+      { title: "Login corporativo", img: "/images/projects/puntozip/login.png" },
+      { title: "Logo Puntozip", img: "/images/projects/puntozip/logo.png" },
+    ],
+    localSource: "Desktop/puntozip_bckp/023_puntozipsystem_frontend_prod001",
     repositoryLabel:
       "023_puntozipsystem_frontend_prod001 + 024_puntozipsystem_backend_prod001",
     repositoryUrl: "https://github.com/germanhyt",
-    productionUrl: "https://023-puntozipsystem-frontend-prod001.vercel.app",
+    productionUrl: "https://sistemapuntozip.online/",
   },
 ];
 
