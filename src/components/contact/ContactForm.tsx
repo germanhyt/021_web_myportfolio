@@ -1,37 +1,27 @@
 import Button from "../reusable/Button";
 import FormInput from "../reusable/FormInput";
-import { useRef } from "react";
-import emailjs from "@emailjs/browser";
+import { openMailto } from "@/core/helpers/mailto";
 
 const ContactForm = () => {
-  const form = useRef<HTMLFormElement>(null);
-
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    emailjs
-      .sendForm(
-        "service_988p1xn",
-        "template_twd2ypu",
-        form?.current ?? "",
-        "5il5XPnUwwcjNxkaM"
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-          e.currentTarget.reset(); //reset inputs of form
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
+    const formData = new FormData(e.currentTarget);
+    const name = String(formData.get("user_name") ?? "").trim();
+    const email = String(formData.get("user_email") ?? "").trim();
+    const subject = String(formData.get("subject") ?? "").trim();
+    const message = String(formData.get("message") ?? "").trim();
+
+    if (!name || !email || !subject || !message) return;
+
+    openMailto({ name, email, subject, message });
+    e.currentTarget.reset();
   };
 
   return (
     <div className="w-full px-4">
       <div className="leading-loose">
         <form
-          ref={form}
           onSubmit={sendEmail}
           className="max-w-xl m-4 p-6 sm:p-10 bg-secondary-light dark:bg-primary-dark rounded-xl shadow-xl text-left"
         >
@@ -53,7 +43,7 @@ const ContactForm = () => {
             inputType="email"
             inputId="email"
             inputName="user_email"
-            placeholderText="Your email"
+            placeholderText="tu@email.com"
             ariaLabelName="Email"
           />
           <FormInput
@@ -80,6 +70,7 @@ const ContactForm = () => {
               cols={14}
               rows={6}
               aria-label="Message"
+              required
               style={{ resize: "none" }}
             ></textarea>
           </div>

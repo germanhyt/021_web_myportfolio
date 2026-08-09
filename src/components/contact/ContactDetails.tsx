@@ -1,5 +1,6 @@
 import { FiPhone, FiMapPin, FiMail } from "react-icons/fi";
 import { motion } from "framer-motion";
+import { CONTACT_EMAIL } from "@/core/helpers/mailto";
 
 const contacts = [
   {
@@ -10,7 +11,7 @@ const contacts = [
   },
   {
     id: 2,
-    name: "germanhuaytalla22@gmail.com",
+    name: CONTACT_EMAIL,
     icon: <FiMail />,
     label: "Email Profesional"
   },

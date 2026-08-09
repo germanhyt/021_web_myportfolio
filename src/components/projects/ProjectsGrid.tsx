@@ -37,7 +37,7 @@ const ProjectsGrid = ({ page }: IProps) => {
     : filteredProjects;
 
   return (
-    <section id="projects" className="py-24 px-4 sm:px-8">
+    <section id="projects" className="scroll-mt-28 py-24 px-4 sm:px-8">
       <div className="container mx-auto">
         {/* Section Header */}
         <div className="max-w-4xl mb-16 space-y-4">

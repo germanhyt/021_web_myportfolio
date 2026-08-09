@@ -1,16 +1,12 @@
 import Select, { StylesConfig } from "react-select";
 
 const selectOptions = [
-  { value: "", label: "Todas las Categorías" },
-  { value: "Web", label: "Web Application" },
-  { value: "Backend", label: "Backend" },
-  { value: "Automation", label: "Automation" },
+  { value: "", label: "Todas las categorías" },
+  { value: "Fullstack web", label: "Fullstack web" },
+  { value: "Landing page", label: "Landing page" },
+  { value: "Website", label: "Website" },
   { value: "Data Engineering", label: "Data Engineering" },
   { value: "Data Analytics", label: "Data Analytics" },
-  { value: "DevOps", label: "DevOps" },
-  { value: "Mobile", label: "Mobile Development" },
-  { value: "IOT", label: "Internet of Things" },
-  { value: "Certification", label: "Certifications" },
 ];
 
 interface IProps {
@@ -18,7 +14,8 @@ interface IProps {
 }
 
 const ProjectsFilter = ({ setSelectProject }: IProps) => {
-  const customStyles: StylesConfig<any, false> = {
+  // Keep dropdown under the fixed header (z-50 / 80px) so it never covers the nav.
+  const customStyles: StylesConfig<{ value: string; label: string }, false> = {
     control: (base, state) => ({
       ...base,
       backgroundColor: "var(--premium-surface)",
@@ -35,28 +32,31 @@ const ProjectsFilter = ({ setSelectProject }: IProps) => {
     }),
     menuPortal: (base) => ({
       ...base,
-      zIndex: 9999, // Super high z-index via Portal
+      zIndex: 40,
+      paddingTop: "0.25rem",
     }),
     menu: (base) => ({
       ...base,
       backgroundColor: "var(--premium-surface)",
       borderRadius: "1.25rem",
-      border: "1px solid rgba(var(--premium-text-rgb), 0.1)",
+      border: "1px solid rgba(var(--premium-primary-rgb), 0.2)",
       overflow: "hidden",
       boxShadow: "0 20px 40px -10px rgba(0,0,0,0.3)",
+      marginTop: 8,
     }),
     option: (base, state) => ({
       ...base,
-      backgroundColor: state.isSelected 
-        ? "var(--premium-primary)" 
-        : state.isFocused 
-        ? "rgba(var(--premium-primary-rgb), 0.1)" 
-        : "transparent",
-      color: state.isSelected ? "white" : "var(--premium-text)",
+      backgroundColor: state.isSelected
+        ? "var(--premium-primary)"
+        : state.isFocused
+          ? "rgba(var(--premium-primary-rgb), 0.12)"
+          : "transparent",
+      color: state.isSelected ? "var(--premium-bg)" : "var(--premium-text)",
       cursor: "pointer",
       padding: "14px 24px",
       fontFamily: "'Manrope', sans-serif",
       fontSize: "0.875rem",
+      fontWeight: state.isSelected ? 700 : 500,
       "&:active": {
         backgroundColor: "var(--premium-primary)",
       },
@@ -86,12 +86,14 @@ const ProjectsFilter = ({ setSelectProject }: IProps) => {
       <Select
         defaultValue={selectOptions[0]}
         options={selectOptions}
-        onChange={(option: any) => setSelectProject(option.value)}
+        onChange={(option) => setSelectProject(option?.value ?? "")}
         styles={customStyles}
         isSearchable={false}
-        placeholder="Filtrar por Especialidad"
+        placeholder="Filtrar por categoría"
         classNamePrefix="react-select"
-        menuPortalTarget={document.body} // This fixes the z-index issue
+        menuPortalTarget={document.body}
+        menuPlacement="auto"
+        menuShouldScrollIntoView
       />
     </div>
   );

@@ -39,9 +39,9 @@ const ProjectSingle = ({ title, category, image, numberproject }: IProps) => {
               loading="lazy"
             />
 
-            {/* Tag in image */}
+            {/* Tag — opaque soft olive + dark text (readable on any cover) */}
             <div className="absolute top-6 left-6 z-20">
-              <span className="px-5 py-2 rounded-2xl bg-premium-bg/80 backdrop-blur-md border border-premium-text/5 text-[10px] font-space-grotesk font-black uppercase tracking-[0.2em] text-premium-primary">
+              <span className="inline-flex items-center px-4 py-2 rounded-full bg-[#d7e0b8] text-[#2f3614] border border-[#b8c48a] shadow-[0_10px_24px_-8px_rgba(0,0,0,0.55)] text-[10px] font-space-grotesk font-black uppercase tracking-[0.16em]">
                 {category}
               </span>
             </div>

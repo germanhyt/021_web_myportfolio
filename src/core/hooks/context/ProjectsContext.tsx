@@ -54,10 +54,10 @@ export const ProjectsProvider = (props: IProps) => {
       : searchableContent.includes(searchProject.toLowerCase());
   });
 
-  // Select projects by project category
+  // Select projects by exact category label
   const selectProjectsByCategory = projects.filter((item) => {
-      const category = item.category?.charAt(0).toUpperCase() + item.category?.slice(1);
-      return category.includes(selectProject ?? "");
+    if (!selectProject) return true;
+    return item.category.toLowerCase() === selectProject.toLowerCase();
   });
 
   return (

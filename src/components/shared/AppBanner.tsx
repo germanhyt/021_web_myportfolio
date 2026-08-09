@@ -78,9 +78,12 @@ const AppBanner = () => {
             ))}
           </motion.div>
 
-          <button className="px-10 py-5 bg-premium-text text-premium-bg font-space-grotesk font-black uppercase text-sm tracking-widest rounded-2xl hover:scale-105 active:scale-95 transition-all duration-300 shadow-2xl shadow-premium-text/20">
+          <a
+            href="#projects"
+            className="px-10 py-5 bg-premium-text text-premium-bg font-space-grotesk font-black uppercase text-sm tracking-widest rounded-2xl hover:scale-105 active:scale-95 transition-all duration-300 shadow-2xl shadow-premium-text/20"
+          >
             Explorar Portafolio
-          </button>
+          </a>
         </div>
       </div>
 

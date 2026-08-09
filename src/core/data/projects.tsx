@@ -108,11 +108,108 @@ const buildProject = (meta: PortfolioProjectMeta): IProject => {
 };
 
 const curatedProjects: PortfolioProjectMeta[] = [
-
+  {
+    id: 16,
+    title: "Landing Laboratoria × UTP",
+    category: "Landing page",
+    publishDate: "Agosto 2026",
+    visibility: "Publico",
+    objective:
+      "Impulsar la postulacion al programa Activa tu carrera (Laboratoria en colaboracion con UTP) con una landing de conversion clara y mobile-first.",
+    summary:
+      "Softlanding estatica en Astro + React islands para el programa Activa tu carrera: narrativa de empleabilidad, beneficios, metodologia y CTAs hacia postular.",
+    description: [
+      "Hero full-bleed y secciones con motion/Swiper orientadas a universitarios que buscan destacar en el mercado laboral.",
+      "Contenido modular (identificacion, beneficios, experiencia, FAQ) listo para iterar mensajes sin rehacer la base.",
+      "SEO, sitemap y dominio productivo en activatucarrera-laboratoria-utp.com; preview en Vercel.",
+    ],
+    techs: ["Astro", "React", "TypeScript", "TailwindCSS", "Framer Motion", "Swiper"],
+    highlights: [
+      "Activa tu carrera",
+      "Colaboracion Laboratoria × UTP",
+      "Landing de conversion",
+      "SEO + sitemap",
+    ],
+    cover:
+      "https://raw.githubusercontent.com/germanhyt/softlanding-laboratoria-utp-prod001/main/public/assets/hero/hero-banner--desktop.webp",
+    logo: "/images/projects/laboratoria/logo.webp",
+    gallery: [
+      {
+        title: "Hero — Activa tu carrera (desktop)",
+        img: "https://raw.githubusercontent.com/germanhyt/softlanding-laboratoria-utp-prod001/main/public/assets/hero/hero-banner--desktop.webp",
+      },
+      {
+        title: "Hero — vista mobile",
+        img: "https://raw.githubusercontent.com/germanhyt/softlanding-laboratoria-utp-prod001/main/public/assets/hero/hero-banner--mobile.webp",
+      },
+      {
+        title: "Seccion — demostrar mi potencial",
+        img: "https://raw.githubusercontent.com/germanhyt/softlanding-laboratoria-utp-prod001/main/public/assets/section3/demostrar-mi-potencial.webp",
+      },
+      {
+        title: "Logo Laboratoria",
+        img: "/images/projects/laboratoria/logo.webp",
+      },
+    ],
+    localSource: "softlanding-laboratoria-utp-prod001 + activatucarrera-laboratoria-utp.com",
+    repositoryLabel: "softlanding-laboratoria-utp-prod001",
+    repositoryUrl: "https://github.com/germanhyt/softlanding-laboratoria-utp-prod001",
+    productionUrl: "https://activatucarrera-laboratoria-utp.com/",
+    testingUrl: "https://softlanding-laboratoria-utp-prod001.vercel.app",
+  },
+  {
+    id: 17,
+    title: "Landing Laboratoria × Colsubsidio",
+    category: "Landing page",
+    publishDate: "Agosto 2026",
+    visibility: "Publico",
+    objective:
+      "Comunicar el programa Laboratoria × Colsubsidio y facilitar el retorno al mercado laboral con una landing de alto impacto visual y conversion.",
+    summary:
+      "Softlanding Astro + React para la alianza Laboratoria–Colsubsidio: hero fotografico, identificacion, beneficios, metodologia, logistica y FAQ con motion y carruseles.",
+    description: [
+      "Composicion visual de secciones (hero full-bleed, art-composite, foto+gradiente logistica) alineada al prototipo de marca.",
+      "Islas React con Framer Motion y Swiper para recorridos de identificacion y beneficios sin sacrificar rendimiento estatico.",
+      "Despliegue publico en Vercel como vitrina del programa ante afiliados y stakeholders.",
+    ],
+    techs: ["Astro", "React", "TypeScript", "TailwindCSS", "Framer Motion", "Swiper"],
+    highlights: [
+      "Alianza Laboratoria × Colsubsidio",
+      "Landing de empleabilidad",
+      "Motion + Swiper",
+      "Mobile-first",
+    ],
+    cover:
+      "https://raw.githubusercontent.com/germanhyt/softlanding-laboratoria-colsubsidio-prod001/main/public/assets/hero/hero.webp",
+    logo: "/images/projects/laboratoria/logo.webp",
+    gallery: [
+      {
+        title: "Hero — programa Colsubsidio",
+        img: "https://raw.githubusercontent.com/germanhyt/softlanding-laboratoria-colsubsidio-prod001/main/public/assets/hero/hero.webp",
+      },
+      {
+        title: "Experiencia — art composite",
+        img: "https://raw.githubusercontent.com/germanhyt/softlanding-laboratoria-colsubsidio-prod001/main/public/assets/experiencia/art-composite.png",
+      },
+      {
+        title: "Logistica — foto desktop",
+        img: "https://raw.githubusercontent.com/germanhyt/softlanding-laboratoria-colsubsidio-prod001/main/public/assets/logistica/desktop.webp",
+      },
+      {
+        title: "Logo Laboratoria",
+        img: "/images/projects/laboratoria/logo.webp",
+      },
+    ],
+    localSource: "softlanding-laboratoria-colsubsidio-prod001",
+    repositoryLabel: "softlanding-laboratoria-colsubsidio-prod001",
+    repositoryUrl:
+      "https://github.com/germanhyt/softlanding-laboratoria-colsubsidio-prod001",
+    productionUrl: "https://softlanding-laboratoria-colsubsidio.vercel.app/",
+  },
   {
     id: 10,
     title: "Website Diverty",
-    category: "Web",
+    category: "Website",
     publishDate: "Abril 2026",
     visibility: "Publico",
     objective:
@@ -140,7 +237,7 @@ const curatedProjects: PortfolioProjectMeta[] = [
   {
     id: 11,
     title: "Landing Haz La Tarea",
-    category: "Web",
+    category: "Landing page",
     publishDate: "Enero 2026",
     visibility: "Publico",
     objective:
@@ -168,7 +265,7 @@ const curatedProjects: PortfolioProjectMeta[] = [
   {
     id: 12,
     title: "Website BioTraining",
-    category: "Web",
+    category: "Website",
     publishDate: "Octubre 2025",
     visibility: "Publico",
     objective:
@@ -197,7 +294,7 @@ const curatedProjects: PortfolioProjectMeta[] = [
   {
     id: 13,
     title: "Website Ktalweb",
-    category: "Web",
+    category: "Website",
     publishDate: "Mayo 2025",
     visibility: "Publico",
     objective:
@@ -211,12 +308,12 @@ const curatedProjects: PortfolioProjectMeta[] = [
       "Despliegue productivo en ktalweb.com.pe con identidad visual consistente en todo el recorrido.",
     ],
     techs: ["Astro", "React", "TypeScript", "TailwindCSS"],
-    cover: "/images/projects/prod-captures/ktalweb-home-prod.png",
+    cover: "/images/projects/ktalweb/home.png",
     logo: "/images/projects/ktalweb/logo.webp",
     gallery: [
-      { title: "Vista en produccion — home", img: "/images/projects/prod-captures/ktalweb-home-prod.png" },
+      { title: "Vista en produccion — home (hero)", img: "/images/projects/ktalweb/home.png" },
       { title: "Vista en produccion — soluciones", img: "/images/projects/prod-captures/ktalweb-soluciones-prod.png" },
-      { title: "Hero y propuesta de valor", img: "/images/projects/ktalweb/hero.webp" },
+      { title: "Captura home alternativa", img: "/images/projects/prod-captures/ktalweb-home-prod.png" },
       { title: "Logo Ktalweb", img: "/images/projects/ktalweb/logo.webp" },
     ],
     localSource: "softwebsite-ktalweb-frontend-prod001 + ktalweb.com.pe",
@@ -227,7 +324,7 @@ const curatedProjects: PortfolioProjectMeta[] = [
   {
     id: 14,
     title: "Landing Laboratoria",
-    category: "Web",
+    category: "Landing page",
     publishDate: "Diciembre 2024",
     visibility: "Privado",
     objective:
@@ -256,7 +353,7 @@ const curatedProjects: PortfolioProjectMeta[] = [
   {
     id: 1,
     title: "CRM Bosque Magico — Panel Comercial",
-    category: "Web",
+    category: "Fullstack web",
     publishDate: "Junio 2026",
     visibility: "Publico",
     objective:
@@ -329,7 +426,7 @@ const curatedProjects: PortfolioProjectMeta[] = [
   {
     id: 2,
     title: "Landing Bosque Magico",
-    category: "Web",
+    category: "Landing page",
     publishDate: "Mayo 2026",
     visibility: "Publico",
     objective:
@@ -378,7 +475,7 @@ const curatedProjects: PortfolioProjectMeta[] = [
   {
     id: 3,
     title: "Landing Calendario Deportivo",
-    category: "Web",
+    category: "Landing page",
     publishDate: "Mayo 2026",
     visibility: "Publico",
     objective:
@@ -413,7 +510,7 @@ const curatedProjects: PortfolioProjectMeta[] = [
   {
     id: 4,
     title: "Sistema de Estacionamiento GCB",
-    category: "Backend",
+    category: "Fullstack web",
     publishDate: "Junio 2026",
     visibility: "Privado",
     objective:
@@ -455,7 +552,7 @@ const curatedProjects: PortfolioProjectMeta[] = [
   {
     id: 5,
     title: "Arquitectura de Datos en GCP — Refugio Data",
-    category: "Data Analytics",
+    category: "Data Engineering",
     publishDate: "Marzo 2026",
     visibility: "Publico",
     objective:
@@ -499,7 +596,7 @@ const curatedProjects: PortfolioProjectMeta[] = [
   {
     id: 6,
     title: "Sistema de Reservas SISA Coffee",
-    category: "Web",
+    category: "Fullstack web",
     publishDate: "Mayo 2026",
     visibility: "Privado",
     objective:
@@ -551,7 +648,7 @@ const curatedProjects: PortfolioProjectMeta[] = [
   {
     id: 7,
     title: "E-commerce Off Road Peru",
-    category: "Web",
+    category: "Website",
     publishDate: "Mayo 2026",
     visibility: "Publico",
     objective:
@@ -582,7 +679,7 @@ const curatedProjects: PortfolioProjectMeta[] = [
   {
     id: 8,
     title: "E-commerce Zukarzen",
-    category: "Web",
+    category: "Website",
     publishDate: "Septiembre 2024",
     visibility: "Privado",
     objective:
@@ -612,7 +709,7 @@ const curatedProjects: PortfolioProjectMeta[] = [
   {
     id: 9,
     title: "Landing Profesional Marca Stephanie",
-    category: "Web",
+    category: "Landing page",
     publishDate: "Junio 2026",
     visibility: "Publico",
     objective:
@@ -646,7 +743,7 @@ const curatedProjects: PortfolioProjectMeta[] = [
   {
     id: 15,
     title: "ERP Textil Puntozip",
-    category: "Backend",
+    category: "Fullstack web",
     publishDate: "Agosto 2024",
     visibility: "Privado",
     objective:
