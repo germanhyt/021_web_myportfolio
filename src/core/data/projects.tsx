@@ -109,6 +109,56 @@ const buildProject = (meta: PortfolioProjectMeta): IProject => {
 
 const curatedProjects: PortfolioProjectMeta[] = [
   {
+    id: 18,
+    title: "Landing Laboratoria × L'Oréal",
+    category: "Landing page",
+    publishDate: "Agosto 2026",
+    visibility: "Publico",
+    objective:
+      "Impulsar la postulacion a Beauty in Tech (Activa tu Carrera), el programa 100% becado de Laboratoria en colaboracion con L'Oréal para fortalecer el perfil profesional de mujeres en tech e IA.",
+    summary:
+      "Softlanding estatica en Astro + React islands para Beauty in Tech: narrativa de empleabilidad, beneficios del programa de 10 semanas, metodologia, medios y CTAs hacia postular.",
+    description: [
+      "Hero full-bleed y secciones con motion/Swiper alineadas al prototipo Beauty in Tech (L'Oréal × Laboratoria).",
+      "Contenido modular (identificacion, beneficios, experiencia, resultados, FAQ) orientado a conversion de postulantes en Ciudad de Mexico.",
+      "SEO, sitemap y dominio productivo en activatucarrera-laboratoria-loreal.com; preview en Vercel.",
+    ],
+    techs: ["Astro", "React", "TypeScript", "TailwindCSS", "Framer Motion", "Swiper"],
+    highlights: [
+      "Beauty in Tech",
+      "Colaboracion Laboratoria × L'Oréal",
+      "Programa 100% becado / remoto",
+      "Landing de conversion + SEO",
+    ],
+    cover:
+      "https://raw.githubusercontent.com/germanhyt/softlanding-laboratoria-loreal-prod001/main/public/assets/hero/hero--desktop.webp",
+    logo: "/images/projects/laboratoria/logo.webp",
+    gallery: [
+      {
+        title: "Hero — Beauty in Tech (desktop)",
+        img: "https://raw.githubusercontent.com/germanhyt/softlanding-laboratoria-loreal-prod001/main/public/assets/hero/hero--desktop.webp",
+      },
+      {
+        title: "Hero — vista mobile",
+        img: "https://raw.githubusercontent.com/germanhyt/softlanding-laboratoria-loreal-prod001/main/public/assets/hero/hero--mobile.png",
+      },
+      {
+        title: "Seccion — experiencias y resultados",
+        img: "https://raw.githubusercontent.com/germanhyt/softlanding-laboratoria-loreal-prod001/main/public/assets/sections/11/sect11_experiencias_respalda_resultados_reales--desktop.webp",
+      },
+      {
+        title: "Logo Laboratoria × L'Oréal",
+        img: "https://raw.githubusercontent.com/germanhyt/softlanding-laboratoria-loreal-prod001/main/public/assets/logos/logo-labo-loreal.png",
+      },
+    ],
+    localSource:
+      "softlanding-laboratoria-loreal-prod001 + activatucarrera-laboratoria-loreal.com",
+    repositoryLabel: "softlanding-laboratoria-loreal-prod001",
+    repositoryUrl: "https://github.com/germanhyt/softlanding-laboratoria-loreal-prod001",
+    productionUrl: "https://www.activatucarrera-laboratoria-loreal.com/",
+    testingUrl: "https://softlanding-laboratoria-loreal-prod.vercel.app",
+  },
+  {
     id: 16,
     title: "Landing Laboratoria × UTP",
     category: "Landing page",
