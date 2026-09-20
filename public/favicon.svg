@@ -1,36 +1,29 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="100%" height="100%">
   <defs>
-    <!-- Rich Green/Olive background gradient -->
-    <linearGradient id="green-bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#9ab06b" />
-      <stop offset="100%" stop-color="#58662d" />
+    <!-- Soft green gradient from portfolio design system -->
+    <linearGradient id="bg-green" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e3eca0" />
+      <stop offset="100%" stop-color="#b8c679" />
     </linearGradient>
-
-    <!-- Gloss/Border gradient -->
-    <linearGradient id="green-border" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#c1d98a" />
-      <stop offset="100%" stop-color="#3e471d" />
+    <linearGradient id="text-dark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1f270b" />
+      <stop offset="100%" stop-color="#0e1304" />
     </linearGradient>
-
-    <!-- Shadow filter for contrast -->
-    <filter id="text-shadow" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.3" />
-    </filter>
   </defs>
 
-  <!-- Container Box with Green Background -->
-  <rect x="4" y="4" width="120" height="120" rx="32" fill="url(#green-bg)" stroke="url(#green-border)" stroke-width="4" />
+  <!-- Green Background Card from Design System (#d7e0b8) -->
+  <rect x="4" y="4" width="120" height="120" rx="32" fill="url(#bg-green)" stroke="#9aab5e" stroke-width="4" />
 
-  <!-- Accent dot in white -->
-  <circle cx="102" cy="26" r="5" fill="#ffffff" opacity="0.9" />
+  <!-- Subtle Accent Dot -->
+  <circle cx="102" cy="26" r="6" fill="#1f270b" />
 
   <!-- Monogram g4h -->
-  <g text-anchor="middle" font-family="'Space Grotesk', system-ui, -apple-system, sans-serif" font-weight="900" font-size="48" letter-spacing="-3" filter="url(#text-shadow)">
-    <!-- 'g' in dark charcoal -->
-    <text x="36" y="81" fill="#0d110a">g</text>
-    <!-- '4' in crisp white -->
-    <text x="64" y="81" fill="#ffffff">4</text>
-    <!-- 'h' in dark charcoal -->
-    <text x="92" y="81" fill="#0d110a">h</text>
+  <g text-anchor="middle" font-family="'Space Grotesk', system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" letter-spacing="-3">
+    <!-- 'g' in deep contrast dark olive -->
+    <text x="34" y="82" fill="url(#text-dark)">g</text>
+    <!-- '4' in deep contrast dark olive -->
+    <text x="64" y="82" fill="#000000">4</text>
+    <!-- 'h' in deep contrast dark olive -->
+    <text x="94" y="82" fill="url(#text-dark)">h</text>
   </g>
 </svg>
