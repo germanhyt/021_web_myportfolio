@@ -1,0 +1,73 @@
+<svg width="1200" height="750" viewBox="0 0 1200 750" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="750" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0f140c" />
+      <stop offset="50%" stop-color="#182012" />
+      <stop offset="100%" stop-color="#0c0f0a" />
+    </linearGradient>
+    <linearGradient id="card-grad" x1="0" y1="0" x2="800" y2="400" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#242e18" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#141a0e" stop-opacity="0.9" />
+    </linearGradient>
+    <linearGradient id="primary-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#b8c679" />
+      <stop offset="100%" stop-color="#6f7d38" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="750" fill="url(#bg)" />
+
+  <!-- Grid overlay lines -->
+  <path d="M0 150H1200 M0 300H1200 M0 450H1200 M0 600H1200" stroke="#ffffff" stroke-opacity="0.03" stroke-width="1" />
+  <path d="M200 0V750 M400 0V750 M600 0V750 M800 0V750 M1000 0V750" stroke="#ffffff" stroke-opacity="0.03" stroke-width="1" />
+
+  <!-- Glowing background circles -->
+  <circle cx="600" cy="375" r="300" fill="#8a9a65" fill-opacity="0.08" filter="blur(60px)" />
+  <circle cx="900" cy="200" r="200" fill="#4b5320" fill-opacity="0.12" filter="blur(50px)" />
+
+  <!-- Main UI Mockup Window -->
+  <rect x="150" y="100" width="900" height="550" rx="24" fill="url(#card-grad)" stroke="#8a9a65" stroke-opacity="0.25" stroke-width="2" />
+  
+  <!-- Window Header -->
+  <rect x="150" y="100" width="900" height="50" rx="24" fill="#0c0f0a" fill-opacity="0.6" />
+  <circle cx="185" cy="125" r="6" fill="#ef4444" opacity="0.8" />
+  <circle cx="205" cy="125" r="6" fill="#f59e0b" opacity="0.8" />
+  <circle cx="225" cy="125" r="6" fill="#10b981" opacity="0.8" />
+  <rect x="260" y="115" width="220" height="20" rx="10" fill="#ffffff" fill-opacity="0.06" />
+  <text x="275" y="129" font-family="'Space Grotesk', sans-serif" font-size="11" font-weight="700" fill="#8a9a65">ayniflow.gcbprojects.site</text>
+
+  <!-- Dashboard Metrics Mockup -->
+  <!-- Header / Workspace Selector -->
+  <rect x="190" y="180" width="180" height="36" rx="10" fill="url(#primary-grad)" />
+  <text x="210" y="203" font-family="'Space Grotesk', sans-serif" font-size="14" font-weight="800" fill="#0c0f0a">Espacio: Negocio</text>
+
+  <!-- Metric Card 1 -->
+  <rect x="190" y="240" width="250" height="110" rx="16" fill="#182012" stroke="#ffffff" stroke-opacity="0.08" />
+  <text x="210" y="270" font-family="'Manrope', sans-serif" font-size="12" font-weight="600" fill="#a1a1aa">Ingresos Mensuales</text>
+  <text x="210" y="305" font-family="'Space Grotesk', sans-serif" font-size="26" font-weight="800" fill="#ffffff">S/ 18,450.00</text>
+
+  <!-- Metric Card 2 -->
+  <rect x="475" y="240" width="250" height="110" rx="16" fill="#182012" stroke="#ffffff" stroke-opacity="0.08" />
+  <text x="495" y="270" font-family="'Manrope', sans-serif" font-size="12" font-weight="600" fill="#a1a1aa">Egresos / Gastos</text>
+  <text x="495" y="305" font-family="'Space Grotesk', sans-serif" font-size="26" font-weight="800" fill="#f87171">S/ 6,210.00</text>
+
+  <!-- Metric Card 3 -->
+  <rect x="760" y="240" width="250" height="110" rx="16" fill="#182012" stroke="#ffffff" stroke-opacity="0.08" />
+  <text x="780" y="270" font-family="'Manrope', sans-serif" font-size="12" font-weight="600" fill="#a1a1aa">Balance Neto</text>
+  <text x="780" y="305" font-family="'Space Grotesk', sans-serif" font-size="26" font-weight="800" fill="#b8c679">+S/ 12,240.00</text>
+
+  <!-- Financial Chart Mockup Area -->
+  <rect x="190" y="380" width="820" height="230" rx="16" fill="#141a0e" stroke="#ffffff" stroke-opacity="0.06" />
+  <path d="M 230 550 Q 320 480 410 510 T 590 440 T 770 470 T 950 410" fill="none" stroke="url(#primary-grad)" stroke-width="4" />
+  <path d="M 230 550 Q 320 480 410 510 T 590 440 T 770 470 T 950 410 L 950 570 L 230 570 Z" fill="url(#primary-grad)" fill-opacity="0.1" />
+
+  <!-- Nodes on Chart -->
+  <circle cx="410" cy="510" r="6" fill="#b8c679" stroke="#0c0f0a" stroke-width="2" />
+  <circle cx="590" cy="440" r="6" fill="#b8c679" stroke="#0c0f0a" stroke-width="2" />
+  <circle cx="950" cy="410" r="6" fill="#b8c679" stroke="#0c0f0a" stroke-width="2" />
+
+  <!-- Badge Tag -->
+  <rect x="940" y="120" width="90" height="26" rx="13" fill="#b8c679" />
+  <text x="962" y="137" font-family="'Space Grotesk', sans-serif" font-size="11" font-weight="900" fill="#0c0f0a">PWA + API</text>
+</svg>

@@ -36,55 +36,56 @@ const HireMeModal = ({ onClose }: IProps) => {
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 my-auto overflow-y-auto">
       {/* Backdrop */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={onClose}
-        className="absolute inset-0 bg-premium-bg/80 backdrop-blur-xl"
+        className="fixed inset-0 bg-premium-bg/85 backdrop-blur-xl"
       />
 
       {/* Modal Container */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.95, y: 30 }}
+        initial={{ opacity: 0, scale: 0.95, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.95, y: 30 }}
+        exit={{ opacity: 0, scale: 0.95, y: 20 }}
         transition={{ type: "spring", damping: 25, stiffness: 300 }}
-        className="relative w-full max-w-2xl bg-premium-surface rounded-[3rem] border border-premium-text/5 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden"
+        className="relative w-full max-w-2xl bg-premium-surface rounded-[2rem] sm:rounded-[3rem] border border-premium-text/10 shadow-[0_30px_90px_-15px_rgba(0,0,0,0.6)] overflow-hidden my-auto max-h-[92vh] flex flex-col"
       >
-        <div className="absolute top-0 right-0 p-8">
+        <div className="absolute top-3 right-3 sm:top-6 sm:right-6 z-10">
           <button
             type="button"
             onClick={onClose}
-            className="p-3 rounded-2xl text-premium-text-muted hover:text-premium-primary hover:bg-premium-primary/10 transition-all duration-300"
+            aria-label="Close modal"
+            className="p-2 sm:p-3 rounded-xl sm:rounded-2xl text-premium-text-muted hover:text-premium-primary hover:bg-premium-primary/10 transition-all duration-300"
           >
-            <FiX size={28} />
+            <FiX className="text-xl sm:text-2xl" />
           </button>
         </div>
 
-        <div className="p-10 sm:p-16">
-          <div className="mb-12 space-y-4">
-            <h3 className="text-4xl sm:text-5xl font-space-grotesk font-black text-premium-text tracking-tighter leading-tight">
+        <div className="p-6 sm:p-10 lg:p-12 overflow-y-auto">
+          <div className="mb-6 sm:mb-10 space-y-2 sm:space-y-3 pr-8">
+            <h3 className="text-2xl sm:text-4xl lg:text-5xl font-space-grotesk font-black text-premium-text tracking-tighter leading-tight">
               {t.titlePrefix}<span className="text-gradient">{t.titleGradient}</span>
             </h3>
-            <p className="text-premium-text-muted font-manrope text-lg leading-relaxed">
+            <p className="text-premium-text-muted font-manrope text-sm sm:text-base leading-relaxed">
               {t.description}
             </p>
           </div>
 
-          <form onSubmit={sendEmail} className="space-y-8">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-              <div className="space-y-3">
+          <form onSubmit={sendEmail} className="space-y-5 sm:space-y-7">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-7">
+              <div className="space-y-2 sm:space-y-3">
                 <label
                   htmlFor="name"
-                  className="text-xs font-space-grotesk font-black uppercase tracking-widest text-premium-text-muted px-4 flex items-center gap-2"
+                  className="text-[11px] sm:text-xs font-space-grotesk font-black uppercase tracking-widest text-premium-text-muted px-2 sm:px-4 flex items-center gap-2"
                 >
                   <FiUser className="text-premium-secondary" /> {t.nameLabel}
                 </label>
                 <input
-                  className="w-full px-6 py-5 bg-premium-bg border border-premium-text/5 rounded-2xl text-premium-text placeholder:text-premium-text/20 focus:outline-none focus:border-premium-primary focus:ring-4 focus:ring-premium-primary/10 transition-all duration-300 font-manrope font-bold"
+                  className="w-full px-4 py-3.5 sm:px-6 sm:py-4 bg-premium-bg border border-premium-text/10 rounded-xl sm:rounded-2xl text-premium-text placeholder:text-premium-text/30 focus:outline-none focus:border-premium-primary focus:ring-4 focus:ring-premium-primary/10 transition-all duration-300 font-manrope font-bold text-sm sm:text-base"
                   id="name"
                   name="user_name"
                   type="text"
@@ -93,15 +94,15 @@ const HireMeModal = ({ onClose }: IProps) => {
                 />
               </div>
 
-              <div className="space-y-3">
+              <div className="space-y-2 sm:space-y-3">
                 <label
                   htmlFor="email"
-                  className="text-xs font-space-grotesk font-black uppercase tracking-widest text-premium-text-muted px-4 flex items-center gap-2"
+                  className="text-[11px] sm:text-xs font-space-grotesk font-black uppercase tracking-widest text-premium-text-muted px-2 sm:px-4 flex items-center gap-2"
                 >
                   <FiMail className="text-premium-secondary" /> {t.emailLabel}
                 </label>
                 <input
-                  className="w-full px-6 py-5 bg-premium-bg border border-premium-text/5 rounded-2xl text-premium-text placeholder:text-premium-text/20 focus:outline-none focus:border-premium-primary focus:ring-4 focus:ring-premium-primary/10 transition-all duration-300 font-manrope font-bold"
+                  className="w-full px-4 py-3.5 sm:px-6 sm:py-4 bg-premium-bg border border-premium-text/10 rounded-xl sm:rounded-2xl text-premium-text placeholder:text-premium-text/30 focus:outline-none focus:border-premium-primary focus:ring-4 focus:ring-premium-primary/10 transition-all duration-300 font-manrope font-bold text-sm sm:text-base"
                   id="email"
                   name="user_email"
                   type="email"
@@ -111,15 +112,15 @@ const HireMeModal = ({ onClose }: IProps) => {
               </div>
             </div>
 
-            <div className="space-y-3">
+            <div className="space-y-2 sm:space-y-3">
               <label
                 htmlFor="subject"
-                className="text-xs font-space-grotesk font-black uppercase tracking-widest text-premium-text-muted px-4 flex items-center gap-2"
+                className="text-[11px] sm:text-xs font-space-grotesk font-black uppercase tracking-widest text-premium-text-muted px-2 sm:px-4 flex items-center gap-2"
               >
                 <FiEdit3 className="text-premium-secondary" /> {t.subjectLabel}
               </label>
               <input
-                className="w-full px-6 py-5 bg-premium-bg border border-premium-text/5 rounded-2xl text-premium-text placeholder:text-premium-text/20 focus:outline-none focus:border-premium-primary focus:ring-4 focus:ring-premium-primary/10 transition-all duration-300 font-manrope font-bold"
+                className="w-full px-4 py-3.5 sm:px-6 sm:py-4 bg-premium-bg border border-premium-text/10 rounded-xl sm:rounded-2xl text-premium-text placeholder:text-premium-text/30 focus:outline-none focus:border-premium-primary focus:ring-4 focus:ring-premium-primary/10 transition-all duration-300 font-manrope font-bold text-sm sm:text-base"
                 id="subject"
                 name="subject"
                 type="text"
@@ -128,15 +129,15 @@ const HireMeModal = ({ onClose }: IProps) => {
               />
             </div>
 
-            <div className="space-y-3">
+            <div className="space-y-2 sm:space-y-3">
               <label
                 htmlFor="message"
-                className="text-xs font-space-grotesk font-black uppercase tracking-widest text-premium-text-muted px-4 flex items-center gap-2"
+                className="text-[11px] sm:text-xs font-space-grotesk font-black uppercase tracking-widest text-premium-text-muted px-2 sm:px-4 flex items-center gap-2"
               >
                 <FiMessageSquare className="text-premium-secondary" /> {t.messageLabel}
               </label>
               <textarea
-                className="w-full px-6 py-5 bg-premium-bg border border-premium-text/5 rounded-2xl text-premium-text placeholder:text-premium-text/20 focus:outline-none focus:border-premium-primary focus:ring-4 focus:ring-premium-primary/10 transition-all duration-300 font-manrope font-bold min-h-[140px] resize-none"
+                className="w-full px-4 py-3.5 sm:px-6 sm:py-4 bg-premium-bg border border-premium-text/10 rounded-xl sm:rounded-2xl text-premium-text placeholder:text-premium-text/30 focus:outline-none focus:border-premium-primary focus:ring-4 focus:ring-premium-primary/10 transition-all duration-300 font-manrope font-bold text-sm sm:text-base min-h-[110px] sm:min-h-[140px] resize-none"
                 id="message"
                 name="message"
                 required
@@ -146,9 +147,9 @@ const HireMeModal = ({ onClose }: IProps) => {
 
             <button
               type="submit"
-              className="w-full py-6 bg-premium-text text-premium-bg rounded-2xl font-space-grotesk font-black uppercase tracking-[0.2em] text-sm flex items-center justify-center gap-3 hover:scale-[1.02] active:scale-95 transition-all duration-500 shadow-2xl shadow-premium-text/20"
+              className="w-full py-4 sm:py-5 bg-premium-text text-premium-bg rounded-xl sm:rounded-2xl font-space-grotesk font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] text-xs sm:text-sm flex items-center justify-center gap-2 sm:gap-3 hover:scale-[1.01] active:scale-98 transition-all duration-300 shadow-xl shadow-premium-text/15"
             >
-              <FiSend className="text-xl" />
+              <FiSend className="text-base sm:text-xl" />
               {t.submitBtn}
             </button>
           </form>

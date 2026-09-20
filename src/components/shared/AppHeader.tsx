@@ -57,9 +57,9 @@ const AppHeader = () => {
       <motion.nav
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className={`w-full transition-all duration-500 h-[80px] flex items-center ${
+        className={`w-full transition-all duration-500 h-[70px] sm:h-[80px] flex items-center ${
           isScrolled
-            ? "bg-premium-bg/80 backdrop-blur-xl"
+            ? "bg-premium-bg/85 backdrop-blur-xl border-b border-premium-text/5 shadow-lg"
             : "bg-transparent"
         }`}
       >
@@ -67,9 +67,9 @@ const AppHeader = () => {
           <Link
             to="/"
             onClick={() => trackClick("header_logo")}
-            className="flex items-center gap-3 group"
+            className="flex items-center gap-2 sm:gap-3 group"
           >
-            <span className="font-space-grotesk font-black text-2xl text-premium-text tracking-tighter">
+            <span className="font-space-grotesk font-black text-xl sm:text-2xl text-premium-text tracking-tighter">
               germ4n<span className="text-premium-primary">hyt</span>
             </span>
           </Link>
@@ -88,15 +88,15 @@ const AppHeader = () => {
             ))}
           </div>
 
-          <div className="flex items-center gap-3 sm:gap-4">
+          <div className="flex items-center gap-2 sm:gap-4">
             {/* Language Switcher Button */}
             <button
               onClick={toggleLang}
-              className="px-3.5 py-2 flex items-center gap-1.5 rounded-xl glass-effect text-xs font-space-grotesk font-bold text-premium-text-muted hover:text-premium-primary hover:bg-premium-surface-high transition-all duration-300 border border-premium-text/5"
+              className="px-2.5 py-1.5 sm:px-3.5 sm:py-2 flex items-center gap-1 sm:gap-1.5 rounded-lg sm:rounded-xl glass-effect text-[11px] sm:text-xs font-space-grotesk font-bold text-premium-text-muted hover:text-premium-primary hover:bg-premium-surface-high transition-all duration-300 border border-premium-text/5"
               title={lang === "es" ? "Switch to English" : "Cambiar a Español"}
               aria-label="Toggle Language"
             >
-              <FiGlobe className="text-sm text-premium-primary" />
+              <FiGlobe className="text-xs sm:text-sm text-premium-primary" />
               <span className={lang === "es" ? "text-premium-primary font-black" : "opacity-60"}>ES</span>
               <span className="opacity-30">|</span>
               <span className={lang === "en" ? "text-premium-primary font-black" : "opacity-60"}>EN</span>
@@ -105,10 +105,10 @@ const AppHeader = () => {
             {/* Theme Toggle Button */}
             <button
               onClick={handleThemeChange}
-              className="w-11 h-11 flex items-center justify-center rounded-xl glass-effect text-premium-text-muted hover:text-premium-primary hover:bg-premium-surface-high transition-all duration-300"
+              className="w-9 h-9 sm:w-11 sm:h-11 flex items-center justify-center rounded-lg sm:rounded-xl glass-effect text-premium-text-muted hover:text-premium-primary hover:bg-premium-surface-high transition-all duration-300"
               aria-label="Toggle Theme"
             >
-              {theme === "dark" ? <FiSun size={20} /> : <FiMoon size={20} />}
+              {theme === "dark" ? <FiSun className="text-base sm:text-xl" /> : <FiMoon className="text-base sm:text-xl" />}
             </button>
 
             {/* Contact Button */}
@@ -121,10 +121,10 @@ const AppHeader = () => {
 
             <button
               onClick={toggleMenu}
-              className="md:hidden p-2.5 text-premium-text"
+              className="md:hidden p-2 text-premium-text hover:text-premium-primary transition-colors"
               aria-label="Toggle Menu"
             >
-              {showMenu ? <FiX size={28} /> : <FiMenu size={28} />}
+              {showMenu ? <FiX className="text-2xl sm:text-3xl" /> : <FiMenu className="text-2xl sm:text-3xl" />}
             </button>
           </div>
         </div>
@@ -136,9 +136,9 @@ const AppHeader = () => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="absolute top-[80px] left-0 w-full bg-premium-bg md:hidden border-b border-premium-text/5 shadow-2xl overflow-hidden"
+              className="absolute top-[70px] sm:top-[80px] left-0 w-full bg-premium-bg/95 backdrop-blur-2xl md:hidden border-b border-premium-text/10 shadow-2xl overflow-y-auto max-h-[calc(100vh-70px)]"
             >
-              <div className="flex flex-col p-8 gap-6">
+              <div className="flex flex-col p-6 sm:p-8 gap-5 sm:gap-6">
                 {navItems.map((item) => (
                   <Link
                     key={item.href}
@@ -147,7 +147,7 @@ const AppHeader = () => {
                       setShowMenu(false);
                       trackClick("header_mobile_nav_link", { label: item.label });
                     }}
-                    className="text-3xl font-space-grotesk font-black text-premium-text hover:text-premium-primary transition-colors"
+                    className="text-2xl sm:text-3xl font-space-grotesk font-black text-premium-text hover:text-premium-primary transition-colors py-1"
                   >
                     {item.label}
                   </Link>
@@ -157,7 +157,7 @@ const AppHeader = () => {
                     setShowMenu(false);
                     showHireMeModal();
                   }}
-                  className="w-full py-5 bg-premium-primary text-white font-space-grotesk font-black uppercase text-sm tracking-widest rounded-2xl shadow-xl shadow-premium-primary/20"
+                  className="w-full py-4 sm:py-5 bg-premium-primary text-white font-space-grotesk font-black uppercase text-xs sm:text-sm tracking-widest rounded-xl sm:rounded-2xl shadow-xl shadow-premium-primary/20 active:scale-98 transition-all"
                 >
                   {t.contactBtn}
                 </button>

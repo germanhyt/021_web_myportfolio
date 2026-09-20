@@ -1,0 +1,42 @@
+<svg width="980" height="280" viewBox="0 0 980 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="ayniflow-propuesta-bg" x1="36" y1="36" x2="244" y2="244" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#4B5320" />
+      <stop offset="1" stop-color="#8B995E" />
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="980" height="280" rx="28" fill="#F8F9F5" />
+
+  <g transform="translate(32, 20)">
+    <rect x="0" y="0" width="240" height="240" rx="48" fill="url(#ayniflow-propuesta-bg)" />
+    <circle cx="120" cy="120" r="78" fill="#F4F5F0" fill-opacity="0.14" stroke="#F4F5F0" stroke-opacity="0.34" />
+    <path
+      d="M54 136C64.5 114.5 78.5 105.8 90.8 115C103 124 103 142 90.8 151C78.5 160.2 64.5 151.5 54 130"
+      stroke="#F4F5F0"
+      stroke-width="9.8"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M186 104C175.5 82.5 161.5 73.8 149.2 83C137 92 137 110 149.2 119C161.5 128.2 175.5 119.5 186 98"
+      stroke="#F4F5F0"
+      stroke-width="9.8"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path d="M90.4 120H149.6" stroke="#F4F5F0" stroke-width="9.8" stroke-linecap="round" />
+    <circle cx="57.5" cy="133.5" r="7.2" fill="#F4F5F0" />
+    <circle cx="182.5" cy="106.5" r="7.2" fill="#F4F5F0" />
+  </g>
+
+  <g transform="translate(312, 104)">
+    <text x="0" y="0" font-family="Manrope, Segoe UI, Arial, sans-serif" font-size="84" font-weight="700">
+      <tspan fill="#1A1C14">Ayni</tspan>
+      <tspan fill="#4B5320">Flow</tspan>
+    </text>
+    <text x="4" y="42" font-family="Manrope, Segoe UI, Arial, sans-serif" font-size="26" fill="#5A6050">
+      plataforma modular de gestión financiera
+    </text>
+  </g>
+</svg>

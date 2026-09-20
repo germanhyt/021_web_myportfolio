@@ -10,7 +10,7 @@ interface IProps {
 
 const ProjectSingle = ({ number }: IProps) => {
   return (
-    <section className="min-h-screen pt-32 bg-premium-bg">
+    <section className="min-h-screen pt-20 sm:pt-32 pb-16 bg-premium-bg">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -19,7 +19,7 @@ const ProjectSingle = ({ number }: IProps) => {
           duration: 0.6,
           delay: 0.15,
         }}
-        className="container mx-auto mt-5 sm:mt-10"
+        className="container mx-auto px-4 sm:px-6 lg:px-8 mt-2 sm:mt-6"
       >
         <ProjectsProvider idProject={number}>
           <ProjectHeader />
