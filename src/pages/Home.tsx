@@ -12,8 +12,8 @@ const Home = () => {
   useScrollTracker();
 
   useEffect(() => {
-    // Simulate initial loading for premium feel
-    const timer = setTimeout(() => setLoading(false), 1200);
+    // Initial loader transition
+    const timer = setTimeout(() => setLoading(false), 800);
     return () => clearTimeout(timer);
   }, []);
 
@@ -25,39 +25,33 @@ const Home = () => {
             key="loader"
             initial={{ opacity: 1 }}
             exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
             className="fixed inset-0 w-full h-full flex flex-col items-center justify-center bg-premium-bg z-[100]"
           >
-            <div className="relative w-28 h-28">
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
-                className="absolute inset-0 border-[3px] border-premium-primary/10 rounded-full"
-              />
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
-                className="absolute inset-0 border-[3px] border-t-premium-primary rounded-full box-content"
-              />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-premium-primary font-space-grotesk font-black text-xl tracking-tighter">G.</span>
+            <div className="relative w-24 h-28 flex items-center justify-center">
+              <div className="relative w-20 h-20">
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
+                  className="absolute inset-0 border-[3px] border-premium-primary/10 rounded-full"
+                />
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
+                  className="absolute inset-0 border-[3px] border-t-premium-primary rounded-full box-content"
+                />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="text-premium-primary font-space-grotesk font-black text-xl tracking-tighter">G.</span>
+                </div>
               </div>
             </div>
-            <motion.span
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              className="mt-8 text-premium-text-muted font-space-grotesk font-bold text-xs tracking-[0.4em] uppercase"
-            >
-              Cargando landing...
-            </motion.span>
           </motion.section>
         ) : (
           <motion.main
             key="content"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
             className="relative pt-24 overflow-hidden"
           >
             {/* Hero Section */}

@@ -36,12 +36,15 @@ const HireMeModal = ({ onClose }: IProps) => {
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 my-auto overflow-y-auto">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.25, ease: "easeInOut" }}
+      className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 my-auto overflow-y-auto"
+    >
       {/* Backdrop */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
+      <div
         onClick={onClose}
         className="fixed inset-0 bg-premium-bg/85 backdrop-blur-xl"
       />
@@ -52,7 +55,7 @@ const HireMeModal = ({ onClose }: IProps) => {
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 20 }}
         transition={{ type: "spring", damping: 25, stiffness: 300 }}
-        className="relative w-full max-w-2xl bg-premium-surface rounded-[2rem] sm:rounded-[3rem] border border-premium-text/10 shadow-[0_30px_90px_-15px_rgba(0,0,0,0.6)] overflow-hidden my-auto max-h-[92vh] flex flex-col"
+        className="relative w-full max-w-2xl bg-premium-surface rounded-[2rem] sm:rounded-[3rem] border border-premium-text/10 shadow-[0_30px_90px_-15px_rgba(0,0,0,0.6)] overflow-hidden my-auto max-h-[92vh] flex flex-col z-10"
       >
         <div className="absolute top-3 right-3 sm:top-6 sm:right-6 z-10">
           <button
@@ -155,7 +158,7 @@ const HireMeModal = ({ onClose }: IProps) => {
           </form>
         </div>
       </motion.div>
-    </div>
+    </motion.div>
   );
 };
 

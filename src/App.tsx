@@ -29,7 +29,13 @@ function App() {
               <Suspense
                 fallback={
                   <div className="h-screen flex items-center justify-center bg-premium-bg">
-                    <span className="text-premium-primary font-space-grotesk animate-pulse">Cargando...</span>
+                    <div className="relative w-20 h-20">
+                      <div className="absolute inset-0 border-[3px] border-premium-primary/10 rounded-full" />
+                      <div className="absolute inset-0 border-[3px] border-t-premium-primary rounded-full animate-spin" />
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <span className="text-premium-primary font-space-grotesk font-black text-xl tracking-tighter">G.</span>
+                      </div>
+                    </div>
                   </div>
                 }
               >

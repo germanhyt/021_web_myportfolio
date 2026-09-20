@@ -57,10 +57,10 @@ const AppHeader = () => {
       <motion.nav
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className={`w-full transition-all duration-500 h-[70px] sm:h-[80px] flex items-center ${
+        className={`w-full transition-all duration-500 h-[70px] sm:h-[80px] flex items-center border-b ${
           isScrolled
-            ? "bg-premium-bg/85 backdrop-blur-xl border-b border-premium-text/5 shadow-lg"
-            : "bg-transparent"
+            ? "bg-premium-bg/85 backdrop-blur-xl border-premium-text/5 shadow-lg"
+            : "bg-transparent border-transparent shadow-none"
         }`}
       >
         <div className="container mx-auto flex justify-between items-center px-4 sm:px-6 lg:px-8">
