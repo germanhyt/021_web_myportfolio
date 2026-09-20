@@ -1,6 +1,6 @@
 /**
- * Helper de Analítica para GA4 (G-ED75E00YVK) y Google Tag Manager (GTM-WMRX93DP)
- * Domain: germanhyt.site
+ * Helper de Analítica para GA4 (G-C3MK6Y0J3X) y Google Tag Manager (GTM-KNZWP3BJ)
+ * Domain: germ4nhyt.site
  */
 
 declare global {
@@ -17,7 +17,7 @@ export function trackEvent(eventName: string, eventParams: Record<string, any> =
   try {
     const payload = {
       event: eventName,
-      domain: "germanhyt.site",
+      domain: "germ4nhyt.site",
       timestamp: new Date().toISOString(),
       ...eventParams,
     };
