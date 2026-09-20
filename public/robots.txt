@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://germanhyt.site/sitemap.xml
+Sitemap: https://germ4nhyt.site/sitemap.xml
