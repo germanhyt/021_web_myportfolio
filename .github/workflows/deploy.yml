@@ -1,0 +1,41 @@
+name: Deploy Portfolio to VPS
+
+on:
+  push:
+    branches:
+      - main
+      - feature/german-dev
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'yarn'
+
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Run Tests
+        run: yarn test
+
+      - name: Build Production Project
+        run: yarn build
+
+      - name: Deploy to VPS via SSH & Rsync
+        uses: easingthemes/ssh-deploy@v5.1.0
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
+          ARGS: "-rltgoDzx --delete"
+          SOURCE: "dist/"
+          REMOTE_HOST: ${{ secrets.SSH_HOST }}
+          REMOTE_USER: "root"
+          TARGET: "/home/projects2/my_portfolio_2024/dist/"
+          EXCLUDE: "/node_modules/"
