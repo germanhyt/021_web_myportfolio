@@ -32,10 +32,10 @@ jobs:
       - name: Deploy to VPS via SSH & Rsync
         uses: easingthemes/ssh-deploy@v5.1.0
         with:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
+          SSH_PRIVATE_KEY: ${{ secrets.VPS_HOST_G4HYT || secrets.SSH_KEY }}
           ARGS: "-rltgoDzx --delete"
           SOURCE: "dist/"
-          REMOTE_HOST: ${{ secrets.SSH_HOST }}
+          REMOTE_HOST: ${{ secrets.SSH_HOST || '62.169.23.24' }}
           REMOTE_USER: "root"
           TARGET: "/home/projects2/my_portfolio_2024/dist/"
           EXCLUDE: "/node_modules/"
