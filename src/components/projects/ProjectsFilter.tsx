@@ -1,19 +1,25 @@
 import Select, { StylesConfig } from "react-select";
-
-const selectOptions = [
-  { value: "", label: "Todas las categorías" },
-  { value: "Fullstack web", label: "Fullstack web" },
-  { value: "Landing page", label: "Landing page" },
-  { value: "Website", label: "Website" },
-  { value: "Data Engineering", label: "Data Engineering" },
-  { value: "Data Analytics", label: "Data Analytics" },
-];
+import { trackFilterChange } from "@/core/helpers/analytics";
+import { useLanguage } from "@/core/hooks/context/LanguageContext";
+import { translations } from "@/core/data/translations";
 
 interface IProps {
   setSelectProject: (value: string) => void;
 }
 
 const ProjectsFilter = ({ setSelectProject }: IProps) => {
+  const { lang } = useLanguage();
+  const t = translations[lang].filter;
+
+  const selectOptions = [
+    { value: "", label: t.all },
+    { value: "Fullstack web", label: t.fullstack },
+    { value: "Landing page", label: t.landing },
+    { value: "Website", label: t.website },
+    { value: "Data Engineering", label: t.dataEngineering },
+    { value: "Data Analytics", label: t.dataAnalytics },
+  ];
+
   // Keep dropdown under the fixed header (z-50 / 80px) so it never covers the nav.
   const customStyles: StylesConfig<{ value: string; label: string }, false> = {
     control: (base, state) => ({
@@ -85,11 +91,16 @@ const ProjectsFilter = ({ setSelectProject }: IProps) => {
     <div className="w-full sm:w-[280px]">
       <Select
         defaultValue={selectOptions[0]}
+        value={selectOptions.find((o) => o.value === "") || selectOptions[0]}
         options={selectOptions}
-        onChange={(option) => setSelectProject(option?.value ?? "")}
+        onChange={(option) => {
+          const val = option?.value ?? "";
+          setSelectProject(val);
+          trackFilterChange(val);
+        }}
         styles={customStyles}
         isSearchable={false}
-        placeholder="Filtrar por categoría"
+        placeholder={t.placeholder}
         classNamePrefix="react-select"
         menuPortalTarget={document.body}
         menuPlacement="auto"

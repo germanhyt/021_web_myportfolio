@@ -1,8 +1,13 @@
 import { ProjectsContext } from "@/core/hooks/context/ProjectsContext";
 import { useContext } from "react";
+import { trackOutboundLink } from "@/core/helpers/analytics";
+import { useLanguage } from "@/core/hooks/context/LanguageContext";
+import { translations } from "@/core/data/translations";
 
 const ProjectInfo = () => {
   const { projects, idProject } = useContext(ProjectsContext);
+  const { lang } = useLanguage();
+  const t = translations[lang].projectDetail;
 
   const currentProject = projects.find((project) => project.id === idProject);
 
@@ -13,7 +18,7 @@ const ProjectInfo = () => {
       <aside className="lg:col-span-4 space-y-6">
         <div className="bg-premium-surface/30 p-7 rounded-3xl border border-white/5">
           <h3 className="font-space-grotesk text-lg font-bold text-premium-text mb-5">
-            {currentProject.ProjectInfo.ClientHeading}
+            {t.clientHeading}
           </h3>
           <ul className="space-y-4">
             {currentProject.ProjectInfo.CompanyInfo.map((info) => (
@@ -31,7 +36,7 @@ const ProjectInfo = () => {
 
         <div className="bg-premium-surface/30 p-7 rounded-3xl border border-white/5">
           <h4 className="font-space-grotesk text-sm font-bold text-premium-text-muted uppercase tracking-widest mb-6">
-            {currentProject.ProjectInfo.SocialSharingHeading}
+            {t.linksHeading}
           </h4>
           <div className="flex items-center gap-3">
             {currentProject.ProjectInfo.SocialSharing.map((social) => (
@@ -39,6 +44,7 @@ const ProjectInfo = () => {
                 key={social.id}
                 href={social.url}
                 target="__blank"
+                onClick={() => trackOutboundLink(social.url, `project_social_${social.name.toLowerCase()}`)}
                 aria-label={social.name}
                 className="w-12 h-12 flex items-center justify-center rounded-xl bg-premium-surface border border-white/5 text-premium-text-muted hover:text-premium-primary hover:border-premium-primary/50 transition-all duration-300"
               >
@@ -52,7 +58,7 @@ const ProjectInfo = () => {
       <section className="lg:col-span-8 space-y-6">
         <div className="bg-gradient-to-br from-premium-surface/60 to-premium-surface/20 p-8 rounded-3xl border border-premium-primary/30 shadow-[0_10px_40px_rgba(139,92,246,0.08)]">
           <h3 className="font-space-grotesk text-xl font-bold text-premium-text mb-4">
-            {currentProject.ProjectInfo.ObjectivesHeading}
+            {t.objectiveHeading}
           </h3>
           <p className="text-premium-text-muted font-manrope leading-snug text-base sm:text-lg max-w-4xl">
             {currentProject.ProjectInfo.ObjectivesDetails}
@@ -82,7 +88,7 @@ const ProjectInfo = () => {
 
         <div className="bg-premium-surface/20 p-7 rounded-3xl border border-white/5">
           <h2 className="font-space-grotesk text-2xl font-bold text-premium-text mb-6">
-            {currentProject.ProjectInfo.ProjectDetailsHeading}
+            {t.highlightsHeading}
           </h2>
           <div className="space-y-2">
             {currentProject.ProjectInfo.ProjectDetails.map((details, index) => (

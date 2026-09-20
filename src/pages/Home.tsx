@@ -5,9 +5,11 @@ import SectionAboutMe from "../components/reusable/SectionAboutMe";
 import SectionTechs from "../components/reusable/SectionTechs";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useScrollTracker } from "@/core/hooks/useScrollTracker";
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
+  useScrollTracker();
 
   useEffect(() => {
     // Simulate initial loading for premium feel

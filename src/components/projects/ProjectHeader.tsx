@@ -1,9 +1,15 @@
 import { ProjectsContext } from "@/core/hooks/context/ProjectsContext";
 import { useContext } from "react";
 import { FiClock, FiTag, FiExternalLink } from "react-icons/fi";
+import { trackOutboundLink } from "@/core/helpers/analytics";
+import { useLanguage } from "@/core/hooks/context/LanguageContext";
+import { translations } from "@/core/data/translations";
 
 const ProjectHeader = () => {
   const { projects, idProject } = useContext(ProjectsContext);
+  const { lang } = useLanguage();
+  const t = translations[lang].projectDetail;
+
   const p = projects.find((project) => project.id === idProject);
 
   if (!p) return null;
@@ -33,9 +39,10 @@ const ProjectHeader = () => {
           <a
             href={p.ProjectHeader.link}
             target="__blank"
+            onClick={() => trackOutboundLink(p.ProjectHeader.link, `project_header_${isRepositoryLink ? "repo" : "live"}`)}
             className="font-manrope ml-3 text-sm font-bold text-premium-primary hover:text-white transition-all break-all"
           >
-            {isRepositoryLink ? "Ver repositorio" : "Visitar Sitio Web"}
+            {isRepositoryLink ? t.viewRepo : t.visitWebsite}
           </a>
         </div>
       </div>

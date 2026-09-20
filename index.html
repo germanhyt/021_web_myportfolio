@@ -4,12 +4,102 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#000000" />
-  <meta name="description" content="Web site created by ShermanSystems" />
+  <meta name="theme-color" content="#0c0f0a" />
 
-  <!-- Shortcut Icon -->
-  <!-- <link rel="shortcut icon"
-    href="https://res.cloudinary.com/dz0ajaf3i/image/upload/v1697234001/006_Portfolio_Freelance/inicio-logo_aw7c8h.png" /> -->
+  <title>Germán Huaytalla (germ4nhyt) | Fullstack Developer & Systems Engineer</title>
+
+  <!-- Canonical & Base SEO -->
+  <link rel="canonical" href="https://germanhyt.site/" />
+  <meta name="description" content="Portafolio profesional de Germán Huaytalla (germ4nhyt). Bachiller en Ingeniería de Sistemas especializado en Desarrollo Web Fullstack, Arquitectura de Software e Ingeniería de Datos en Lima, Perú." />
+  <meta name="keywords" content="Germán Huaytalla, germ4nhyt, germanhyt.site, Ingeniero de Sistemas, Fullstack Developer, Desarrollo Web, React, Astro, NestJS, TypeScript, Python, BigQuery, Lima Peru" />
+  <meta name="author" content="Germán Huaytalla" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+  <!-- GEO Targeting Meta Tags (Lima, Perú) -->
+  <meta name="geo.region" content="PE-LIM" />
+  <meta name="geo.placename" content="Lima, Perú" />
+  <meta name="geo.position" content="-12.046374;-77.042793" />
+  <meta name="ICBM" content="-12.046374, -77.042793" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Germán Huaytalla | Portafolio Profesional" />
+  <meta property="og:title" content="Germán Huaytalla (germ4nhyt) | Fullstack Developer & Systems Engineer" />
+  <meta property="og:description" content="Portafolio profesional de Germán Huaytalla (germ4nhyt). Arquitectura de software, desarrollo web fullstack e ingeniería de datos." />
+  <meta property="og:url" content="https://germanhyt.site/" />
+  <meta property="og:image" content="https://germanhyt.site/images/projects/prod-captures/ktalweb-home-prod.png" />
+  <meta property="og:image:alt" content="Germán Huaytalla - Fullstack Developer Portfolio" />
+  <meta property="og:locale" content="es_PE" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Germán Huaytalla (germ4nhyt) | Fullstack Developer" />
+  <meta name="twitter:description" content="Portafolio profesional de Germán Huaytalla. Arquitectura de software y desarrollo fullstack." />
+  <meta name="twitter:image" content="https://germanhyt.site/images/projects/prod-captures/ktalweb-home-prod.png" />
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://germanhyt.site/#person",
+          "name": "Germán Huaytalla",
+          "alternateName": ["germ4nhyt", "germanhyt"],
+          "jobTitle": "Bachiller en Ingeniería de Sistemas & Fullstack Developer",
+          "url": "https://germanhyt.site/",
+          "image": "https://germanhyt.site/images/projects/prod-captures/ktalweb-home-prod.png",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Lima",
+            "addressRegion": "Lima",
+            "addressCountry": "PE"
+          },
+          "telephone": "+51915976931",
+          "email": "germanhuaytalla22@gmail.com",
+          "sameAs": [
+            "https://github.com/germanhyt"
+          ],
+          "knowsAbout": [
+            "Desarrollo Web Fullstack",
+            "Arquitectura de Software",
+            "React",
+            "TypeScript",
+            "Astro",
+            "NestJS",
+            "Laravel",
+            "Ingeniería de Datos",
+            "BigQuery",
+            "PostgreSQL"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://germanhyt.site/#website",
+          "url": "https://germanhyt.site/",
+          "name": "Germán Huaytalla | Portfolio",
+          "description": "Portafolio profesional de Germán Huaytalla (germ4nhyt)",
+          "publisher": {
+            "@id": "https://germanhyt.site/#person"
+          },
+          "inLanguage": "es-PE"
+        },
+        {
+          "@type": "ProfilePage",
+          "@id": "https://germanhyt.site/#webpage",
+          "url": "https://germanhyt.site/",
+          "name": "Germán Huaytalla (germ4nhyt) | Fullstack Developer & Systems Engineer",
+          "about": {
+            "@id": "https://germanhyt.site/#person"
+          },
+          "isPartOf": {
+            "@id": "https://germanhyt.site/#website"
+          }
+        }
+      ]
+    }
+  </script>
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-ED75E00YVK"></script>
@@ -19,8 +109,10 @@
       dataLayer.push(arguments);
     }
     gtag("js", new Date());
-
-    gtag("config", "G-ED75E00YVK");
+    gtag("config", "G-ED75E00YVK", {
+      send_page_view: true,
+      cookie_domain: "germanhyt.site"
+    });
   </script>
 
   <!-- Google Tag Manager -->
@@ -46,8 +138,6 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Manrope:wght@200..800&family=Inter:wght@400;500;700&display=swap"
     rel="stylesheet" />
-
-  <title>Germ4n Hyt | Portfolio</title>
 </head>
 
 <body>

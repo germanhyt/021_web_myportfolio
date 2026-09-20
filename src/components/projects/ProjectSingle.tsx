@@ -1,5 +1,8 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { trackProjectView } from "@/core/helpers/analytics";
+import { useLanguage } from "@/core/hooks/context/LanguageContext";
+import { translations } from "@/core/data/translations";
 
 interface IProps {
   title: string;
@@ -9,6 +12,9 @@ interface IProps {
 }
 
 const ProjectSingle = ({ title, category, image, numberproject }: IProps) => {
+  const { lang } = useLanguage();
+  const t = translations[lang].grid;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -23,6 +29,7 @@ const ProjectSingle = ({ title, category, image, numberproject }: IProps) => {
     >
       <Link
         to={`/projects/${numberproject}`}
+        onClick={() => trackProjectView(numberproject, title, category)}
         aria-label="Single Project"
         className="block"
       >
@@ -49,7 +56,7 @@ const ProjectSingle = ({ title, category, image, numberproject }: IProps) => {
             {/* View Project Pill - Appears on Hover */}
             <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-30">
               <div className="px-6 py-3 bg-white text-black font-space-grotesk font-bold rounded-full shadow-2xl scale-75 group-hover:scale-100 transition-transform duration-500 flex items-center gap-2">
-                Ver Caso de Estudio
+                {t.studyCasePill}
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
@@ -63,7 +70,7 @@ const ProjectSingle = ({ title, category, image, numberproject }: IProps) => {
               {title}
             </h3>
             <p className="font-manrope text-premium-text-muted text-sm line-clamp-2">
-              Explora los desafíos técnicos y la arquitectura implementada en este proyecto de alto impacto.
+              {t.cardDescription}
             </p>
           </div>
         </div>

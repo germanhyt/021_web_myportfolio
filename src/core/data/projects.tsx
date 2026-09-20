@@ -112,50 +112,65 @@ const curatedProjects: PortfolioProjectMeta[] = [
     id: 18,
     title: "Landing Laboratoria × L'Oréal",
     category: "Landing page",
-    publishDate: "Agosto 2026",
+    publishDate: "Septiembre 2026",
     visibility: "Publico",
     objective:
       "Impulsar la postulacion a Beauty in Tech (Activa tu Carrera), el programa 100% becado de Laboratoria en colaboracion con L'Oréal para fortalecer el perfil profesional de mujeres en tech e IA.",
     summary:
-      "Softlanding estatica en Astro + React islands para Beauty in Tech: narrativa de empleabilidad, beneficios del programa de 10 semanas, metodologia, medios y CTAs hacia postular.",
+      "Softlanding estatica en Astro + React islands para Beauty in Tech: narrativa de empleabilidad, beneficios del programa de 10 semanas, experiencias exclusivas, presencia en medios y CTA de postulacion activo.",
     description: [
-      "Hero full-bleed y secciones con motion/Swiper alineadas al prototipo Beauty in Tech (L'Oréal × Laboratoria).",
-      "Contenido modular (identificacion, beneficios, experiencia, resultados, FAQ) orientado a conversion de postulantes en Ciudad de Mexico.",
-      "SEO, sitemap y dominio productivo en activatucarrera-laboratoria-loreal.com; preview en Vercel.",
+      "Hero full-bleed y recorrido de secciones (oportunidades, Beauty in Tech, experiencia, resultados y medios) con motion y Swiper.",
+      "Programa 100% remoto y becado en Ciudad de Mexico: 10 semanas, 86 horas y cupo de 50 mujeres seleccionadas.",
+      "Postulacion conectada a app.laboratoria.la; SEO, sitemap y dominio productivo en activatucarrera-laboratoria-loreal.com.",
     ],
     techs: ["Astro", "React", "TypeScript", "TailwindCSS", "Framer Motion", "Swiper"],
     highlights: [
       "Beauty in Tech",
       "Colaboracion Laboratoria × L'Oréal",
       "Programa 100% becado / remoto",
-      "Landing de conversion + SEO",
+      "CTA Postular en produccion",
     ],
-    cover:
-      "https://raw.githubusercontent.com/germanhyt/softlanding-laboratoria-loreal-prod001/main/public/assets/hero/hero--desktop.webp",
-    logo: "/images/projects/laboratoria/logo.webp",
+    cover: "/images/projects/laboratoria-loreal/hero-desktop.webp",
+    logo: "/images/projects/laboratoria-loreal/logo-labo-loreal.png",
     gallery: [
       {
         title: "Hero — Beauty in Tech (desktop)",
-        img: "https://raw.githubusercontent.com/germanhyt/softlanding-laboratoria-loreal-prod001/main/public/assets/hero/hero--desktop.webp",
+        img: "/images/projects/laboratoria-loreal/hero-desktop.webp",
       },
       {
         title: "Hero — vista mobile",
-        img: "https://raw.githubusercontent.com/germanhyt/softlanding-laboratoria-loreal-prod001/main/public/assets/hero/hero--mobile.png",
+        img: "/images/projects/laboratoria-loreal/hero-mobile.webp",
       },
       {
-        title: "Seccion — experiencias y resultados",
-        img: "https://raw.githubusercontent.com/germanhyt/softlanding-laboratoria-loreal-prod001/main/public/assets/sections/11/sect11_experiencias_respalda_resultados_reales--desktop.webp",
+        title: "Comunidad Beauty in Tech",
+        img: "/images/projects/laboratoria-loreal/beauty-in-tech.webp",
+      },
+      {
+        title: "Seccion — nuevas oportunidades",
+        img: "/images/projects/laboratoria-loreal/nuevas-oportunidades.webp",
+      },
+      {
+        title: "Conoce lo que viviras en Activa",
+        img: "/images/projects/laboratoria-loreal/conoce-programa.webp",
+      },
+      {
+        title: "Experiencias exclusivas",
+        img: "/images/projects/laboratoria-loreal/experiencias-exclusivas.webp",
+      },
+      {
+        title: "Beauty in Tech en los medios",
+        img: "/images/projects/laboratoria-loreal/en-los-medios.webp",
       },
       {
         title: "Logo Laboratoria × L'Oréal",
-        img: "https://raw.githubusercontent.com/germanhyt/softlanding-laboratoria-loreal-prod001/main/public/assets/logos/logo-labo-loreal.png",
+        img: "/images/projects/laboratoria-loreal/logo-labo-loreal.png",
       },
     ],
     localSource:
       "softlanding-laboratoria-loreal-prod001 + activatucarrera-laboratoria-loreal.com",
     repositoryLabel: "softlanding-laboratoria-loreal-prod001",
     repositoryUrl: "https://github.com/germanhyt/softlanding-laboratoria-loreal-prod001",
-    productionUrl: "https://www.activatucarrera-laboratoria-loreal.com/",
+    productionUrl: "https://activatucarrera-laboratoria-loreal.com/",
     testingUrl: "https://softlanding-laboratoria-loreal-prod.vercel.app",
   },
   {

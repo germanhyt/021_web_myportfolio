@@ -2,8 +2,13 @@ import ContactDetails from "../contact/ContactDetails";
 import { motion } from "framer-motion";
 
 import profile from "@/assets/images/profile.jpg";
+import { useLanguage } from "@/core/hooks/context/LanguageContext";
+import { translations } from "@/core/data/translations";
 
 function SectionAboutMe() {
+  const { lang } = useLanguage();
+  const t = translations[lang].aboutMeSection;
+
   return (
     <section id="aboutme" className="py-24 px-4 sm:px-8">
       <div className="container mx-auto">
@@ -21,34 +26,31 @@ function SectionAboutMe() {
                   whileInView={{ opacity: 1 }}
                   className="text-premium-primary font-space-grotesk font-black uppercase text-xs tracking-[0.4em]"
                 >
-                  Filosofía de Trabajo
+                  {t.philosophyTag}
                 </motion.span>
                 <motion.h2
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   className="text-4xl sm:text-5xl lg:text-6xl font-space-grotesk font-extrabold text-premium-text tracking-tighter leading-[1.1]"
                 >
-                  Transformando <br />
-                  <span className="text-gradient">Abstracción</span> en Realidad.
+                  {t.headingPrefix} <br />
+                  <span className="text-gradient">{t.headingGradient}</span>{t.headingSuffix}
                 </motion.h2>
               </div>
 
               <div className="space-y-6">
                 <p className="text-xl leading-relaxed text-premium-text-muted font-manrope">
-                  Como Ingeniero de Sistemas, entiendo que el código es solo una herramienta para
-                  alcanzar objetivos de negocio. Mi valor reside en la capacidad de analizar problemas técnicos
-                  desde una perspectiva sistémica, garantizando que cada solución sea escalable, segura y eficiente.
+                  {t.paragraph1}
                 </p>
 
                 <p className="text-lg leading-relaxed text-premium-text-muted font-manrope opacity-80">
-                  Me especializo en arquitecturas modernas, basándome en principios de liderazgo,
-                  mejora continua y una curiosidad insaciable por las tecnologías emergentes.
+                  {t.paragraph2}
                 </p>
               </div>
 
               <div className="relative p-8 rounded-3xl bg-premium-bg/50 border-l-4 border-premium-primary border-y border-r border-premium-text/5">
                 <p className="text-premium-text font-manrope font-bold text-lg italic leading-relaxed">
-                  "Mi objetivo es arquitectar ecosistemas digitales que no solo funcionen, sino que impulsen el crecimiento de las organizaciones."
+                  {t.quote}
                 </p>
               </div>
 

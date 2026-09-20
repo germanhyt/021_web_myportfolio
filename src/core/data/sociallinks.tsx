@@ -1,24 +1,9 @@
-import { FiGithub, FiLinkedin } from "react-icons/fi";
+import { FiGithub } from "react-icons/fi";
 
 export const sociallinks = [
   {
     id: 1,
-    icon: <FiLinkedin />,
-    url: "https://www.linkedin.com/",
-  },
-  {
-    id: 2,
     icon: <FiGithub />,
-    url: "https://github.com",
+    url: "https://github.com/germanhyt",
   },
-  // {
-  //   id: 3,
-  //   icon: <FiInstagram />,
-  //   url: "https://instagram.com",
-  // },
-  // {
-  //   id: 4,
-  //   icon: <FiYoutube />,
-  //   url: "https://www.youtube.com/channel/UCG3yrlp0Z-_35aBYfHgb6Xg",
-  // },
 ];

@@ -1,3 +1,5 @@
+import { trackFormSubmit } from "./analytics";
+
 export const CONTACT_EMAIL = "germanhuaytalla22@gmail.com";
 
 export interface MailtoPayload {
@@ -30,5 +32,10 @@ export function buildMailtoHref({
 }
 
 export function openMailto(payload: MailtoPayload): void {
+  trackFormSubmit("contact_mailto", {
+    sender_name: payload.name,
+    sender_email: payload.email,
+    subject: payload.subject,
+  });
   window.location.href = buildMailtoHref(payload);
 }

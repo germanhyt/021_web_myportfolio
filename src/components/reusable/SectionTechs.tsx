@@ -2,9 +2,13 @@ import { useState } from "react";
 import { BiChevronDown } from "react-icons/bi";
 import { techData } from "@/core/data/techs";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLanguage } from "@/core/hooks/context/LanguageContext";
+import { translations } from "@/core/data/translations";
 
 function SectionTechs() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const { lang } = useLanguage();
+  const t = translations[lang].techsSection;
 
   const toggle = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -14,23 +18,15 @@ function SectionTechs() {
     <section id="techs" className="py-24 px-4 sm:px-8 bg-premium-bg/50">
       <div className="container mx-auto">
         <div className="text-center mb-20 space-y-4">
-          {/* <motion.span
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="text-premium-accent font-space-grotesk font-black uppercase text-xs tracking-[0.4em]"
-          >
-            Capabilities
-          </motion.span> */}
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             className="text-4xl sm:text-6xl font-space-grotesk font-extrabold text-premium-text tracking-tighter"
           >
-            Stack & <span className="text-gradient">Ecosistema.</span>
+            {t.titlePrefix}<span className="text-gradient">{t.titleGradient}</span>
           </motion.h2>
           <p className="max-w-2xl mx-auto text-premium-text-muted font-manrope text-lg">
-            Dominio de herramientas líderes en la industria para garantizar escalabilidad,
-            rendimiento y mantenibilidad en cada desarrollo.
+            {t.subtitle}
           </p>
         </div>
 
@@ -43,7 +39,7 @@ function SectionTechs() {
                 key={category.name}
                 layout
                 className={`
-                  bg-premium-surface rounded-[2.5rem]  border-premium-text/5 overflow-hidden transition-all duration-500 hover:border-premium-primary/30 
+                  bg-premium-surface rounded-[2.5rem] border-premium-text/5 overflow-hidden transition-all duration-500 hover:border-premium-primary/30 
                   hover:shadow-lg
                   group ${isOpen ? "border-2 border-premium-primary/4 shadow-2xl" : "shadow-sm"
                   }`}
@@ -62,7 +58,7 @@ function SectionTechs() {
                         {category.name}
                       </h3>
                       <p className="text-xs font-manrope font-bold text-premium-text-muted uppercase tracking-widest mt-1">
-                        {category.images.length} herramientas
+                        {category.images.length} {t.toolsCount}
                       </p>
                     </div>
                   </div>

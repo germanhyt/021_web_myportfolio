@@ -2,23 +2,24 @@ import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { sociallinks } from "@/core/data/sociallinks";
 import Typed from "typed.js";
-// import { ThemeContext } from "@/core/hooks/context/ThemeContext";
 import { FiDatabase, FiCode, FiLayers, FiCpu } from "react-icons/fi";
+import { trackClick, trackOutboundLink } from "@/core/helpers/analytics";
+import { useLanguage } from "@/core/hooks/context/LanguageContext";
+import { translations } from "@/core/data/translations";
 
 const AppBanner = () => {
   const el = useRef(null);
   const typed = useRef<Typed | null>(null);
+  const { lang } = useLanguage();
+  const t = translations[lang].hero;
 
   useEffect(() => {
+    if (typed.current) {
+      typed.current.destroy();
+    }
+
     typed.current = new Typed(el.current, {
-      strings: [
-        "Soy Germán Huaytalla",
-        "Bachiller en Sistemas",
-        "Orientado en:",
-        "Desarrollo Web",
-        "Ingeniería de Datos",
-        "Arquitectura de soluciones",
-      ],
+      strings: t.typed as unknown as string[],
       typeSpeed: 60,
       backSpeed: 40,
       loop: true,
@@ -28,7 +29,7 @@ const AppBanner = () => {
     return () => {
       typed.current?.destroy();
     };
-  }, []);
+  }, [lang, t.typed]);
 
   return (
     <motion.section
@@ -37,26 +38,15 @@ const AppBanner = () => {
       className="container mx-auto min-h-[90vh] flex flex-col md:flex-row items-center justify-between px-4 sm:px-8 py-20 hero-bg"
     >
       <div className="w-full md:w-4/5 text-left z-10 space-y-10">
-        {/* <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          className="inline-block"
-        >
-          <span className="px-5 py-2 rounded-full bg-premium-secondary/10 border border-premium-secondary/20 text-premium-secondary font-space-grotesk font-black text-xs uppercase tracking-[0.3em]">
-            Soluciones Digitales
-          </span>
-        </motion.div> */}
-
         <h1 className="font-space-grotesk font-extrabold text-5xl sm:text-7xl lg:text-8xl text-premium-text leading-tight md:leading-[1.1] tracking-tighter">
-          Hola, <br />
+          {t.greeting} <br />
           <span className="text-gradient">
             <span ref={el} />
           </span>
         </h1>
 
         <p className="max-w-2xl font-manrope text-xl lg:text-2xl text-premium-text-muted leading-relaxed">
-          Diseño arquitecturas escalables que se adaptan a las necesidades de la organización.
+          {t.description}
         </p>
 
         <div className="flex flex-col sm:flex-row gap-8 items-center pt-4">
@@ -70,6 +60,7 @@ const AppBanner = () => {
                 href={link.url}
                 target="__blank"
                 key={link.id}
+                onClick={() => trackOutboundLink(link.url, "hero_github")}
                 className="w-14 h-14 flex items-center justify-center rounded-xl text-premium-text-muted hover:text-premium-primary hover:bg-premium-primary/10 transition-all duration-300"
                 title={String(link.id)}
               >
@@ -80,9 +71,10 @@ const AppBanner = () => {
 
           <a
             href="#projects"
+            onClick={() => trackClick("hero_explore_portfolio_btn")}
             className="px-10 py-5 bg-premium-text text-premium-bg font-space-grotesk font-black uppercase text-sm tracking-widest rounded-2xl hover:scale-105 active:scale-95 transition-all duration-300 shadow-2xl shadow-premium-text/20"
           >
-            Explorar Portafolio
+            {t.exploreBtn}
           </a>
         </div>
       </div>
@@ -105,7 +97,7 @@ const AppBanner = () => {
             className="relative z-20 w-24 h-24 bg-premium-surface rounded-2xl flex items-center justify-center border border-premium-primary/50 shadow-[0_0_40px_rgba(var(--premium-primary-rgb),0.2)] overflow-hidden backdrop-blur-md"
             animate={{ y: [0, -10, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            title="Arquitectura de Soluciones"
+            title={t.nodes.architecture}
           >
             <FiLayers className="text-5xl text-premium-accent drop-shadow-[0_0_12px_rgba(var(--premium-accent-rgb),0.8)]" />
             <div className="absolute inset-0 bg-gradient-to-tr from-premium-primary/10 to-transparent pointer-events-none" />
@@ -118,7 +110,7 @@ const AppBanner = () => {
             className="absolute top-8 left-8 w-14 h-14 bg-premium-surface rounded-xl border border-premium-accent/40 flex items-center justify-center shadow-[0_10px_30px_rgba(var(--premium-surface-rgb),0.5)] backdrop-blur-md z-30 hover:scale-110 hover:border-premium-accent transition-transform cursor-pointer"
             animate={{ y: [0, 15, 0], x: [0, 10, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-            title="Desarrollo Web"
+            title={t.nodes.web}
           >
             <FiCode className="text-2xl text-premium-text" />
           </motion.div>
@@ -128,7 +120,7 @@ const AppBanner = () => {
             className="absolute bottom-10 right-6 w-16 h-16 bg-premium-surface rounded-full border border-premium-secondary/60 flex items-center justify-center shadow-[0_10px_30px_rgba(var(--premium-surface-rgb),0.5)] backdrop-blur-md z-30 hover:scale-110 hover:border-premium-secondary transition-transform cursor-pointer"
             animate={{ y: [0, -20, 0], x: [0, -15, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            title="Ingeniería de Datos"
+            title={t.nodes.data}
           >
             <FiDatabase className="text-2xl text-premium-text" />
           </motion.div>
@@ -138,7 +130,7 @@ const AppBanner = () => {
             className="absolute top-1/2 -right-4 w-12 h-12 bg-premium-surface rounded-lg border border-premium-primary/40 flex items-center justify-center shadow-[0_10px_30px_rgba(var(--premium-surface-rgb),0.5)] backdrop-blur-md z-30 hover:scale-110 hover:border-premium-primary transition-transform cursor-pointer"
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-            title="Sistemas y Servidores"
+            title={t.nodes.systems}
           >
             <FiCpu className="text-xl text-premium-text" />
           </motion.div>

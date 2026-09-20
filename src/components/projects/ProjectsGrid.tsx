@@ -4,6 +4,9 @@ import ProjectSingle from "./ProjectSingle";
 import { ProjectsContext } from "@/core/hooks/context/ProjectsContext";
 import ProjectsFilter from "./ProjectsFilter";
 import { motion } from "framer-motion";
+import { trackClick, trackEvent } from "@/core/helpers/analytics";
+import { useLanguage } from "@/core/hooks/context/LanguageContext";
+import { translations } from "@/core/data/translations";
 
 interface IProps {
   page: any;
@@ -20,10 +23,14 @@ const ProjectsGrid = ({ page }: IProps) => {
     selectProjectsByCategory,
   } = useContext(ProjectsContext);
 
+  const { lang } = useLanguage();
+  const t = translations[lang].grid;
+
   const [projectsquantity, setProjectProjectsquantity] = useState<number>(6);
 
   const handleAddProjects = () => {
     setProjectProjectsquantity(projectsquantity + 6);
+    trackClick("load_more_projects_btn", { new_quantity: projectsquantity + 6 });
   };
 
   const filteredProjects = selectProject
@@ -41,21 +48,13 @@ const ProjectsGrid = ({ page }: IProps) => {
       <div className="container mx-auto">
         {/* Section Header */}
         <div className="max-w-4xl mb-16 space-y-4">
-          {/* <motion.span
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="text-premium-primary font-space-grotesk font-black uppercase text-xs tracking-[0.3em]"
-          >
-            Casos cruciales
-          </motion.span> */}
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-4xl sm:text-6xl font-space-grotesk font-extrabold text-premium-text tracking-tighter"
           >
-            Ingeniería que genera <span className="text-gradient">Impacto.</span>
+            {t.titlePrefix}<span className="text-gradient">{t.titleGradient}</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
@@ -63,8 +62,7 @@ const ProjectsGrid = ({ page }: IProps) => {
             viewport={{ once: true }}
             className="text-premium-text-muted font-manrope text-lg max-w-2xl leading-relaxed"
           >
-            Cada proyecto es un desafío resuelto con innovación.
-            Desde microservicios hasta interfaces asombrosas, aquí está el valor que he construido.
+            {t.subtitle}
           </motion.p>
         </div>
 
@@ -74,12 +72,18 @@ const ProjectsGrid = ({ page }: IProps) => {
             <div className="w-full lg:w-3/5 flex items-center gap-4 bg-premium-bg border border-premium-text/5 rounded-2xl px-6 focus-within:border-premium-primary focus-within:ring-2 focus-within:ring-premium-primary/20 transition-all duration-300">
               <FiSearch className="text-premium-text-muted w-5 h-5" />
               <input
-                onChange={(e) => setSearchProject(e.target.value)}
+                onChange={(e) => {
+                  const val = e.target.value;
+                  setSearchProject(val);
+                  if (val.length > 2) {
+                    trackEvent("search_projects", { query: val });
+                  }
+                }}
                 className="w-full py-5 bg-transparent text-premium-text placeholder:text-premium-text-muted focus:outline-none font-manrope text-lg"
                 id="name"
                 name="name"
                 type="search"
-                placeholder="Busca por título o tecnología..."
+                placeholder={t.searchPlaceholder}
                 aria-label="Buscar Proyectos"
               />
             </div>
@@ -107,7 +111,7 @@ const ProjectsGrid = ({ page }: IProps) => {
         {filteredProjects.length === 0 && (
           <div className="py-20 text-center">
             <p className="text-xl text-premium-text-muted font-manrope font-bold italic ">
-              En proceso de definirse
+              {t.emptyState}
             </p>
           </div>
         )}
@@ -121,7 +125,7 @@ const ProjectsGrid = ({ page }: IProps) => {
               className="flex items-center gap-3 px-10 py-5 bg-premium-text text-premium-bg rounded-2xl font-space-grotesk font-black uppercase text-sm tracking-widest hover:shadow-2xl hover:shadow-premium-text/20 transition-all duration-300"
               onClick={handleAddProjects}
             >
-              Cargar más proyectos
+              {t.loadMoreBtn}
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>

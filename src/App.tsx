@@ -8,6 +8,7 @@ import "@/assets/css/Customstyles.css";
 import { lazy, Suspense } from "react";
 import AppFooter from "./components/shared/AppFooter";
 import { ThemeProvider } from "@/core/hooks/context/ThemeContext";
+import { LanguageProvider } from "@/core/hooks/context/LanguageContext";
 
 import { projectsData } from "./core/data/projects";
 
@@ -16,37 +17,39 @@ const ProjectSingle = lazy(() => import("./pages/ProjectSingle"));
 
 function App() {
   return (
-    <ThemeProvider>
-      <AnimatePresence>
-        <div className="m-0 p-0 border-none box-border transition-colors duration-500">
-          <ButtonWhatsapp />
+    <LanguageProvider>
+      <ThemeProvider>
+        <AnimatePresence>
+          <div className="m-0 p-0 border-none box-border transition-colors duration-500">
+            <ButtonWhatsapp />
 
-          <Router>
-            <AppHeader />
-            <ScrollToTop />
-            <Suspense
-              fallback={
-                <div className="h-screen flex items-center justify-center bg-premium-bg">
-                  <span className="text-premium-primary font-space-grotesk animate-pulse">Cargando...</span>
-                </div>
-              }
-            >
-              <Routes>
-                <Route path="/" element={<Home />} />
-                {projectsData.map((project) => (
-                  <Route
-                    key={project.id}
-                    path={`/projects/${project.id}`}
-                    element={<ProjectSingle number={project.id} />}
-                  />
-                ))}
-              </Routes>
-            </Suspense>
-            <AppFooter />
-          </Router>
-        </div>
-      </AnimatePresence>
-    </ThemeProvider>
+            <Router>
+              <AppHeader />
+              <ScrollToTop />
+              <Suspense
+                fallback={
+                  <div className="h-screen flex items-center justify-center bg-premium-bg">
+                    <span className="text-premium-primary font-space-grotesk animate-pulse">Cargando...</span>
+                  </div>
+                }
+              >
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  {projectsData.map((project) => (
+                    <Route
+                      key={project.id}
+                      path={`/projects/${project.id}`}
+                      element={<ProjectSingle number={project.id} />}
+                    />
+                  ))}
+                </Routes>
+              </Suspense>
+              <AppFooter />
+            </Router>
+          </div>
+        </AnimatePresence>
+      </ThemeProvider>
+    </LanguageProvider>
   );
 }
 

@@ -1,34 +1,39 @@
 import { FiPhone, FiMapPin, FiMail } from "react-icons/fi";
 import { motion } from "framer-motion";
 import { CONTACT_EMAIL } from "@/core/helpers/mailto";
-
-const contacts = [
-  {
-    id: 1,
-    name: "Lima - Perú",
-    icon: <FiMapPin />,
-    label: "Ubicación"
-  },
-  {
-    id: 2,
-    name: CONTACT_EMAIL,
-    icon: <FiMail />,
-    label: "Email Profesional"
-  },
-  {
-    id: 3,
-    name: "+51 910 139 973",
-    icon: <FiPhone />,
-    label: "Llamada Directa"
-  },
-];
+import { useLanguage } from "@/core/hooks/context/LanguageContext";
+import { translations } from "@/core/data/translations";
 
 const ContactDetails = () => {
+  const { lang } = useLanguage();
+  const t = translations[lang].aboutMeSection;
+
+  const contacts = [
+    {
+      id: 1,
+      name: t.locationValue,
+      icon: <FiMapPin />,
+      label: t.locationLabel,
+    },
+    {
+      id: 2,
+      name: CONTACT_EMAIL,
+      icon: <FiMail />,
+      label: t.emailLabel,
+    },
+    {
+      id: 3,
+      name: "+51 915 976 931",
+      icon: <FiPhone />,
+      label: t.phoneLabel,
+    },
+  ];
+
   return (
     <div className="w-full">
       <div className="text-left space-y-6">
         <h3 className="text-sm font-space-grotesk font-black uppercase tracking-[0.3em] text-premium-primary mb-8 px-2">
-          Canales de Enlace
+          {t.channelsTitle}
         </h3>
 
         <div className="grid grid-cols-1 gap-4">
