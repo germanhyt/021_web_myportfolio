@@ -1,7 +1,12 @@
 import { defineConfig } from "vite";
+import type { UserConfig } from "vite";
+import type { InlineConfig } from "vitest";
 import react from "@vitejs/plugin-react-swc";
 import { fileURLToPath } from "url";
-import path from "path";
+
+interface VitestConfigExport extends UserConfig {
+  test?: InlineConfig;
+}
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -11,4 +16,8 @@ export default defineConfig({
       "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
   },
-});
+  test: {
+    globals: true,
+    environment: "jsdom",
+  },
+} as VitestConfigExport);

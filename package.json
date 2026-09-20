@@ -7,6 +7,7 @@
     "dev": "vite",
     "dev:css": "postcss src/assets/css/Tailwind.css -o src/assets/css/App.css --watch",
     "build": "tsc -b && vite build",
+    "test": "vitest run",
     "lint": "eslint --fix . --ext .js,.jsx,.ts,.tsx",
     "preview": "vite preview"
   },
@@ -16,9 +17,11 @@
     "react-select": "^5.10.2"
   },
   "devDependencies": {
+    "@testing-library/dom": "^10.4.2",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
     "@types/node": "^22.10.0",
     "@types/react": "^19.2.14",
-
     "@types/react-dom": "^19.2.3",
     "@typescript-eslint/eslint-plugin": "^7.13.1",
     "@typescript-eslint/parser": "^7.13.1",
@@ -33,6 +36,7 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
     "framer-motion": "^11.18.2",
+    "jsdom": "^30.1.0",
     "postcss": "^8.4.39",
     "postcss-cli": "^11.0.0",
     "react-icons": "^5.5.0",
@@ -41,6 +45,7 @@
     "tailwindcss": "^3.4.4",
     "typed.js": "^2.1.0",
     "typescript": "^5.2.2",
-    "vite": "^5.3.1"
+    "vite": "^5.3.1",
+    "vitest": "^1.6.0"
   }
 }
