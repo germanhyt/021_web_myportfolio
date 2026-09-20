@@ -1,32 +1,36 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="100%" height="100%">
   <defs>
-    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#181d14" />
-      <stop offset="100%" stop-color="#090b08" />
+    <!-- Rich Green/Olive background gradient -->
+    <linearGradient id="green-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9ab06b" />
+      <stop offset="100%" stop-color="#58662d" />
     </linearGradient>
-    <linearGradient id="accent-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#b2c978" />
-      <stop offset="100%" stop-color="#7a8c43" />
+
+    <!-- Gloss/Border gradient -->
+    <linearGradient id="green-border" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c1d98a" />
+      <stop offset="100%" stop-color="#3e471d" />
     </linearGradient>
-    <linearGradient id="border-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#8a9a65" stop-opacity="0.8" />
-      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.1" />
-    </linearGradient>
+
+    <!-- Shadow filter for contrast -->
+    <filter id="text-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.3" />
+    </filter>
   </defs>
 
-  <!-- Container Box -->
-  <rect x="4" y="4" width="120" height="120" rx="32" fill="url(#bg-grad)" stroke="url(#border-grad)" stroke-width="4" />
+  <!-- Container Box with Green Background -->
+  <rect x="4" y="4" width="120" height="120" rx="32" fill="url(#green-bg)" stroke="url(#green-border)" stroke-width="4" />
 
-  <!-- Decorative subtle tech grid / dot -->
-  <circle cx="102" cy="26" r="6" fill="#b2c978" opacity="0.9" />
+  <!-- Accent dot in white -->
+  <circle cx="102" cy="26" r="5" fill="#ffffff" opacity="0.9" />
 
   <!-- Monogram g4h -->
-  <g text-anchor="middle" font-family="'Space Grotesk', system-ui, -apple-system, sans-serif" font-weight="900" font-size="46" letter-spacing="-3">
-    <!-- 'g' in crisp light gray/white -->
-    <text x="36" y="80" fill="#f3f4f6">g</text>
-    <!-- '4' in primary accent color -->
-    <text x="64" y="80" fill="url(#accent-grad)">4</text>
-    <!-- 'h' in crisp light gray/white -->
-    <text x="92" y="80" fill="#f3f4f6">h</text>
+  <g text-anchor="middle" font-family="'Space Grotesk', system-ui, -apple-system, sans-serif" font-weight="900" font-size="48" letter-spacing="-3" filter="url(#text-shadow)">
+    <!-- 'g' in dark charcoal -->
+    <text x="36" y="81" fill="#0d110a">g</text>
+    <!-- '4' in crisp white -->
+    <text x="64" y="81" fill="#ffffff">4</text>
+    <!-- 'h' in dark charcoal -->
+    <text x="92" y="81" fill="#0d110a">h</text>
   </g>
 </svg>
