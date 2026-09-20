@@ -88,7 +88,7 @@ const ProjectInfo = () => {
 
         <div className="bg-premium-surface/20 p-7 rounded-3xl border border-white/5">
           <h2 className="font-space-grotesk text-2xl font-bold text-premium-text mb-6">
-            {t.highlightsHeading}
+            {t.scopeHeading}
           </h2>
           <div className="space-y-2">
             {currentProject.ProjectInfo.ProjectDetails.map((details, index) => (

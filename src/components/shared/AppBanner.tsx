@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { sociallinks } from "@/core/data/sociallinks";
 import Typed from "typed.js";
 import { FiDatabase, FiCode, FiLayers, FiCpu } from "react-icons/fi";
@@ -69,13 +70,13 @@ const AppBanner = () => {
             ))}
           </motion.div>
 
-          <a
-            href="#projects"
+          <Link
+            to="/#projects"
             onClick={() => trackClick("hero_explore_portfolio_btn")}
             className="px-10 py-5 bg-premium-text text-premium-bg font-space-grotesk font-black uppercase text-sm tracking-widest rounded-2xl hover:scale-105 active:scale-95 transition-all duration-300 shadow-2xl shadow-premium-text/20"
           >
             {t.exploreBtn}
-          </a>
+          </Link>
         </div>
       </div>
 

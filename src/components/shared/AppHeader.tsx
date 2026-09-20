@@ -45,10 +45,11 @@ const AppHeader = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Root-relative hashes so nav works from /projects/:id (not /projects/16#projects)
   const navItems = [
-    { label: t.projects, href: "#projects" },
-    { label: t.techs, href: "#techs" },
-    { label: t.aboutMe, href: "#aboutme" },
+    { label: t.projects, href: "/#projects" },
+    { label: t.techs, href: "/#techs" },
+    { label: t.aboutMe, href: "/#aboutme" },
   ];
 
   return (
@@ -76,14 +77,14 @@ const AppHeader = () => {
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center glass-effect p-1.5 rounded-full">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.href}
-                href={item.href}
+                to={item.href}
                 onClick={() => trackClick("header_nav_link", { label: item.label })}
                 className="px-6 py-2 rounded-full text-sm font-manrope font-semibold text-premium-text-muted hover:text-premium-text hover:bg-premium-surface transition-all duration-300"
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -139,9 +140,9 @@ const AppHeader = () => {
             >
               <div className="flex flex-col p-8 gap-6">
                 {navItems.map((item) => (
-                  <a
+                  <Link
                     key={item.href}
-                    href={item.href}
+                    to={item.href}
                     onClick={() => {
                       setShowMenu(false);
                       trackClick("header_mobile_nav_link", { label: item.label });
@@ -149,7 +150,7 @@ const AppHeader = () => {
                     className="text-3xl font-space-grotesk font-black text-premium-text hover:text-premium-primary transition-colors"
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 ))}
                 <button
                   onClick={() => {
