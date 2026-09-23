@@ -176,7 +176,219 @@ const curatedProjects: PortfolioProjectMeta[] = [
     productionUrl: "https://activatucarrera-laboratoria-loreal.com/",
   },
   {
-    id: 1,
+    id: 16,
+    title: "Landing Laboratoria × UTP",
+    category: "Landing page",
+    publishDate: "Agosto 2026",
+    visibility: "Publico",
+    objective:
+      "Impulsar la postulacion al programa Activa tu carrera (Laboratoria en colaboracion con UTP) con una landing de conversion clara y mobile-first.",
+    summary:
+      "Softlanding estatica en Astro + React islands para el programa Activa tu carrera: narrativa de empleabilidad, beneficios, metodologia y CTAs hacia postular.",
+    description: [
+      "Hero full-bleed y secciones con motion/Swiper orientadas a universitarios que buscan destacar en el mercado laboral.",
+      "Contenido modular (identificacion, beneficios, experiencia, FAQ) listo para iterar mensajes sin rehacer la base.",
+      "SEO, sitemap y dominio productivo en activatucarrera-laboratoria-utp.com; preview en Vercel.",
+    ],
+    techs: ["Astro", "React", "TypeScript", "TailwindCSS", "Framer Motion", "Swiper"],
+    highlights: [
+      "Activa tu carrera",
+      "Colaboracion Laboratoria × UTP",
+      "Landing de conversion",
+      "SEO + sitemap",
+    ],
+    cover:
+      "https://raw.githubusercontent.com/germanhyt/softlanding-laboratoria-utp-prod001/main/public/assets/hero/hero-banner--desktop.webp",
+    logo: "/images/projects/laboratoria/logo.webp",
+    gallery: [
+      {
+        title: "Hero — Activa tu carrera (desktop)",
+        img: "https://raw.githubusercontent.com/germanhyt/softlanding-laboratoria-utp-prod001/main/public/assets/hero/hero-banner--desktop.webp",
+      },
+      {
+        title: "Hero — vista mobile",
+        img: "https://raw.githubusercontent.com/germanhyt/softlanding-laboratoria-utp-prod001/main/public/assets/hero/hero-banner--mobile.webp",
+      },
+      {
+        title: "Seccion — demostrar mi potencial",
+        img: "https://raw.githubusercontent.com/germanhyt/softlanding-laboratoria-utp-prod001/main/public/assets/section3/demostrar-mi-potencial.webp",
+      },
+      {
+        title: "Logo Laboratoria",
+        img: "/images/projects/laboratoria/logo.webp",
+      },
+    ],
+    localSource: "softlanding-laboratoria-utp-prod001 + activatucarrera-laboratoria-utp.com",
+    repositoryLabel: "softlanding-laboratoria-utp-prod001",
+    repositoryUrl: "https://github.com/germanhyt/softlanding-laboratoria-utp-prod001",
+    productionUrl: "https://activatucarrera-laboratoria-utp.com/",
+    testingUrl: "https://softlanding-laboratoria-utp-prod001.vercel.app",
+  },
+  {
+    id: 17,
+    title: "Landing Laboratoria × Colsubsidio",
+    category: "Landing page",
+    publishDate: "Agosto 2026",
+    visibility: "Publico",
+    objective:
+      "Comunicar el programa Laboratoria × Colsubsidio y facilitar el retorno al mercado laboral con una landing de alto impacto visual y conversion.",
+    summary:
+      "Softlanding Astro + React para la alianza Laboratoria–Colsubsidio: hero fotografico, identificacion, beneficios, metodologia, logistica y FAQ con motion y carruseles.",
+    description: [
+      "Composicion visual de secciones (hero full-bleed, art-composite, foto+gradiente logistica) alineada al prototipo de marca.",
+      "Islas React con Framer Motion y Swiper para recorridos de identificacion y beneficios sin sacrificar rendimiento estatico.",
+      "Despliegue publico en Vercel como vitrina del programa ante afiliados y stakeholders.",
+    ],
+    techs: ["Astro", "React", "TypeScript", "TailwindCSS", "Framer Motion", "Swiper"],
+    highlights: [
+      "Alianza Laboratoria × Colsubsidio",
+      "Landing de empleabilidad",
+      "Motion + Swiper",
+      "Mobile-first",
+    ],
+    cover:
+      "https://raw.githubusercontent.com/germanhyt/softlanding-laboratoria-colsubsidio-prod001/main/public/assets/hero/hero.webp",
+    logo: "/images/projects/laboratoria/logo.webp",
+    gallery: [
+      {
+        title: "Hero — programa Colsubsidio",
+        img: "https://raw.githubusercontent.com/germanhyt/softlanding-laboratoria-colsubsidio-prod001/main/public/assets/hero/hero.webp",
+      },
+      {
+        title: "Experiencia — art composite",
+        img: "https://raw.githubusercontent.com/germanhyt/softlanding-laboratoria-colsubsidio-prod001/main/public/assets/experiencia/art-composite.png",
+      },
+      {
+        title: "Logistica — foto desktop",
+        img: "https://raw.githubusercontent.com/germanhyt/softlanding-laboratoria-colsubsidio-prod001/main/public/assets/logistica/desktop.webp",
+      },
+      {
+        title: "Logo Laboratoria",
+        img: "/images/projects/laboratoria/logo.webp",
+      },
+    ],
+    localSource: "softlanding-laboratoria-colsubsidio-prod001",
+    repositoryLabel: "softlanding-laboratoria-colsubsidio-prod001",
+    repositoryUrl:
+      "https://github.com/germanhyt/softlanding-laboratoria-colsubsidio-prod001",
+    productionUrl: "https://softlanding-laboratoria-colsubsidio.vercel.app/",
+  },
+  {
+    id: 10,
+    title: "Website Diverty",
+    category: "Website",
+    publishDate: "Abril 2026",
+    visibility: "Publico",
+    objective:
+      "Posicionar a Diverty como referente en su sector con una web corporativa clara, moderna y orientada a generar contactos comerciales.",
+    summary:
+      "Sitio institucional desarrollado con Astro y React, disenado para comunicar servicios, credibilidad y puntos de contacto en una experiencia fluida de principio a fin.",
+    description: [
+      "Arquitectura modular que facilita actualizar contenidos y lanzar nuevas secciones sin rehacer la base del sitio.",
+      "Diseno responsive con jerarquia visual pensada para conversion y lectura rapida en movil.",
+      "Despliegue productivo en diverty.pe como referencia visible para clientes y aliados comerciales.",
+    ],
+    techs: ["Astro", "React", "TypeScript", "TailwindCSS"],
+    cover: "/images/projects/prod-captures/diverty-home.png",
+    gallery: [
+      { title: "Vista en produccion — Diverty", img: "/images/projects/prod-captures/diverty-home.png" },
+      {
+        title: "Hero — propuesta de servicios",
+        img: "https://raw.githubusercontent.com/germanhyt/softwebsite-diverty-prod-001/master/src/assets/hero.png",
+      },
+    ],
+    repositoryLabel: "softwebsite-diverty-prod-001",
+    repositoryUrl: "https://github.com/germanhyt/softwebsite-diverty-prod-001",
+    productionUrl: "https://www.diverty.pe/",
+  },
+  {
+    id: 11,
+    title: "Landing Haz La Tarea",
+    category: "Landing page",
+    publishDate: "Enero 2026",
+    visibility: "Publico",
+    objective:
+      "Convertir trafico organico y referido en consultas calificadas mediante una landing comercial de una sola pagina.",
+    summary:
+      "Landing estatica con narrativa de servicios, metodologia, testimonios, FAQ y formulario de contacto, optimizada para captar leads de familias que buscan apoyo academico.",
+    description: [
+      "Estructura por secciones que permite iterar mensajes comerciales sin comprometer el flujo de conversion.",
+      "Contenido orientado a confianza: metodologia, casos y respuestas frecuentes antes del CTA final.",
+      "Entorno publico estable en Vercel para campanas y validacion continua del mensaje comercial.",
+    ],
+    techs: ["Astro", "React", "TypeScript", "TailwindCSS"],
+    cover:
+      "https://raw.githubusercontent.com/germanhyt/softlanding-hazlatarea-prod001/master/public/images/hero-banner-desktop.png",
+    gallery: [
+      {
+        title: "Hero — landing comercial",
+        img: "https://raw.githubusercontent.com/germanhyt/softlanding-hazlatarea-prod001/master/public/images/hero-banner-desktop.png",
+      },
+    ],
+    repositoryLabel: "softlanding-hazlatarea-prod001",
+    repositoryUrl: "https://github.com/germanhyt/softlanding-hazlatarea-prod001",
+    productionUrl: "https://softlanding-hazlatarea-prod001.vercel.app",
+  },
+  {
+    id: 12,
+    title: "Website BioTraining",
+    category: "Website",
+    publishDate: "Octubre 2025",
+    visibility: "Publico",
+    objective:
+      "Fortalecer la presencia digital de BioTraining y facilitar la comunicacion de su propuesta formativa en linea.",
+    summary:
+      "Website comercial en Astro que presenta la academia, sus programas y canales de contacto con una interfaz limpia y facil de mantener.",
+    description: [
+      "Prioridad en rendimiento, claridad de mensaje y navegacion simple entre secciones de valor.",
+      "Base preparada para escalar paginas de cursos o contenido institucional sin reestructurar el sitio.",
+      "Produccion en biotraining.pe con preview en Vercel para revisiones previas al lanzamiento.",
+    ],
+    techs: ["Astro", "TypeScript", "Frontend", "Marketing Site"],
+    cover: "/images/projects/prod-captures/biotraining-home.png",
+    gallery: [
+      { title: "Vista en produccion — BioTraining", img: "/images/projects/prod-captures/biotraining-home.png" },
+      {
+        title: "Hero — academia y programas",
+        img: "https://raw.githubusercontent.com/germanhyt/softwebsite-biotraining-frontend-prod002/Master/src/assets/img/hero-banner_1.webp",
+      },
+    ],
+    repositoryLabel: "softwebsite-biotraining-frontend-prod002",
+    repositoryUrl: "https://github.com/germanhyt/softwebsite-biotraining-frontend-prod002",
+    productionUrl: "https://www.biotraining.pe/",
+    testingUrl: "https://softwebsite-biotraining-frontend-pr.vercel.app",
+  },
+  {
+    id: 14,
+    title: "Landing Laboratoria",
+    category: "Landing page",
+    publishDate: "Diciembre 2024",
+    visibility: "Privado",
+    objective:
+      "Comunicar el impacto del informe sobre brecha de genero y captar leads institucionales con una landing de alto nivel narrativo.",
+    summary:
+      "Landing corporativa para Laboratoria con frontend Next.js y backend integrado para gestion de leads y panel administrativo privado.",
+    description: [
+      "Narrativa centrada en impacto social y datos del caso BCP, con diseno editorial que prioriza claridad del mensaje.",
+      "Formularios y flujos de captacion conectados a capa backend para seguimiento comercial del equipo.",
+      "Frontend publico en laboratoria-brechadegenero.la como vitrina del proyecto ante stakeholders.",
+    ],
+    techs: ["Next.js", "React", "TypeScript", "TailwindCSS", "PostgreSQL"],
+    cover: "/images/projects/prod-captures/laboratoria-home.png",
+    logo: "/images/projects/laboratoria/logo.webp",
+    gallery: [
+      { title: "Vista en produccion — informe", img: "/images/projects/prod-captures/laboratoria-home.png" },
+      { title: "Landing — caso BCP", img: "/images/projects/laboratoria/portfolio-1.webp" },
+      { title: "Landing — variante visual", img: "/images/projects/laboratoria/portfolio-2.webp" },
+      { title: "Logo Laboratoria", img: "/images/projects/laboratoria/logo.webp" },
+    ],
+    localSource: "laboratoria-brechadegenero.la + referencias Ktalweb",
+    repositoryLabel: "softlanding-laboratoria-frontend-prod002",
+    repositoryUrl: "https://github.com/germanhyt",
+    productionUrl: "https://laboratoria-brechadegenero.la/",
+  },
+  {
+    id: 13,
     title: "Ktalweb Agentes de IA",
     category: "Website",
     publishDate: "Junio 2026",
@@ -204,7 +416,7 @@ const curatedProjects: PortfolioProjectMeta[] = [
     productionUrl: "https://ktalweb.com.pe/",
   },
   {
-    id: 2,
+    id: 1,
     title: "CRM Bosque Magico — Panel Comercial",
     category: "Fullstack web",
     publishDate: "Noviembre 2024",
@@ -246,7 +458,7 @@ const curatedProjects: PortfolioProjectMeta[] = [
     testingUrl: "https://sandbox-panel-bosque.gcbprojects.site/",
   },
   {
-    id: 3,
+    id: 2,
     title: "Landing Corporativa Bosque Magico",
     category: "Landing page",
     publishDate: "Diciembre 2024",
@@ -282,6 +494,41 @@ const curatedProjects: PortfolioProjectMeta[] = [
     repositoryUrl: "https://github.com/germanhyt",
     productionUrl: "https://bosquemagico.pe/",
     testingUrl: "https://sandbox-landing-bosque.gcbprojects.site/",
+  },
+  {
+    id: 3,
+    title: "Landing Calendario Deportivo",
+    category: "Landing page",
+    publishDate: "Mayo 2026",
+    visibility: "Publico",
+    objective:
+      "Exhibir la programacion deportiva semanal en formato cartelera digital, usable en kiosk o movil, con contenido siempre actualizado.",
+    summary:
+      "Aplicacion web tipo cartelera construida con Astro 6, carrusel Swiper y sincronizacion en tiempo casi real via API y WebSocket.",
+    description: [
+      "Slides por disciplina — agenda general, futbol internacional y peruano, voley, UFC y mas — con filtro por categoria.",
+      "Modo kiosk y modo movil con preferencias persistentes y navegacion por gestos o controles.",
+      "Actualizacion de programacion sin recargar la pagina completa, ideal para pantallas en local comercial.",
+      "Build hibrido que mantiene compatibilidad con despliegues existentes y evolucion del producto.",
+    ],
+    techs: ["Astro 6", "TypeScript", "Swiper", "WebSocket", "Vercel"],
+    highlights: [
+      "Carrusel deportivo",
+      "Modo kiosk",
+      "Actualizacion en vivo",
+      "Reproductor musical",
+    ],
+    cover: "/images/projects/calendario-deportivo/slide-01.png",
+    gallery: [
+      { title: "Agenda deportiva semanal", img: "/images/projects/calendario-deportivo/slide-01.png" },
+      { title: "Pasion por el deporte", img: "/images/projects/calendario-deportivo/slide-02.png" },
+      { title: "Futbol internacional", img: "/images/projects/calendario-deportivo/slide-03.png" },
+      { title: "Futbol peruano", img: "/images/projects/calendario-deportivo/slide-04.png" },
+    ],
+    localSource: "catelera-deportiva (assets/, SportsCarousel.astro, agendaClient)",
+    repositoryLabel: "softlanding-calendario-deportivo-gcb-prod001",
+    repositoryUrl: "https://github.com/germanhyt/softlanding-calendario-deportivo-gcb-prod001",
+    productionUrl: "https://softlanding-calendario-deportivo-gc.vercel.app",
   },
   {
     id: 4,
